@@ -2,6 +2,7 @@
 #define LIFEBOAT_H
 
 #include <QMainWindow>
+#include <iostream>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Lifeboat; }
@@ -14,6 +15,9 @@ class Lifeboat : public QMainWindow
 public:
     Lifeboat(QWidget *parent = nullptr);
     ~Lifeboat();
+
+private slots:
+    void on_pushButton_clicked();
 
 private:
     Ui::Lifeboat *ui;

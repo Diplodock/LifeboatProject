@@ -12,3 +12,8 @@ Lifeboat::~Lifeboat()
 {
     delete ui;
 }
+
+void Lifeboat::on_pushButton_clicked()
+{
+    std::cout << "Боцман\n";
+}

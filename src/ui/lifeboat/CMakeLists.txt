@@ -34,6 +34,7 @@ if(ANDROID)
     lifeboat.cpp
     lifeboat.h
     lifeboat.ui
+    images.qrc
   )
 else()
   add_executable(lifeboat
@@ -41,6 +42,7 @@ else()
     lifeboat.cpp
     lifeboat.h
     lifeboat.ui
+    images.qrc
   )
 endif()
 
