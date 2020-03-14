@@ -2,31 +2,31 @@
 
 #include <algorithm>
 
-Character::Character(std::string name, std::string description, int strength, int survival_bonus)
-    : strength_(strength), survival_bonus_(survival_bonus), health_(100)
+Character::Character()
 {
-    name_ = name;
-    description_ = description;
+    characterOptions_.health = 100;
+    characterOptions_.exhausted = false;
+    characterOptions_.critical_state = false;
 }
 
 int Character::GetHealth() const {
-    return health_;
+    return characterOptions_.health;
 }
 
 int Character::GetStrength() const {
-    return strength_;
+    return characterOptions_.strength;
 }
 
 int Character::GetSurvivalBonus() const {
-    return survival_bonus_;
+    return characterOptions_.survival_bonus;
 }
 
 bool Character::IfExhausted() const {
-    return exhausted_;
+    return characterOptions_.exhausted;
 }
 
 bool Character::IfCriticalState() const {
-    return critical_state_;
+    return characterOptions_.critical_state;
 }
 
 Item Character::GetItem(int i) const {
@@ -34,28 +34,42 @@ Item Character::GetItem(int i) const {
 }
 
 void Character::SetHealth(int health) {
-    health_ = health;
+    characterOptions_.health = health;
 }
 
-void Character::AddItem(Item item) {
-    backpack_.push_back(std::make_unique<Weapon>());
+void Character::AddItem(Item* item) {
+    backpack_.push_back(item);
 }
 
-// bool Character::Fight(Character target) { // TODO: add ally support and weapon
-//     exhausted_ = true;
-//     target.exhausted_ = true;
-//     if (GetMaxWeaponPoints() + strength_ > target.GetMaxWeaponPoints() + target.strength_) {
-//         target.health_ -= 100 / target.strength_;
-//         return true;
-//     } // is it allowed to use multiple weapons?
-//     else {
-//         health_ -= 100 / strength_;
-//         return false;
-//     }
-// }
+int Character::GetMaxWeaponPoints() {
+    int max_points = 0;
+    for (int i = 0; i < backpack_.size(); i++) {
+        Weapon *current_weapon = dynamic_cast<Weapon*> (backpack_[i]); 
+        if (current_weapon != nullptr) {
+            if (max_points < (*current_weapon).GetDamagePoints()) {
+                max_points = (*current_weapon).GetDamagePoints();
+            };
+        }
+    }
+    return max_points;
+}
+
+
+bool Character::Fight(Character target) { // TODO: add ally support and weapon
+    characterOptions_.exhausted = true;
+    target.characterOptions_.exhausted = true;
+    if (GetMaxWeaponPoints() + characterOptions_.strength > target.GetMaxWeaponPoints() + target.characterOptions_.strength) {
+        target.characterOptions_.health -= 100 / target.characterOptions_.strength;
+        return true;
+    } // is it allowed to use multiple weapons?
+    else {
+        characterOptions_.health -= 100 / characterOptions_.strength;
+        return false;
+    }
+}
 
 void Character::UpdateState() {
-    if (health_ <= strength_ / 100) {
-        critical_state_ = true;
+    if (characterOptions_.health <= characterOptions_.strength / 100) {
+        characterOptions_.critical_state = true;
     }
 }

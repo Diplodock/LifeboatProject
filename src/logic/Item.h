@@ -5,7 +5,9 @@
 
 class Item : public Card{
   public:
-    bool GetPosition();
+    bool GetPosition() const;
+    virtual int GetPoints() const;
+
   protected:
     bool position_;
 };

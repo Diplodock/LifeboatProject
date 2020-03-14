@@ -1,31 +1,44 @@
+#include "AllCharacters.h"
 #include "Character.h" 
 
-void SetAllCharacters() {
-    std::string name;
-    std::string description;
+Captain::Captain() {
+    cardOptions_.name = "Капитан";
+    cardOptions_.description = "Двойной бонус за деньги";
+    characterOptions_.strength = 7;
+    characterOptions_.survival_bonus = 5;
+}
 
-    name = "Капитан";
-    description = "Двойной бонус за деньги";
-    Character captain(name, description, 7, 5);
+FirstMate::FirstMate() {
+    cardOptions_.name = "Боцман";
+    cardOptions_.description = "Здоровый как чёрт";
+    characterOptions_.strength = 8;
+    characterOptions_.survival_bonus = 4;
+}
 
-    name = "Боцман";
-    description = "Здоровый как чёрт";
-    Character first_mate(name, description, 8, 4);
+TheKid::TheKid() {
+    cardOptions_.name = "Шкет";
+    cardOptions_.description = "Карманник: может забрать любую закрытую карту без последствий";
+    characterOptions_.strength = 3;
+    characterOptions_.survival_bonus = 9;
+}
 
-    name = "Шкет";
-    description = "Карманник: может забрать любую закрытую карту без последствий";
-    Character the_kid(name, description, 3, 9);
+LadyLauren::LadyLauren() {
+    cardOptions_.name = "Миледи";
+    cardOptions_.description = "Двойной бонус за украшения";
+    characterOptions_.strength = 4;
+    characterOptions_.survival_bonus = 8;
+}
 
-    name = "Миледи";
-    description = "Двойной бонус за украшения";
-    Character lady_lauren(name, description, 4, 8);
+SirStephen::SirStephen() {
+    cardOptions_.name = "Сноб";
+    cardOptions_.description = "Двойной бонус за картины";
+    characterOptions_.strength = 5;
+    characterOptions_.survival_bonus = 7;
+}
 
-    name = "Сноб";
-    description = "Двойной бонус за картины";
-    Character sir_stephen(name, description, 5, 7);
-
-    name = "Черпак";
-    description = "Хорошо плавает: не получает урон при падении за борт";
-    Character frenchy(name, description, 6, 6);
-
+Frenchy::Frenchy() {
+    cardOptions_.name = "Черпак";
+    cardOptions_.description = "Хорошо плавает: не получает урон при падении за борт";
+    characterOptions_.strength = 6;
+    characterOptions_.survival_bonus = 6;
 }

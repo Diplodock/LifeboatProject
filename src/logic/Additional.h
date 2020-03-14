@@ -7,6 +7,7 @@ class Additional : public Item {
   public:
     Additional(int points);
     int GetPoints();
+    
   private:
     int points_;
 };

@@ -8,26 +8,34 @@
 #include "Item.h"
 #include "Weapon.h"
 
+struct CharacterOptions {
+    int health;
+    int strength;
+    int survival_bonus;
+    bool exhausted;
+    bool critical_state;
+};
+
 class Character : public Card {
   public:
-    Character(std::string name, std::string description, int strength, int survival_bonus);
+    Character();
     int GetHealth() const;
     int GetStrength() const;
     int GetSurvivalBonus() const;
     bool IfExhausted() const;
     bool IfCriticalState() const;
+
     Item GetItem(int item) const;
     void SetHealth(int health);
-    void AddItem(Item item);
+    void AddItem(Item* item);
+
+    int GetMaxWeaponPoints();
     bool Fight(Character target);
     void UpdateState();
+
   protected:
-    int health_;
-    int strength_;
-    int survival_bonus_;
-    bool exhausted_;
-    bool critical_state_;
-    std::vector<std::unique_ptr<Item>> backpack_;
+    CharacterOptions characterOptions_;
+    std::vector<Item*> backpack_;
 };
 
 #endif // LIFEBOAT_LOGIC_CHARACTER_H_

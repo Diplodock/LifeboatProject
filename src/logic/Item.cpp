@@ -1,5 +1,5 @@
 #include "Item.h"
 
-bool Item::GetPosition() {
+bool Item::GetPosition() const {
     return position_;
 }
