@@ -2,12 +2,24 @@
 #include <memory>
 #include <string>
 #include <grpc++/grpc++.h>
+#include <grpcpp/channel.h>
+#include <grpcpp/client_context.h>
+#include <grpcpp/create_channel.h>
+#include <grpcpp/security/credentials.h>
 
 #include "factorization.grpc.pb.h"
 
-using namespace grpc;
-using namespace factorization;
-using namespace std;
+using grpc::Server;
+using grpc::ServerBuilder;
+using grpc::ServerContext;
+using grpc::ServerReader;
+using grpc::ServerReaderWriter;
+using grpc::ServerWriter;
+using grpc::Status;
+using grpc::WriteOptions;
+using factorization::Reply;
+using factorization::Request;
+using factorization::Factorization;
 
 int foo(int n) {
     for (int i = 2; i * i < n; i++) {
@@ -19,19 +31,18 @@ int foo(int n) {
 }
 
 class FactorizationImpl final : public Factorization::Service {
-    Status FactStream(ServerContext *context, ServerReaderWriter <Reply, Request> *stream) {
+    Status Fact(ServerContext *context, ServerReaderWriter <Reply, Request> *stream) override {
         Request r;
-        int number = stoi(r.n());
         while (stream->Read(&r)) {
+            int number = r.n();
             Reply reply;
-            //cout << "I'm here";
             int k = foo(number);
             if (k == -1) {
-                reply.set_k("1");
-                reply.set_l(r.n());
+                reply.set_k(1);
+                reply.set_l(number);
             } else {
-                reply.set_k(to_string(k));
-                reply.set_l(to_string(number / k));
+                reply.set_k(k);
+                reply.set_l(number / k);
             }
             WriteOptions writeOptions;
             bool res = stream->Write(reply, writeOptions);
@@ -41,15 +52,15 @@ class FactorizationImpl final : public Factorization::Service {
 };
 
 void RunStreamServer() {
-    string server_address("0.0.0.0:50051");
+    std::string server_address("0.0.0.0:50051");
     FactorizationImpl service;
     ServerBuilder builder;
 
-    builder.AddListeningPort(server_address, InsecureServerCredentials());
+    builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
     builder.RegisterService(&service);
 
-    unique_ptr <Server> server(builder.BuildAndStart());
-    cout << "Server listening on " << server_address << endl;
+    std::unique_ptr<Server> server(builder.BuildAndStart());
+    std::cout << "Server listening on " << server_address << '\n';
     server->Wait();
 }
 

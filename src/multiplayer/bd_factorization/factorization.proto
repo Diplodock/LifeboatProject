@@ -7,10 +7,10 @@ service Factorization {
 }
 
 message Request {
-  string n = 1;
+  int64 n = 1;
 }
 
 message Reply {
-  string k = 1;
-  string l = 2;
+  int64 k = 1;
+  int64 l = 2;
 }
