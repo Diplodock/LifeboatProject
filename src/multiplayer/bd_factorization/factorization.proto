@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package factorization;
+
+service Factorization {
+  rpc Fact (stream Request) returns (stream Reply) {}
+}
+
+message Request {
+  string n = 1;
+}
+
+message Reply {
+  string k = 1;
+  string l = 2;
+}
