@@ -22,7 +22,7 @@ using factorization::Request;
 using factorization::Factorization;
 
 int foo(int n) {
-    for (int i = 2; i * i < n; i++) {
+    for (int i = 2; i * i <= n; i++) {
         if (n % i == 0) {
             return i;
         }

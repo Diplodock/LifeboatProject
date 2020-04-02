@@ -20,6 +20,61 @@ using factorization::Reply;
 using factorization::Request;
 using factorization::Factorization;
 
+std::string grpc_code_to_str(grpc::StatusCode code) {
+    using sc = grpc::StatusCode;
+
+    switch (code) {
+        case sc::OK:
+            return "OK";
+        case sc::CANCELLED:
+            return "CANCELLED";
+        case sc::INVALID_ARGUMENT:
+            return "INVALID_ARGUMENT";
+        case sc::DEADLINE_EXCEEDED:
+            return "DEADLINE_EXCEEDED";
+        case sc::NOT_FOUND:
+            return "NOT_FOUND";
+        case sc::ALREADY_EXISTS:
+            return "ALREADY_EXISTS";
+        case sc::PERMISSION_DENIED:
+            return "PERMISSION_DENIED";
+        case sc::UNAUTHENTICATED:
+            return "UNAUTHENTICATED";
+        case sc::RESOURCE_EXHAUSTED:
+            return "RESOURCE_EXHAUSTED";
+        case sc::FAILED_PRECONDITION:
+            return "FAILED_PRECONDITION";
+        case sc::ABORTED:
+            return "ABORTED";
+        case sc::OUT_OF_RANGE:
+            return "OUT_OF_RANGE";
+        case sc::UNIMPLEMENTED:
+            return "UNIMPLEMENTED";
+        case sc::INTERNAL:
+            return "INTERNAL";
+        case sc::UNAVAILABLE:
+            return "UNAVAILABLE";
+        case sc::DATA_LOSS:
+            return "DATA_LOSS";
+        case sc::DO_NOT_USE:
+            return "DO_NOT_USE";
+        case sc::UNKNOWN:
+            return "UNKNOWN";
+    }
+
+    return "UNKNOWN";
+}
+
+std::string grpc_status_to_str(const grpc::Status& status) {
+    grpc::StatusCode err_code = status.error_code();
+    std::string err_message = status.error_message();
+    std::string err_details = status.error_details();
+
+    return std::string("StatusCode: (") + std::to_string(err_code) + ") " + grpc_code_to_str(err_code) + "\n"
+           + "Message: " + err_message + "\n"
+           + "Details: " + err_details + "\n";
+}
+
 class FactorizationStreamClient {
 
 public:
@@ -31,18 +86,16 @@ public:
         std::unique_ptr<ClientReaderWriter<Request, Reply>> client;
         client = stub_->Fact(&context);
         request.set_n(n);
-        WriteOptions options;
-        options.set_last_message();
-        client->Write(request, options);
+        client->Write(request);
         client->WritesDone();
         Reply reply;
         while (client->Read(&reply)) {
             std::cout << "k = " << reply.k() << '\n';
             std::cout << "l = " << reply.l() << '\n';
+            std::cout << "n = " << request.n() << '\n';
         }
-        std::cout << "n = " << request.n() << '\n';
         Status status = client->Finish();
-        if (!status.ok()) std::cout << "failed";
+        if (!status.ok()) std::cout << grpc_status_to_str(status);
     }
 
 private:
@@ -51,6 +104,11 @@ private:
 
 int main(int argc, char **argv) {
     FactorizationStreamClient client(CreateChannel("localhost:50051", grpc::InsecureChannelCredentials()));
-    client.Fact(std::stoi(argv[1]));
+    int n = -1;
+    std::cin >> n;
+    while (n != -1) {
+        client.Fact(n);
+        std::cin >> n;
+    }
     return 0;
 }
