@@ -1,6 +1,7 @@
 #include <iostream>
 #include <memory>
 #include <string>
+#include <thread>
 #include <grpc++/grpc++.h>
 #include <grpcpp/channel.h>
 #include <grpcpp/client_context.h>
@@ -65,7 +66,7 @@ std::string grpc_code_to_str(grpc::StatusCode code) {
     return "UNKNOWN";
 }
 
-std::string grpc_status_to_str(const grpc::Status& status) {
+std::string grpc_status_to_str(const grpc::Status &status) {
     grpc::StatusCode err_code = status.error_code();
     std::string err_message = status.error_message();
     std::string err_details = status.error_details();
@@ -78,23 +79,30 @@ std::string grpc_status_to_str(const grpc::Status& status) {
 class FactorizationStreamClient {
 
 public:
-    FactorizationStreamClient(std::shared_ptr<Channel> channel) : stub_(factorization::Factorization::NewStub(channel)) {}
+    FactorizationStreamClient(std::shared_ptr <Channel> channel) : stub_(
+            factorization::Factorization::NewStub(channel)) {}
 
-    void Fact(const int &n) {
+    void Fact() {
         ClientContext context;
-        Request request;
-        std::unique_ptr<ClientReaderWriter<Request, Reply>> client;
-        client = stub_->Fact(&context);
-        request.set_n(n);
-        client->Write(request);
-        client->WritesDone();
+        std::shared_ptr <ClientReaderWriter<Request, Reply>> stream(stub_->Fact(&context));
+        std::thread writer([stream]() {
+            int n = -1;
+            std::cin >> n;
+            while (n != -1) {
+                Request request;
+                request.set_n(n);
+                stream->Write(request);
+                std::cin >> n;
+            }
+            stream->WritesDone();
+        });
         Reply reply;
-        while (client->Read(&reply)) {
+        while (stream->Read(&reply)) {
             std::cout << "k = " << reply.k() << '\n';
             std::cout << "l = " << reply.l() << '\n';
-            std::cout << "n = " << request.n() << '\n';
         }
-        Status status = client->Finish();
+        writer.join();
+        Status status = stream->Finish();
         if (!status.ok()) std::cout << grpc_status_to_str(status);
     }
 
@@ -104,11 +112,6 @@ private:
 
 int main(int argc, char **argv) {
     FactorizationStreamClient client(CreateChannel("localhost:50051", grpc::InsecureChannelCredentials()));
-    int n = -1;
-    std::cin >> n;
-    while (n != -1) {
-        client.Fact(n);
-        std::cin >> n;
-    }
+    client.Fact();
     return 0;
 }
