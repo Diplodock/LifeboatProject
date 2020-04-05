@@ -34,6 +34,9 @@ if(ANDROID)
     lifeboat.cpp
     lifeboat.h
     lifeboat.ui
+    find_game.cpp
+    find_game.h
+    find_game.ui
     images.qrc
   )
 else()
@@ -42,6 +45,9 @@ else()
     lifeboat.cpp
     lifeboat.h
     lifeboat.ui
+    find_game.cpp
+    find_game.h
+    find_game.ui
     images.qrc
   )
 endif()

@@ -3,17 +3,23 @@
 
 Lifeboat::Lifeboat(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::Lifeboat)
-{
+    , ui(new Ui::Lifeboat) {
     ui->setupUi(this);
 }
 
-Lifeboat::~Lifeboat()
-{
+
+Lifeboat::~Lifeboat() {
     delete ui;
 }
 
-void Lifeboat::on_pushButton_clicked()
-{
-    std::cout << "Боцман\n";
+void Lifeboat::on__exit_clicked() {
+    close();
+}
+
+void Lifeboat::on__find_game_clicked() {
+
+}
+
+void Lifeboat::on__new_game_clicked() {
+
 }

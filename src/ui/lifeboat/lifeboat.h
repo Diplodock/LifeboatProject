@@ -2,6 +2,7 @@
 #define LIFEBOAT_H
 
 #include <QMainWindow>
+#include <QStackedWidget>
 #include <iostream>
 
 QT_BEGIN_NAMESPACE
@@ -17,7 +18,11 @@ public:
     ~Lifeboat();
 
 private slots:
-    void on_pushButton_clicked();
+    void on__exit_clicked();
+
+    void on__find_game_clicked();
+
+    void on__new_game_clicked();
 
 private:
     Ui::Lifeboat *ui;
