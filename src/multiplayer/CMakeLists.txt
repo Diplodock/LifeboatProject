@@ -38,3 +38,4 @@ link_libraries(grpc grpc++ grpc++_unsecure protobuf grpc++_reflection ${PROTOBUF
 
 add_executable(greeter_server greeter_server.cc ${GENERATED_PROTOBUF_FILES})
 add_executable(greeter_client greeter_client.cc ${GENERATED_PROTOBUF_FILES})
+add_subdirectory(bd_factorization)
