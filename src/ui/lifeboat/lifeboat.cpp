@@ -1,5 +1,6 @@
 #include "lifeboat.h"
 #include "./ui_lifeboat.h"
+#include "logindialog.h"
 
 Lifeboat::Lifeboat(QWidget *parent)
     : QMainWindow(parent)
@@ -17,7 +18,9 @@ void Lifeboat::on__exit_clicked() {
 }
 
 void Lifeboat::on__find_game_clicked() {
-
+    LoginDialog loginDialog;
+    loginDialog.setModal(true);
+    loginDialog.exec();
 }
 
 void Lifeboat::on__new_game_clicked() {

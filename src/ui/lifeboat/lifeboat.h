@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QStackedWidget>
+#include <QLineEdit>
 #include <iostream>
 
 QT_BEGIN_NAMESPACE
@@ -19,11 +20,8 @@ public:
 
 private slots:
     void on__exit_clicked();
-
     void on__find_game_clicked();
-
     void on__new_game_clicked();
-
 private:
     Ui::Lifeboat *ui;
 };

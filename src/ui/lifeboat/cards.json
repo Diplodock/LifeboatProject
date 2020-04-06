@@ -1,0 +1,565 @@
+{
+   "cards": {
+      "characters": [
+
+      {
+         "id": "00",
+         "name": "Boatswain",
+         "power": 8,
+         "survival_bonus": 4,
+         "path": ":/resources/cards/characters/boatswain.jpg"
+      },
+   
+      {
+         "id": "01",
+         "name": "Captain",
+         "power": 7,
+         "survival_bonus": 5,
+         "path": ":/resources/cards/characters/captain.jpg"
+      },
+
+      {
+         "id": "02",
+         "name": "Frenchy",
+         "power": 6,
+         "survival_bonus": 6,
+         "path": ":/resources/cards/characters/frenchy.jpg"
+      },
+
+      {
+         "id": "03",
+         "name": "Harter",
+         "power": 4,
+         "survival_bonus": 8,
+         "path": ":/resources/cards/characters/harter.jpg"
+      },
+
+      {
+         "id": "04",
+         "name": "Kid",
+         "power": 3,
+         "survival_bonus": 9,
+         "path": ":/resources/cards/characters/kid.jpg"
+      },
+
+      {
+         "id": "05",
+         "name": "Lady",
+         "power": 4,
+         "survival_bonus": 8,
+         "path": ":/resources/cards/characters/lady.jpg"
+      },
+
+      {
+         "id": "06",
+         "name": "Snob",
+         "power": 5,
+         "survival_bonus": 7,
+         "path": ":/resources/cards/characters/snob.jpg"
+      },
+
+      {
+         "id": "07",
+         "name": "Wong",
+         "power": 3,
+         "survival_bonus": 9,
+         "path": ":/resources/cards/characters/wong.jpg"
+      }
+
+      ],
+
+      "enemies": [
+
+      {
+         "id": "08",
+         "name": "Boatswain",
+         "power": 8,
+         "survival_bonus": 4,
+         "path": ":/resources/cards/enemies/boatswain.jpg"
+      },
+   
+      {
+         "id": "09",
+         "name": "Captain",
+         "power": 7,
+         "survival_bonus": 5,
+         "path": ":/resources/cards/enemies/captain.jpg"
+      },
+
+      {
+         "id": "10",
+         "name": "Frenchy",
+         "power": 6,
+         "survival_bonus": 6,
+         "path": ":/resources/cards/enemies/frenchy.jpg"
+      },
+
+      {
+         "id": "11",
+         "name": "Harter",
+         "power": 4,
+         "survival_bonus": 8,
+         "path": ":/resources/cards/enemies/harter.jpg"
+      },
+
+      {
+         "id": "12",
+         "name": "Kid",
+         "power": 3,
+         "survival_bonus": 9,
+         "path": ":/resources/cards/enemies/kid.jpg"
+      },
+
+      {
+         "id": "13",
+         "name": "Lady",
+         "power": 4,
+         "survival_bonus": 8,
+         "path": ":/resources/cards/enemies/lady.jpg"
+      },
+
+      {
+         "id": "14",
+         "name": "Snob",
+         "power": 5,
+         "survival_bonus": 7,
+         "path": ":/resources/cards/enemies/snob.jpg"
+      },
+
+      {
+         "id": "15",
+         "name": "Wong",
+         "power": 3,
+         "survival_bonus": 9,
+         "path": ":/resources/cards/enemies/wong.jpg"
+      }
+
+      ],
+
+      "friends": [
+
+      {
+         "id": "16",
+         "name": "Boatswain",
+         "power": 8,
+         "survival_bonus": 4,
+         "path": ":/resources/cards/friends/boatswain.jpg"
+      },
+   
+      {
+         "id": "17",
+         "name": "Captain",
+         "power": 7,
+         "survival_bonus": 5,
+         "path": ":/resources/cards/friends/captain.jpg"
+      },
+
+      {
+         "id": "18",
+         "name": "Frenchy",
+         "power": 6,
+         "survival_bonus": 6,
+         "path": ":/resources/cards/friends/frenchy.jpg"
+      },
+
+      {
+         "id": "19",
+         "name": "Harter",
+         "power": 4,
+         "survival_bonus": 8,
+         "path": ":/resources/cards/friends/harter.jpg"
+      },
+
+      {
+         "id": "20",
+         "name": "Kid",
+         "power": 3,
+         "survival_bonus": 9,
+         "path": ":/resources/cards/friends/kid.jpg"
+      },
+
+      {
+         "id": "21",
+         "name": "Lady",
+         "power": 4,
+         "survival_bonus": 8,
+         "path": ":/resources/cards/friends/lady.jpg"
+      },
+
+      {
+         "id": "22",
+         "name": "Snob",
+         "power": 5,
+         "survival_bonus": 7,
+         "path": ":/resources/cards/friends/snob.jpg"
+      },
+
+      {
+         "id": "23",
+         "name": "Wong",
+         "power": 3,
+         "survival_bonus": 9,
+         "path": ":/resources/cards/friends/wong.jpg"
+      }
+
+      ],
+
+      "goods": [
+
+      {
+         "id": "24",
+         "name": "Painting1",
+         "points": 3,
+         "path": ":/resources/cards/goods/painting1.jpg"
+      },
+
+      {
+         "id": "25",
+         "name": "Painting2",
+         "points": 2,
+         "path": ":/resources/cards/goods/painting2.jpg"
+      },
+
+      {
+         "id": "26",
+         "name": "Painting3",
+         "points": 3,
+         "path": ":/resources/cards/goods/painting3.jpg"
+      },
+
+      {
+         "id": "27",
+         "name": "Money",
+         "points": 1,
+         "path": ":/resources/cards/goods/boatswain.jpg"
+      },
+
+      {
+         "id": "28",
+         "name": "Jewelry1",
+         "points": 3,
+         "path": ":/resources/cards/goods/jewelry1.jpg"
+      },
+
+      {
+         "id": "29",
+         "name": "Jewelry2",
+         "points": 2,
+         "path": ":/resources/cards/goods/jewelry2.jpg"
+      },
+
+      {
+         "id": "30",
+         "name": "Jewelry3",
+         "points": 3,
+         "path": ":/resources/cards/goods/jewelry3.jpg"
+      }
+
+      ],
+
+      "navigations": [
+
+      {
+         "id": "31",
+         "name": "Navigation",
+         "path": ":/resources/cards/navigations/navigation.jpg"
+      },
+
+      {
+         "id": "32",
+         "name": "Navigation2",
+         "path": ":/resources/cards/navigations/navigation2.jpg"
+      },
+
+      {
+         "id": "33",
+         "name": "Navigation3",
+         "path": ":/resources/cards/navigations/navigation3.jpg"
+      },
+
+      {
+         "id": "34",
+         "name": "Navigation4",
+         "path": ":/resources/cards/navigations/navigation4.jpg"
+      },
+
+      {
+         "id": "35",
+         "name": "Navigation5",
+         "path": ":/resources/cards/navigations/navigation5.jpg"
+      },
+
+      {
+         "id": "36",
+         "name": "Navigation6",
+         "path": ":/resources/cards/navigations/navigation6.jpg"
+      },
+
+      {
+         "id": "37",
+         "name": "Navigation7",
+         "path": ":/resources/cards/navigations/navigation7.jpg"
+      },
+
+      {
+         "id": "38",
+         "name": "Navigation8",
+         "path": ":/resources/cards/navigations/navigation8.jpg"
+      },
+
+      {
+         "id": "39",
+         "name": "Navigation9",
+         "path": ":/resources/cards/navigations/navigation9.jpg"
+      },
+
+      {
+         "id": "40",
+         "name": "Navigation10",
+         "path": ":/resources/cards/navigations/navigation10.jpg"
+      },
+
+      {
+         "id": "41",
+         "name": "Navigation11",
+         "path": ":/resources/cards/navigations/navigation11.jpg"
+      },
+
+      {
+         "id": "42",
+         "name": "Navigation12",
+         "path": ":/resources/cards/navigations/navigation12.jpg"
+      },
+
+      {
+         "id": "43",
+         "name": "Navigation13",
+         "path": ":/resources/cards/navigations/navigation13.jpg"
+      },
+
+      {
+         "id": "44",
+         "name": "Navigation14",
+         "path": ":/resources/cards/navigations/navigation14.jpg"
+      },
+
+      {
+         "id": "45",
+         "name": "Navigation15",
+         "path": ":/resources/cards/navigations/navigation15.jpg"
+      },
+
+      {
+         "id": "46",
+         "name": "Navigation16",
+         "path": ":/resources/cards/navigations/navigation16.jpg"
+      },
+
+      {
+         "id": "47",
+         "name": "Navigation17",
+         "path": ":/resources/cards/navigations/navigation17.jpg"
+      },
+
+      {
+         "id": "48",
+         "name": "Navigation18",
+         "path": ":/resources/cards/navigations/navigation18.jpg"
+      },
+
+      {
+         "id": "49",
+         "name": "Navigation19",
+         "path": ":/resources/cards/navigations/navigation19.jpg"
+      },
+
+      {
+         "id": "50",
+         "name": "Navigation20",
+         "path": ":/resources/cards/navigations/navigation20.jpg"
+      },
+
+      {
+         "id": "51",
+         "name": "Navigation21",
+         "path": ":/resources/cards/navigations/navigation21.jpg"
+      },
+
+      {
+         "id": "52",
+         "name": "Navigation22",
+         "path": ":/resources/cards/navigations/navigation22.jpg"
+      },
+
+      {
+         "id": "53",
+         "name": "Navigation23",
+         "path": ":/resources/cards/navigations/navigation23.jpg"
+      },
+
+      {
+         "id": "54",
+         "name": "Navigation24",
+         "path": ":/resources/cards/navigations/navigation24.jpg"
+      },
+
+      {
+         "id": "55",
+         "name": "Navigation25",
+         "path": ":/resources/cards/navigations/navigation25.jpg"
+      },
+
+      {
+         "id": "56",
+         "name": "Navigation26",
+         "path": ":/resources/cards/navigations/navigation26.jpg"
+      },
+
+      {
+         "id": "57",
+         "name": "Navigation27",
+         "path": ":/resources/cards/navigations/navigation27.jpg"
+      },
+
+      {
+         "id": "58",
+         "name": "Navigation28",
+         "path": ":/resources/cards/navigations/navigation28.jpg"
+      },
+
+      {
+         "id": "59",
+         "name": "Navigation29",
+         "path": ":/resources/cards/navigations/navigation29.jpg"
+      }
+
+      ],
+
+      "shirts": [
+
+      {
+         "id": "60",
+         "name": "Supplies",
+         "path": ":/resources/cards/shirts/supplies.jpg"
+      },
+
+      {
+         "id": "61",
+         "name": "Navigation",
+         "path": ":/resources/cards/shirts/navigation.jpg"
+      },
+
+      {
+         "id": "62",
+         "name": "Friend",
+         "path": ":/resources/cards/shirts/friend.jpg"
+      },
+
+      {
+         "id": "63",
+         "name": "Enemy",
+         "path": ":/resources/cards/shirts/enemy.jpg"
+      },
+
+      {
+         "id": "64",
+         "name": "Character",
+         "path": ":/resources/cards/shirts/character.jpg"
+      },
+
+      {
+         "id": "65",
+         "name": "Boat",
+         "path": ":/resources/cards/shirts/boat.jpg"
+      }
+
+      ],
+
+      "tools": [
+
+      {
+         "id": "66",
+         "name": "Water",
+         "path": ":/resources/cards/tools/water.jpg"
+      },
+
+      {
+         "id": "67",
+         "name": "Umbrella",
+         "path": ":/resources/cards/tools/umbrella.jpg"
+      },
+
+      {
+         "id": "68",
+         "name": "Trap",
+         "path": ":/resources/cards/tools/trap.jpg"
+      },
+
+      {
+         "id": "69",
+         "name": "Medkit",
+         "path": ":/resources/cards/tools/medkit.jpg"
+      },
+
+      {
+         "id": "70",
+         "name": "Lifebouy",
+         "path": ":/resources/cards/tools/lifebouy.jpg"
+      },
+
+      {
+         "id": "71",
+         "name": "Compass",
+         "path": ":/resources/cards/tools/compass.jpg"
+      },
+
+      {
+         "id": "72",
+         "name": "Cannibalism",
+         "path": ":/resources/cards/tools/cannibalism.jpg"
+      }
+
+      ],
+
+      "weapons": [
+
+      {
+         "id": "73",
+         "name": "Vodka",
+         "path": ":/resources/cards/weapons/vodka.jpg"
+      },
+
+      {
+         "id": "74",
+         "name": "Paddle",
+         "path": ":/resources/cards/weapons/paddle.jpg"
+      },
+
+      {
+         "id": "75",
+         "name": "Knife",
+         "path": ":/resources/cards/weapons/knife.jpg"
+      },
+
+      {
+         "id": "76",
+         "name": "Harpoon",
+         "path": ":/resources/cards/weapons/harpoon.jpg"
+      },
+
+      {
+         "id": "77",
+         "name": "FlareGun",
+         "path": ":/resources/cards/weapons/flare_gun.jpg"
+      },
+
+      {
+         "id": "78",
+         "name": "Club",
+         "path": ":/resources/cards/weapons/club.jpg"
+      }
+
+      ]
+
+   }
+}
