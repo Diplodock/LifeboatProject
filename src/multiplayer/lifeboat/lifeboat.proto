@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package lifeboat;
+
+service Game {
+    rpc Connect (stream Request) returns (stream Reply) {}
+}
+
+message Request {
+    string user_name = 1;
+}
+
+message Reply {
+    string user_name = 1;
+}
