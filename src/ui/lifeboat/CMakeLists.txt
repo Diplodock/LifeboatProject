@@ -2,6 +2,9 @@ cmake_minimum_required(VERSION 3.15)
 
 project(lifeboat LANGUAGES CXX)
 
+include_directories(/usr/local/include)
+link_directories(/usr/local/lib)
+
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 set(CMAKE_AUTOUIC ON)
@@ -38,6 +41,8 @@ if (ANDROID)
             logindialog.h
             logindialog.ui
             images.qrc
+            ../../multiplayer/lifeboat/player.cc
+            ../../multiplayer/lifeboat/player.h
             )
 else ()
     add_executable(lifeboat
@@ -49,8 +54,9 @@ else ()
             logindialog.h
             logindialog.ui
             images.qrc
+            ../../multiplayer/lifeboat/player.cc
+            ../../multiplayer/lifeboat/player.h
             )
 endif ()
 
 target_link_libraries(lifeboat PRIVATE Qt5::Widgets)
-target_include_directories(lifeboat PUBLIC ${CMAKE_CURRENT_LIST_DIR}/multiplayer)

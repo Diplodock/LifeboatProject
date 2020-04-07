@@ -25,7 +25,7 @@ class GameImpl final : public Game::Service {
     Status Connect(ServerContext *context, ServerReaderWriter <Reply, Request> *stream) override {
         Request r;
         while (stream->Read(&r)) {
-            std::cout << "registrate user" << r.user_name();
+            std::cout << "registrate user " << r.user_name();
             Reply reply;
             WriteOptions writeOptions;
             bool res = stream->Write(reply, writeOptions);
