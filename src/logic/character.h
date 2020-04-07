@@ -32,7 +32,7 @@ class Character : public Card {
     bool IfThirsty() const;
     bool IfHoldsUmbrella() const;
 
-    Item GetItem(int item) const;
+    Item* GetItem(int item) const;
     void SetHealth(int health);
     void SetWounds(int number_of_wounds);
     void SetThirst(bool is_thirsty);

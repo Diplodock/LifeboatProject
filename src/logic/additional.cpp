@@ -1,9 +1,9 @@
 #include "additional.h"
 
-int Additional::GetPoints() {
-    return points_;
+std::string Additional::GetKind() const {
+    return kind_;
 }
 
-std::string Additional::GetKind() {
-    return kind_;
+void Additional::SetKind(std::string kind) {
+    kind_ = kind;
 }

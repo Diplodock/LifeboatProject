@@ -46,8 +46,8 @@ bool Character::IfHoldsUmbrella() const {
     return characterOptions_.hold_umbrella;
 };
 
-Item Character::GetItem(int i) const {
-    return *backpack_[i];
+Item* Character::GetItem(int i) const {
+    return backpack_[i];
 }
 
 void Character::SetHealth(int health) {

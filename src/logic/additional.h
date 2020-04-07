@@ -5,8 +5,9 @@
 class Additional : public Item {
   public:
 
-    int GetPoints();
-    std::string GetKind();
+    std::string GetKind() const;
+
+    void SetKind(std::string kind);
     
   private:
 
