@@ -11,11 +11,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-if (LINUX)
-  set(CMAKE_PREFIX_PATH "/home/Polina/Qt5.14.1/5.14.1/gcc_64") # for Linux/Polina
-elseif (MACOSX)
-  set(CMAKE_PREFIX_PATH "/usr/local/Cellar/qt/5.14.1") # Any macOS
-endif()
+set(CMAKE_PREFIX_PATH "/usr/local/Cellar/qt/5.14.1") # Any macOS
 
 # QtCreator supports the following variables for Android, which are identical to qmake Android variables.
 # Check http://doc.qt.io/qt-5/deployment-android.html for more information.
@@ -33,27 +29,28 @@ endif()
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
 if (ANDROID)
-  add_library(lifeboat SHARED
-    main.cpp
-    lifeboat.cpp
-    lifeboat.h
-    lifeboat.ui
-    logindialog.cpp
-    logindialog.h
-    logindialog.ui
-    images.qrc
-  )
-else()
-  add_executable(lifeboat
-    main.cpp
-    lifeboat.cpp
-    lifeboat.h
-    lifeboat.ui
-    logindialog.cpp
-    logindialog.h
-    logindialog.ui
-    images.qrc
-          )
-endif()
+    add_library(lifeboat SHARED
+            main.cpp
+            lifeboat.cpp
+            lifeboat.h
+            lifeboat.ui
+            logindialog.cpp
+            logindialog.h
+            logindialog.ui
+            images.qrc
+            )
+else ()
+    add_executable(lifeboat
+            main.cpp
+            lifeboat.cpp
+            lifeboat.h
+            lifeboat.ui
+            logindialog.cpp
+            logindialog.h
+            logindialog.ui
+            images.qrc
+            )
+endif ()
 
 target_link_libraries(lifeboat PRIVATE Qt5::Widgets)
+target_include_directories(lifeboat PUBLIC ${CMAKE_CURRENT_LIST_DIR}/multiplayer)

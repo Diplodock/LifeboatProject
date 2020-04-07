@@ -1,5 +1,5 @@
 #include "lifeboat.h"
-#include "./ui_lifeboat.h"
+#include "lifeboat_autogen/include/ui_lifeboat.h"
 #include "logindialog.h"
 
 Lifeboat::Lifeboat(QWidget *parent)
