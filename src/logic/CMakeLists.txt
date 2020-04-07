@@ -6,7 +6,10 @@ set(CMAKE_CXX_STANDARD 17)
 
 add_executable(lifeboat
     main.cpp
+    action.cpp
+    action.h
     additional.cpp
+    all_cards.cpp
     additional.h
     all_characters.cpp
     all_characters.h
@@ -27,5 +30,7 @@ add_executable(lifeboat
     player.cpp
     player.h
     weapon.cpp
-    weapon.h    
+    weapon.h
+    universal.cpp
+    universal.h 
 )
