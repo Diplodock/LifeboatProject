@@ -8,8 +8,13 @@ service Game {
 
 message Request {
     string user_name = 1;
+    int64 user_id = 2;
+    int64 card_id = 3;
+    string action = 4;
 }
 
 message Reply {
-    string user_name = 1;
+    int64 user_id = 1;
+    int64 card_id = 2;
+    string action = 3;
 }
