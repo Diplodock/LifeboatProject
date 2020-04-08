@@ -8,6 +8,9 @@ Character::Character()
     characterOptions_.exhausted = false;
     characterOptions_.critical_state = false;
     characterOptions_.alive = true;
+    characterOptions_.hold_umbrella = false;
+    characterOptions_.thirst = false;
+    characterOptions_.wounds = 0;
 }
 
 int Character::GetHealth() const {
@@ -88,7 +91,11 @@ void Character::HoldUmbrella(bool holds) {
 // }
 
 void Character::UpdateState() {
-    if (characterOptions_.health <= characterOptions_.strength / 100) {
+    if (characterOptions_.health <= 100 / characterOptions_.strength) {
         characterOptions_.critical_state = true;
+    }
+    if (characterOptions_.thirst) {
+        characterOptions_.wounds++;
+        characterOptions_.health -= 100 / characterOptions_.strength;
     }
 }

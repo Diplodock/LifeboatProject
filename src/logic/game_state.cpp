@@ -131,6 +131,10 @@ void GameState::BoundCardWithId(int id, Card* card) {
     get_card_using_id_.push_back(card);
 }
 
+void GameState::SetPlayer(Player* player) {
+    get_player_.push_back(player);
+}
+
 void GameState::FinishRound() {
     fought_.clear();
     rowed_.clear();

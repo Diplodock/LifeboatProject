@@ -1,5 +1,7 @@
 #include "game.h"
 
+#include <iostream>
+
 void Game::start() {
     GameState game_state;
     Action action(&game_state);
@@ -30,21 +32,27 @@ void Game::start() {
     game_state.AddToChoice(5);
 
     Player A;
+    game_state.SetPlayer(&A);
     A.SetCharacter(&lady_lauren);
     action.ChooseCharacterCard(0, 0);
     Player B;
+    game_state.SetPlayer(&B);
     B.SetCharacter(&sir_stephen);
     action.ChooseCharacterCard(1, 1);
     Player C;
+    game_state.SetPlayer(&C);
     C.SetCharacter(&captain);
     action.ChooseCharacterCard(2, 2);
     Player D;
+    game_state.SetPlayer(&D);
     D.SetCharacter(&first_mate);
     action.ChooseCharacterCard(3, 3);
     Player E;
+    game_state.SetPlayer(&E);
     E.SetCharacter(&frenchy);
     action.ChooseCharacterCard(4, 4);
     Player F;
+    game_state.SetPlayer(&F);
     F.SetCharacter(&the_kid);
     action.ChooseCharacterCard(5, 5);
 
@@ -160,6 +168,22 @@ void Game::start() {
     nav_10.SetThirsty({&first_mate});
     game_state.AddNotUsedNavigation(&nav_10);
     game_state.BoundCardWithId(21, &nav_10);
+
+    Navigation nav_11;
+    nav_11.SetSeagull(1);
+    nav_11.SetThirstyFighters(true);
+    nav_11.SetOutboard({&captain});
+    nav_11.SetThirsty({&first_mate});
+    game_state.AddNotUsedNavigation(&nav_11);
+    game_state.BoundCardWithId(22, &nav_11);
+
+    Navigation nav_12;
+    nav_12.SetSeagull(1);
+    nav_12.SetThirstyFighters(true);
+    nav_12.SetOutboard({&captain});
+    nav_12.SetThirsty({&first_mate});
+    game_state.AddNotUsedNavigation(&nav_12);
+    game_state.BoundCardWithId(23, &nav_12);
 
 
     action.TakeItems();

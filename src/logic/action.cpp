@@ -1,5 +1,7 @@
 #include "action.h"
 
+#include <iostream>
+
 Action::Action(GameState* game_state)
     :game_state_(game_state) {};
 
@@ -53,7 +55,8 @@ void Action::ChooseNavigationCard(int player, int id) {
     }
     for (std::size_t i = 0; i < (*current_navigation).GetOutboardSize(); i++) {
         Character* character = (*current_navigation).GetOutboard(i);
-        (*character).SetWounds((*character).GetWounds() + 1); 
+        (*character).SetWounds((*character).GetWounds() + 1);
+        (*character).SetHealth((*character).GetHealth() - 100 / (*character).GetStrength());
         (*character).UpdateState();
         (*game_state_).AddCardOutboard(character);
     }

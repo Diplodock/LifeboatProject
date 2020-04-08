@@ -43,6 +43,7 @@ class GameState {
     void AddPlayerCharacter(int player, int id);
     void AddCharacter(Character* character);
     void BoundCardWithId(int id, Card* card);
+    void SetPlayer(Player* player);
 
     void FinishRound();
 
