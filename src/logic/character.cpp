@@ -62,6 +62,10 @@ void Character::SetThirst(bool if_thirsty) {
     characterOptions_.thirst = if_thirsty;
 }
 
+void Character::SetExhausted(bool if_exhausted) {
+    characterOptions_.exhausted = if_exhausted;
+}
+
 void Character::AddItem(Item* item) {
     backpack_.push_back(item);
 }
@@ -82,20 +86,6 @@ void Character::HoldUmbrella(bool holds) {
 //     }
 //     return max_points;
 // }
-
-
-bool Character::Fight(Character* target) { // TODO: add ally support and weapon
-    characterOptions_.exhausted = true;
-    (*target).characterOptions_.exhausted = true;
-    if (characterOptions_.strength > (*target).characterOptions_.strength) {
-        (*target).characterOptions_.health -= 100 / (*target).characterOptions_.strength;
-        return true;
-    }
-    else {
-        characterOptions_.health -= 100 / characterOptions_.strength;
-        return false;
-    }
-}
 
 void Character::UpdateState() {
     if (characterOptions_.health <= characterOptions_.strength / 100) {

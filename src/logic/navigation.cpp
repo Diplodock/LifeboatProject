@@ -19,17 +19,37 @@ bool Navigation::GetThirstyRowers() const {
 }
 
 int Navigation::GetOutboardSize() const {
-    return outboard.size();
+    return outboard_.size();
 }
 
 Character* Navigation::GetOutboard(int i) const {
-    return outboard[i];
+    return outboard_[i];
 }
 
-int Navigation::GetThirsty() const {
-    return  thirsty.size();
+int Navigation::GetThirstySize() const {
+    return  thirsty_.size();
 }
 
 Character* Navigation::GetThirsty(int i) const {
-    return thirsty[i];
+    return thirsty_[i];
+}
+
+void Navigation::SetSeagull(int is_seagull) {
+    navigationOptions_.seagull = is_seagull;
+}
+
+void Navigation::SetThirstyFighters(bool is_thirsty_fighters) {
+    navigationOptions_.thirsty_fighters = is_thirsty_fighters;
+}
+
+void Navigation::SetThirstyRowers(bool is_thirsty_rowers) {
+    navigationOptions_.thirsty_rowers = is_thirsty_rowers;
+}
+
+void Navigation::SetOutboard(std::vector<Character*> outboard_characters) {
+    outboard_ = outboard_characters;
+}
+
+void Navigation::SetThirsty(std::vector<Character*> thirsty_characters) {
+    thirsty_ = thirsty_characters;
 }

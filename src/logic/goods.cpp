@@ -14,8 +14,9 @@ void FirstAidKit::HealCharacter(Character* healed) {
 }
 
 void Compass::AddNavigation(GameState* current_game_state) {
-    Navigation* current_navigation_card = (*current_game_state).GetNavigationCard();
-    (*current_game_state).PutCardOnNavigationTable(current_navigation_card);
+    Card* card = (*current_game_state).GetNavigationCard();
+    int id = (*current_game_state).GetIdCard(card);
+    (*current_game_state).AddToChoice(id);
 }
 
 void Bait::BaitSharks(GameState* current_game_state) {

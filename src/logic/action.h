@@ -1,3 +1,5 @@
+#pragma once
+
 #include "character.h"
 #include "game_state.h"
 #include "item.h"
@@ -6,27 +8,27 @@ class Action {
   public:
     Action(GameState* game_state);
 
-    void UseWater(int id);
-    void UseUmbrella(int id);
-    void UseFirstAidKit(int id_first_aid_kit, int id_character);
-    void UseCompass(int id);
-    void UseBait(int id);
-    void UsePaddle(int id);
-    void UseLifelene(int id_lifeline, int id_character);
-    void UseFlareGun(int id);
+    void UseWater(int player, int id);
+    void UseUmbrella(int player, int id);
+    void UseFirstAidKit(int player, int id_first_aid_kit, int id_character);
+    void UseCompass(int player, int id);
+    void UseBait(int player, int id);
+    void UsePaddle(int player, int id);
+    void UseLifelene(int player, int id_lifeline, int id_character);
+    void UseFlareGun(int player, int id);
 
-    void ChooseCharacterCard(int id);
-    void TakeItems(std::vector<int> id);
-    void TakeNavigationCard(int id);
-    void ChooseItem(int id);
-    void ChooseNavigationCard(int id);
-    void Skip();
+    void ChooseCharacterCard(int player, int id);
+    void TakeItems();
+    void TakeNavigationCard();
+    void ChooseItem(int player, int id);
+    void ChooseNavigationCard(int player, int id);
+    void Skip(int player);
 
-    void Row();
-    void Fight(int id);
-    void TryToSwap(int id);
-    void TryToTakeGoods(int id_thing, int id_character);
-    void TryToGiveGoods(int id_thing, int id_character);
+    void Row(int player);
+    void Fight(int player, int id);
+    void TryToSwap(int player, int id);
+    void TryToTakeGoods(int player, int id_thing, int id_character);
+    void TryToGiveGoods(int player, int id_thing, int id_character);
 
     // void drinkWater(Character* thirsty);
     // void useUmbrella(Character* thirsty);

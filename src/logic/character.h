@@ -36,10 +36,10 @@ class Character : public Card {
     void SetHealth(int health);
     void SetWounds(int number_of_wounds);
     void SetThirst(bool is_thirsty);
+    void SetExhausted(bool is_exhausted);
     void AddItem(Item* item);
     void HoldUmbrella(bool holds);
-
-    bool Fight(Character* target);
+    
     void UpdateState();
 
   protected:
