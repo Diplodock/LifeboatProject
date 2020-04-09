@@ -45,7 +45,7 @@ if (ANDROID)
             ../../multiplayer/lifeboat/player.h
             )
 else ()
-    add_executable(lifeboat
+    add_executable(lifeboat_ui
             main.cpp
             lifeboat.cpp
             lifeboat.h
@@ -59,4 +59,4 @@ else ()
             )
 endif ()
 
-target_link_libraries(lifeboat PRIVATE Qt5::Widgets)
+target_link_libraries(lifeboat_ui PRIVATE Qt5::Widgets)
