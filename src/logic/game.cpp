@@ -204,21 +204,6 @@ void Game::start() {
     action.ChooseNavigationCard(0, 21);
 }
 
-// std::unordered_map<Card*, int> get_id_using_card_;
-//     std::unordered_map<Character*, int> get_player_using_character_id_;
-//     std::vector<Card*> get_card_using_id_;
-//     std::vector<Character*> get_character_id_using_player_;
-//     std::vector<Player*> get_player_;
-//     std::vector<Character*> fought_;
-//     std::vector<Character*> rowed_;
-//     std::vector<Character*> outboard_;
-//     std::vector<Character*> characters_;
-//     std::deque<Navigation*> not_used_navigation_cards_;
-//     std::deque<Item*> not_used_items_;
-//     std::vector<Navigation*> used_navigation_cards_;
-//     std::vector<Item*> used_items_;
-//     std::vector<int> current_choice_;
-
 //TODO: implement process of the game linking with ui
 //remember to throw disposable items after using
 // Stages of game:
