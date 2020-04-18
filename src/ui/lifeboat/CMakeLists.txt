@@ -41,8 +41,6 @@ if (ANDROID)
             logindialog.h
             logindialog.ui
             images.qrc
-            ../../multiplayer/lifeboat/player.cc
-            ../../multiplayer/lifeboat/player.h
             )
 else ()
     add_executable(lifeboat_ui
@@ -54,9 +52,7 @@ else ()
             logindialog.h
             logindialog.ui
             images.qrc
-            ../../multiplayer/lifeboat/player.cc
-            ../../multiplayer/lifeboat/player.h
             )
 endif ()
 
-target_link_libraries(lifeboat_ui PRIVATE Qt5::Widgets)
+target_link_libraries(lifeboat_ui PRIVATE Qt5::Widgets multiplayer)
