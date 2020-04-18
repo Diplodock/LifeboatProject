@@ -2,80 +2,100 @@
 
 #include <iostream>
 
-Action::Action(GameState* game_state)
-    :game_state_(game_state) {};
+#include "game_state.h"
+#include "character.h"
+#include "item.h"
 
-void Action::ChooseCharacterCard(int player, int id) {
-    (*game_state_).AddPlayerCharacter(player, id);
-    (*game_state_).GetChosen(id);
-}
-
-void Action::TakeItems() {
+void TakeItemsAction::exec(GameState& gs) {
     for (std::size_t i = 0; i < 6; i++) {
-        Card* card = (*game_state_).GetItemCard();
-        int id = (*game_state_).GetIdCard(card);
-        (*game_state_).AddToChoice(id);
+        Card* card = gs.GetItemCard();
+        int id = gs.GetIdCard(card);
+        gs.AddToChoice(id);
     }
+};
+
+void TakeNavigationCard::exec(GameState& gs) {
+    Card* card = gs.GetNavigationCard();
+    int id = gs.GetIdCard(card);
+    gs.AddToChoice(id);
 }
 
-void Action::TakeNavigationCard() {
-    Card* card = (*game_state_).GetNavigationCard();
-    int id = (*game_state_).GetIdCard(card);
-    (*game_state_).AddToChoice(id);
+ChooseCharacterCard::ChooseCharacterCard(int player, int id) {
+    player_ = player;
+    id_ = id;
 }
 
-void Action::ChooseItem(int player, int id) {
-    Item* item = dynamic_cast<Item *> ((*game_state_).GetCard(id));
-    Player* current_player = (*game_state_).GetPlayerUsingPlayerId(player);
-    Character* character = (*current_player).GetCharacter();
-    (*character).AddItem(item);
-    (*game_state_).GetChosen(id);
+void ChooseCharacterCard::exec(GameState& gs) {
+    gs.AddPlayerCharacter(player_, id_);
+    gs.GetChosen(id_);
 }
 
-void Action::ChooseNavigationCard(int player, int id) {
-    (*game_state_).GetChosen(id);
-    (*game_state_).AddChosenNavigation(id);
-    (*game_state_).AddTheRestNavigation();
-    Navigation* current_navigation = dynamic_cast<Navigation*> ((*game_state_).GetCard(id));
-    int current_number_of_seagulls = (*game_state_).GetNumberOfSeagulls();
-    (*game_state_).SetNumberOfSeagulls(current_number_of_seagulls + (*current_navigation).GetSeagull());
-    if ((*current_navigation).GetThirstyFighters()) {
-        for (std::size_t i = 0; i < (*game_state_).GetSizeOfFought(); i++) {
-            Character* character = (*game_state_).GetFought(i);
-            (*character).SetThirst(true);
-            (*character).UpdateState();
+ChooseItem::ChooseItem(int player, int id) {
+    player_ = player;
+    id_ = id;
+}
+
+void ChooseItem::exec(GameState& gs) {
+    Item* item = dynamic_cast<Item *> (gs.GetCard(id_));
+    Player* current_player = gs.GetPlayerUsingPlayerId(player_);
+    Character* character = current_player->GetCharacter();
+    character->AddItem(item);
+    gs.GetChosen(id_);
+}
+
+ChooseNavigationCard::ChooseNavigationCard(int player, int id) {
+    player_ = player;
+    id_ = id;
+}
+
+void ChooseNavigationCard::exec(GameState& gs) {
+    gs.GetChosen(id_);
+    gs.AddChosenNavigation(id_);
+    gs.AddTheRestNavigation();
+    Navigation* current_navigation = dynamic_cast<Navigation*> (gs.GetCard(id_));
+    int current_number_of_seagulls = gs.GetNumberOfSeagulls();
+    gs.SetNumberOfSeagulls(current_number_of_seagulls + current_navigation->GetSeagull());
+    if (current_navigation->GetThirstyFighters()) {
+        for (std::size_t i = 0; i < gs.GetSizeOfFought(); i++) {
+            Character* character = gs.GetFought(i);
+            character->SetThirst(true);
+            character->UpdateState();
         }
     }
-    if ((*current_navigation).GetThirstyRowers()) {
-        for (std::size_t i = 0; i < (*game_state_).GetSizeOfRowed(); i++) {
-            Character* character = (*game_state_).GetRowed(i);
-            (*character).SetThirst(true);
-            (*character).UpdateState();
+    if (current_navigation->GetThirstyRowers()) {
+        for (std::size_t i = 0; i < gs.GetSizeOfRowed(); i++) {
+            Character* character = gs.GetRowed(i);
+            character->SetThirst(true);
+            character->UpdateState();
         }
     }
-    for (std::size_t i = 0; i < (*current_navigation).GetOutboardSize(); i++) {
-        Character* character = (*current_navigation).GetOutboard(i);
-        (*character).SetWounds((*character).GetWounds() + 1);
-        (*character).SetHealth((*character).GetHealth() - 100 / (*character).GetStrength());
-        (*character).UpdateState();
-        (*game_state_).AddCardOutboard(character);
+    for (std::size_t i = 0; i < current_navigation->GetOutboardSize(); i++) {
+        Character* character = current_navigation->GetOutboard(i);
+        character->SetWounds(character->GetWounds() + 1);
+        character->SetHealth(character->GetHealth() - 100 / character->GetStrength());
+        character->UpdateState();
+        gs.AddCardOutboard(character);
     }
-    for (std::size_t i = 0; i < (*current_navigation).GetThirstySize(); i++) {
-        Character* character = (*current_navigation).GetThirsty(i);
-        (*character).SetThirst(true);
-        (*character).UpdateState();
+    for (std::size_t i = 0; i < current_navigation->GetThirstySize(); i++) {
+        Character* character = current_navigation->GetThirsty(i);
+        character->SetThirst(true);
+        character->UpdateState();
     }
-    (*game_state_).FinishRound();
+    gs.FinishRound();
 }
 
-void Action::Row(int player) {
+Row::Row(int player) {
+    player_ = player;
+}
+
+void Row::exec(GameState& gs) {
     for (std::size_t i = 0; i < 2; i++) {
         TakeNavigationCard();
     }
-    Player* current_player = (*game_state_).GetPlayerUsingPlayerId(player);
-    Character* character = (*current_player).GetCharacter();
-    (*game_state_).AddCardRowed(character);
-    (*character).SetExhausted(true);
+    Player* current_player = gs.GetPlayerUsingPlayerId(player_);
+    Character* character = current_player->GetCharacter();
+    gs.AddCardRowed(character);
+    character->SetExhausted(true);
 }
 
 // bool Character::Fight(Character* target) { // TODO: add ally support and weapon

@@ -1,5 +1,15 @@
 #include "item.h"
 
+
+int Item::GetPlayer() const {
+    return player_;
+}
+
+void Item::SetPlayer(int player) {
+    player_ = player;
+}
+
+
 bool Item::GetPosition() const {
     return position_;
 }

@@ -6,7 +6,6 @@
 #include <unordered_map>
 
 #include "all_characters.h"
-#include "goods.h"
 #include "additional.h"
 #include "navigation.h"
 #include "weapon.h"

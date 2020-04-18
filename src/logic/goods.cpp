@@ -1,32 +1,89 @@
 #include "goods.h"
 
+Water::WaterCardAction::WaterCardAction(Water* owner, int player)
+    : owner_(owner)
+    {
+        owner->SetPlayer(player);
+    }
 
-void Water::DrinkWater(Character* thirsty) {
-    (*thirsty).SetThirst(false);
+void Water::WaterCardAction::exec(GameState& gs) {
+    Player* player = gs.GetPlayerUsingPlayerId(this->player_);
+    player->GetCharacter()->SetThirst(false);
 }
 
-void Umbrella::HoldUmbrella(Character* thirsty) {
-    (*thirsty).HoldUmbrella(true);
+std::unique_ptr<GenericAction> Water::GetAction(int player) {
+    return std::make_unique<WaterCardAction>(this, player);
 }
 
-void FirstAidKit::HealCharacter(Character* healed) {
-    (*healed).SetWounds((*healed).GetWounds() - 1);
+Umbrella::UmbrellaCardAction::UmbrellaCardAction(Umbrella* owner, int player)
+    : owner_(owner)
+    {
+        owner->SetPlayer(player);
+    }
+
+void Umbrella::UmbrellaCardAction::exec(GameState& gs) {
+    Player* player = gs.GetPlayerUsingPlayerId(this->player_);
+    player->GetCharacter()->HoldUmbrella(true);
 }
 
-void Compass::AddNavigation(GameState* current_game_state) {
-    Card* card = (*current_game_state).GetNavigationCard();
-    int id = (*current_game_state).GetIdCard(card);
-    (*current_game_state).AddToChoice(id);
+std::unique_ptr<GenericAction> Umbrella::GetAction(int player)  {
+    return std::make_unique<UmbrellaCardAction>(this, player);
 }
 
-void Bait::BaitSharks(GameState* current_game_state) {
-    std::size_t current_size = (*current_game_state).GetSizeOfOutboard();
+FirstAidKit::FirstAidKitCardAction::FirstAidKitCardAction(FirstAidKit* owner, int player, int saved)
+    : owner_(owner), saved_(saved)
+    {
+        owner->SetPlayer(player);
+    }
+
+void FirstAidKit::FirstAidKitCardAction::exec(GameState& gs) {
+    Player* saved = gs.GetPlayerUsingPlayerId(this->saved_);
+    saved->GetCharacter()->SetWounds(saved->GetCharacter()->GetWounds() - 1);
+}
+
+std::unique_ptr<GenericAction> FirstAidKit::GetAction(int player, int saved)  {
+    return std::make_unique<FirstAidKitCardAction>(this, player, saved);
+}
+
+Compass::CompassCardAction::CompassCardAction(Compass* owner)
+    : owner_(owner) {}
+
+void Compass::CompassCardAction::exec(GameState& gs) {
+    Card* card = gs.GetNavigationCard();
+    int id = gs.GetIdCard(card);
+    gs.AddToChoice(id);
+}
+
+std::unique_ptr<GenericAction> Compass::GetAction()  {
+    return std::make_unique<CompassCardAction>(this);
+}
+
+Bait::BaitCardAction::BaitCardAction(Bait* owner)
+    : owner_(owner) {};
+
+void Bait::BaitCardAction::exec(GameState& gs) {
+    std::size_t current_size = gs.GetSizeOfOutboard();
     for (std::size_t i = 0; i < current_size; i++) {
-        Character* outboard_character = (*current_game_state).GetCharacterOutboard(i);
-        (*outboard_character).SetWounds((*outboard_character).GetWounds() + 1);
+        Character* outboard_character = gs.GetCharacterOutboard(i);
+        outboard_character->SetWounds(outboard_character->GetWounds() + 1);
     }
 }
 
-void Lifeline::UseLifiline(Character* saved) {
-    (*saved).SetWounds ((*saved).GetWounds() - 1);
+std::unique_ptr<GenericAction> Bait::GetAction()  {
+    return std::make_unique<BaitCardAction>(this);
+}
+
+Lifeline::LifelineCardAction::LifelineCardAction(Lifeline* owner, int player, int saved)
+    : owner_(owner), saved_(saved)
+    {
+        owner->SetPlayer(player);
+    }
+
+void Lifeline::LifelineCardAction::exec(GameState& gs) {
+    Player* saved = gs.GetPlayerUsingPlayerId(this->saved_);
+    saved->GetCharacter()->SetWounds(saved->GetCharacter()->GetWounds() - 1);
+}
+
+std::unique_ptr<GenericAction> Lifeline::GetAction(int player, int saved)  {
+    return std::make_unique<LifelineCardAction>(this, player, saved);
 }

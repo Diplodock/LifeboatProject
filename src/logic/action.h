@@ -1,56 +1,69 @@
 #pragma once
 
-#include "character.h"
-#include "game_state.h"
-#include "item.h"
+class GameState;
 
-class Action {
+class GenericAction {
   public:
-    Action(GameState* game_state);
+    virtual void exec(GameState& gs) = 0;
+  protected:
+    int player_ = 0;
+    int id_ = 0;
+};
 
-    void UseWater(int player, int id);
-    void UseUmbrella(int player, int id);
-    void UseFirstAidKit(int player, int id_first_aid_kit, int id_character);
-    void UseCompass(int player, int id);
-    void UseBait(int player, int id);
-    void UsePaddle(int player, int id);
-    void UseLifelene(int player, int id_lifeline, int id_character);
-    void UseFlareGun(int player, int id);
+class TakeItemsAction : public GenericAction {
+  public:
+    void exec(GameState& gs) override;
+};
 
-    void ChooseCharacterCard(int player, int id);
-    void TakeItems();
-    void TakeNavigationCard();
-    void ChooseItem(int player, int id);
-    void ChooseNavigationCard(int player, int id);
-    void Skip(int player);
+class TakeNavigationCard : public GenericAction {
+  public:
+    void exec(GameState& gs) override;
+};
 
-    void Row(int player);
-    void Fight(int player, int id);
-    void TryToSwap(int player, int id);
-    void TryToTakeGoods(int player, int id_thing, int id_character);
-    void TryToGiveGoods(int player, int id_thing, int id_character);
+class ChooseCharacterCard : public GenericAction {
+  public:
+    ChooseCharacterCard(int player, int id);
+    void exec(GameState& gs) override;
+};
 
-    // void drinkWater(Character* thirsty);
-    // void useUmbrella(Character* thirsty);
-    // void healCharacter(Character* healed);
-    // void addNavigation(GameState* current_game_state);
-    // void baitSharks(GameState* current_game_state) {
-    
-    // void Paddle::row(GameState* current_game_state) {
-    //     Navigation* current_navigation_card = (*current_game_state).GetNavigationCard();
-    //     (*current_game_state).PutCardOnNavigationTable(current_navigation_card);
-    // }
+class ChooseItem : public GenericAction {
+  public:
+    ChooseItem(int player, int id);
+    void exec(GameState& gs) override;
+};
 
-    // void Lifeline::useLifiline(Character* saved) {
-    //     (*saved).SetWounds = (*saved).GetWounds - 1;
-    // }
+class ChooseNavigationCard : public GenericAction {
+  public:
+    ChooseNavigationCard(int player, int id);
+    void exec(GameState& gs) override;
+};
 
-    // void FlareGun::addThreeNavigation(GameState* current_game_state) {
-    //     for (std::size_t i = 0; i < 3; i++) {
-    //         Navigation* current_navigation_card = (*current_game_state).GetNavigationCard();
-    //         (*current_game_state).PutCardOnNavigationTable(current_navigation_card);
-    //     }
-    // }
-  private:
-    GameState* game_state_;
+class Row : public GenericAction {
+  public:
+    Row(int player);
+    void exec(GameState& gs) override;
+};
+
+class Fight : public GenericAction {
+  public:
+    Fight(int player, int id);
+    void exec(GameState& gs) override;
+};
+
+class TryToSwap : public GenericAction {
+  public:
+    TryToSwap(int player, int id);
+    void exec(GameState& gs) override;
+};
+
+class TryToTakeGoods : public GenericAction {
+  public:
+    TryToTakeGoods(int player, int id_thing, int id_character);
+    void exec(GameState& gs) override;
+};
+
+class TryToGiveGoods : public GenericAction {
+  public:
+    TryToGiveGoods(int player, int id_thing, int id_character);
+    void exec(GameState& gs) override;
 };

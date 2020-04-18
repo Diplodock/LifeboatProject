@@ -2,6 +2,9 @@
 
 #include <cassert>
 
+#include "goods.h"
+#include "universal.h"
+
 int GameState::GetNumberOfSeagulls() const {
     return number_of_seagulls_;
 }

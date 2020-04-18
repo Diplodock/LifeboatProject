@@ -1,15 +1,35 @@
 #include "universal.h"
 
-void Paddle::RowWithPaddle(GameState* current_game_state) {
-    Card* card = (*current_game_state).GetNavigationCard();
-    int id = (*current_game_state).GetIdCard(card);
-    (*current_game_state).AddToChoice(id);
+Paddle::PaddleCardAction::PaddleCardAction(Paddle* owner, int player)
+    : owner_(owner)
+    {
+        owner_->SetPlayer(player);
+    }
+
+void Paddle::PaddleCardAction::exec(GameState& gs) {
+    Card* card = gs.GetNavigationCard();
+    int id = gs.GetIdCard(card);
+    gs.AddToChoice(id);
 }
 
-void FlareGun::AddThreeNavigation(GameState* current_game_state) {
-    for (std::size_t i = 0; i < 3; i++) {
-        Card* card = (*current_game_state).GetNavigationCard();
-        int id = (*current_game_state).GetIdCard(card);
-        (*current_game_state).AddToChoice(id);
+std::unique_ptr<GenericAction> Paddle::GetAction(int player)  {
+    return std::make_unique<PaddleCardAction>(this, player);
+}
+
+FlareGun::FlareGunCardAction::FlareGunCardAction(FlareGun* owner, int player)
+    : owner_(owner)
+    {
+        owner_->SetPlayer(player);
     }
+
+void FlareGun::FlareGunCardAction::exec(GameState& gs) {
+    for (std::size_t i = 0; i < 3; i++) {
+        Card* card = gs.GetNavigationCard();
+        int id = gs.GetIdCard(card);
+        gs.AddToChoice(id);
+    }
+}
+
+std::unique_ptr<GenericAction> FlareGun::GetAction(int player)  {
+    return std::make_unique<FlareGunCardAction>(this, player);
 }
