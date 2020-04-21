@@ -12,6 +12,7 @@
 #include <grpcpp/security/credentials.h>
 
 #include "lifeboat.grpc.pb.h"
+#include "action_factory.h"
 
 using grpc::Channel;
 using grpc::ClientContext;
@@ -23,6 +24,8 @@ using grpc::WriteOptions;
 using lifeboat::Reply;
 using lifeboat::Request;
 using lifeboat::Game;
+using lifeboat::UserIdMessage;
+using lifeboat::UserNameMessage;
 
 
 std::string grpc_code_to_str(grpc::StatusCode code) {
@@ -83,7 +86,12 @@ class Player {
 public:
     explicit Player(std::shared_ptr<Channel> channel) : stub_(
             lifeboat::Game::NewStub(channel)) {}
-    void run_client(std::string user_name);
+
+    void Registrate(std::string user_name);
+
+    void RunGame();
+
+    int user_id;
 
 private:
     std::unique_ptr<Game::Stub> stub_;
