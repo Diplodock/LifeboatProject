@@ -63,4 +63,4 @@ else()
           )
 endif()
 
-target_link_libraries(lifeboat_ui PRIVATE Qt5::Widgets)
+target_link_libraries(lifeboat_ui PRIVATE Qt5::Widgets multiplayer)
