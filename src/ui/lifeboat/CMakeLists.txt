@@ -14,7 +14,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_PREFIX_PATH "/usr/local/Cellar/qt/5.14.1") # Any macOS
+set(CMAKE_PREFIX_PATH "/usr/local/Cellar/qt/5.14.1/bin") # Any macOS
+
 
 # QtCreator supports the following variables for Android, which are identical to qmake Android variables.
 # Check http://doc.qt.io/qt-5/deployment-android.html for more information.
@@ -31,32 +32,35 @@ set(CMAKE_PREFIX_PATH "/usr/local/Cellar/qt/5.14.1") # Any macOS
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
+
 if (ANDROID)
-    add_library(lifeboat SHARED
-            main.cpp
-            lifeboat.cpp
-            lifeboat.h
-            lifeboat.ui
-            logindialog.cpp
-            logindialog.h
-            logindialog.ui
-            images.qrc
-            ../../multiplayer/lifeboat/player.cc
-            ../../multiplayer/lifeboat/player.h
-            )
-else ()
-    add_executable(lifeboat_ui
-            main.cpp
-            lifeboat.cpp
-            lifeboat.h
-            lifeboat.ui
-            logindialog.cpp
-            logindialog.h
-            logindialog.ui
-            images.qrc
-            ../../multiplayer/lifeboat/player.cc
-            ../../multiplayer/lifeboat/player.h
-            )
-endif ()
+  add_library(lifeboat_ui SHARED
+    main.cpp
+    lifeboat.cpp
+    lifeboat.h
+    lifeboat.ui
+    board.cpp
+    board.h
+    board.ui
+    game.cpp
+    game.h
+    clickablelable.cpp
+    clickablelable.h
+    images.qrc
+  )
+else()
+  add_executable(lifeboat_ui
+    main.cpp
+    lifeboat.cpp
+    lifeboat.h
+    lifeboat.ui
+    board.cpp
+    board.h
+    board.ui
+    clickablelable.cpp
+    clickablelable.h
+    images.qrc
+          )
+endif()
 
 target_link_libraries(lifeboat_ui PRIVATE Qt5::Widgets)

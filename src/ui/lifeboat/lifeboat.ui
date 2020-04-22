@@ -24,19 +24,54 @@
     <bool>false</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">.QWidget {
- background-image:url(:/resources/background.jpg) 0 0 0 0 stretch stretch;
- border-width: 0px;
-}</string>
+    <string notr="true"/>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
-      <property name="spacing">
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="currentIndex">
        <number>0</number>
       </property>
-      <item alignment="Qt::AlignHCenter">
+      <widget class="QWidget" name="page">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QWidget {
+ background-image:url(:/resources/background.jpg);
+ border-width: 0px;
+}</string>
+       </property>
        <widget class="QPushButton" name="_new_game">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>130</y>
+          <width>300</width>
+          <height>75</height>
+         </rect>
+        </property>
         <property name="sizePolicy">
          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -64,9 +99,15 @@ font-family: Arial Black</string>
          <bool>false</bool>
         </property>
        </widget>
-      </item>
-      <item alignment="Qt::AlignHCenter">
        <widget class="QPushButton" name="_find_game">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>323</y>
+          <width>300</width>
+          <height>75</height>
+         </rect>
+        </property>
         <property name="sizePolicy">
          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -88,9 +129,15 @@ font-family: Arial Black</string>
          <string>FIND GAME</string>
         </property>
        </widget>
-      </item>
-      <item alignment="Qt::AlignHCenter">
        <widget class="QPushButton" name="_exit">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>516</y>
+          <width>300</width>
+          <height>75</height>
+         </rect>
+        </property>
         <property name="sizePolicy">
          <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
           <horstretch>0</horstretch>
@@ -112,8 +159,78 @@ font-family: Arial Black</string>
          <string>EXIT</string>
         </property>
        </widget>
-      </item>
-     </layout>
+      </widget>
+      <widget class="QWidget" name="page_3">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QWidget {
+ background-image:url(:/resources/background.jpg);
+ border-width: 0px;
+}</string>
+       </property>
+       <widget class="QPushButton" name="_back">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>610</y>
+          <width>300</width>
+          <height>75</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>300</width>
+          <height>75</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(34, 125, 86);
+font-size: 25px;
+font-family: Arial Black</string>
+        </property>
+        <property name="text">
+         <string>BACK</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="page_2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">.QWidget {
+ background-image:url(:/resources/background.jpg);
+ border-width: 0px;
+}</string>
+       </property>
+       <widget class="QPushButton" name="_back_2">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>610</y>
+          <width>300</width>
+          <height>75</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(34, 125, 86);
+font-size: 25px;
+font-family: Arial Black</string>
+        </property>
+        <property name="text">
+         <string>BACK</string>
+        </property>
+       </widget>
+      </widget>
+     </widget>
     </item>
    </layout>
   </widget>

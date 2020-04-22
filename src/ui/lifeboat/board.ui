@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Board</class>
+ <widget class="QWidget" name="Board">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1920</width>
+    <height>1080</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>300</x>
+     <y>280</y>
+     <width>871</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="boat_layout"/>
+  </widget>
+  <widget class="QLabel" name="supplies">
+   <property name="geometry">
+    <rect>
+     <x>175</x>
+     <y>323</y>
+     <width>119</width>
+     <height>165</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>119</width>
+     <height>165</height>
+    </size>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/cards/shirts/supplies.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="navigation">
+   <property name="geometry">
+    <rect>
+     <x>1170</x>
+     <y>324</y>
+     <width>119</width>
+     <height>165</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>119</width>
+     <height>165</height>
+    </size>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/cards/shirts/navigation.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="bg">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>-3</x>
+     <y>-5</y>
+     <width>1931</width>
+     <height>1091</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/background4.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="navigation_2">
+   <property name="geometry">
+    <rect>
+     <x>1180</x>
+     <y>330</y>
+     <width>119</width>
+     <height>165</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>119</width>
+     <height>165</height>
+    </size>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/cards/shirts/navigation.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="navigation_3">
+   <property name="geometry">
+    <rect>
+     <x>1190</x>
+     <y>340</y>
+     <width>119</width>
+     <height>165</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>119</width>
+     <height>165</height>
+    </size>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/cards/shirts/navigation.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="supplies_2">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>330</y>
+     <width>119</width>
+     <height>165</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>119</width>
+     <height>165</height>
+    </size>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/cards/shirts/supplies.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="supplies_3">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>340</y>
+     <width>119</width>
+     <height>165</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>119</width>
+     <height>165</height>
+    </size>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/cards/shirts/supplies.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>bg</zorder>
+  <zorder>horizontalLayoutWidget</zorder>
+  <zorder>supplies</zorder>
+  <zorder>navigation</zorder>
+  <zorder>navigation_2</zorder>
+  <zorder>navigation_3</zorder>
+  <zorder>supplies_2</zorder>
+  <zorder>supplies_3</zorder>
+ </widget>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections/>
+</ui>
