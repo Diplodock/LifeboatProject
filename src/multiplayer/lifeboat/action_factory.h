@@ -1,14 +1,15 @@
 #ifndef ACTION_FACTORY_H
 #define ACTION_FACTORY_H
 
-#include <cstirng>
+#include <cstring>
+#include <json.hpp>
 
 using json = nlohmann::json;
 
 class ActionFactory {
 public:
 
-    ActionFactory(json action, std::string str, int user_id, json character);
+    ActionFactory(json action, char* str, int user_id, json character);
 
     std::unique_ptr<GenericAction> RegisterAction();
 
@@ -23,7 +24,7 @@ public:
 private:
     json action_;
 
-    std::string str_;
+    char* str_;
 
     int user_id_;
 
