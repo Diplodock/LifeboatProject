@@ -8,10 +8,14 @@ add_subdirectory(lifeboat)
 add_library(
         multiplayer
         lifeboat/player.cpp
-        lifeboat/player.h
-        lifeboat/server.cpp
         lifeboat/action_factory.cpp
         lifeboat/action_factory.h
         lifeboat/server.cpp
-        lifeboat/server.h
         )
+
+target_link_libraries(multiplayer grpc grpc++ grpc++_unsecure protobuf grpc++_reflection ${PROTOBUF_LIBRARY})
+
+add_executable(main lifeboat/main.cpp ../../util/json.hpp ../logic/action.h ../logic/action.cpp)
+target_link_libraries(main multiplayer logic)
+
+include_directories(../../util)

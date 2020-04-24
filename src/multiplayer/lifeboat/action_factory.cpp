@@ -1,63 +1,69 @@
-#include "action.h"
+#include "../../logic/action.h"
 #include "action_factory.h"
 
-ActionFactory::ActionFactory(json action, std::string str, int user_id, json character) {
-    action_ = action;
+#include <string>
+#include <cstring>
+#include <utility>
+#include <memory>
+
+ActionFactory::ActionFactory(json action, char* str, int user_id, json character) {
+    action_ = std::move(action);
     str_ = str;
     user_id_ = user_id;
-    character_ = character;
+    character_ = std::move(character);
 }
 
-std::unique_ptr <GenericAction> ActionFactory::RegisterAction() {
+std::unique_ptr<GenericAction> ActionFactory::RegisterAction() {
     if (!strcmp(str_, "ChooseCharacterCard")) {
-        int id = std::stoi(action_["cards"]["id"]);
-        auto gen_action = std::unique_ptr<ChooseCharacterCard>(new ChooseCharacterCard(user_id_, id));
-        return gen_action;
+        int id = action_["cards"]["id"];
+        ChooseCharacterCard action(user_id_, id);
+        return std::make_unique<ChooseCharacterCard>(action);
     }
     if (!strcmp(str_, "ChooseItem")) {
-        int id = std::stoi(action_["cards"]["id"]);
-        auto gen_action = std::unique_ptr<ChooseItem>(new ChooseItem(user_id_, id))
-        return gen_action;
+        int id = action_["cards"]["id"];
+        ChooseItem action(user_id_, id);
+        return std::make_unique<ChooseItem>(action);
     }
     if (!strcmp(str_, "ChooseNavigationCard")) {
-        int id = std::stoi(action_["cards"]["id"]);
-        auto gen_action = std::unique_ptr<ChooseNavigationCard>(new ChooseNavigationCard(user_id_, id));
-        return gen_action;
+        int id = action_["cards"]["id"];
+        ChooseNavigationCard action(user_id_, id);
+        return std::make_unique<ChooseNavigationCard>(action);
     }
     if (!strcmp(str_, "Row")) {
-        auto gen_action = std::unique_ptr<Row>(new Row(user_id_));
-        return gen_action;
+        Row action(user_id_);
+        return std::make_unique<Row>(action);
     }
     if (!strcmp(str_, "Fight")) {
-        auto gen_action = std::unique_ptr<Fight>(new Row(user_id_));
-        return gen_action;
+        int id = action_["cards"]["id"];
+        Fight action(user_id_, id);
+        return std::make_unique<Fight>(action);
     }
     if (!strcmp(str_, "TryToSwap")) {
-        int id = std::stoi(action_["cards"]["id"]);
-        auto gen_action = std::unique_ptr<TryToSwap>(new TryToSwap(user_id_, id))
-        return gen_action;
+        int id = action_["cards"]["id"];
+        TryToSwap action(user_id_, id);
+        return std::make_unique<TryToSwap>(action);
     }
     if (!strcmp(str_, "TryToTakeGoods")) {
-        int id = std::stoi(action_["cards"]["id"]);
-        int character_id = std::stoi(character_["cards"]]["id"]);
-        auto gen_action = std::unique_ptr<TryToTakeGoods>(new TryToTakeGoods(user_id_, id, character_id));
-        return gen_action;
+        int id = action_["cards"]["id"];
+        int character_id = character_["cards"]["id"];
+        TryToTakeGoods action(user_id_, id, character_id);
+        return std::make_unique<TryToTakeGoods>(action);
     }
     if (!strcmp(str_, "TryToGiveGoods")) {
-        int id = std::stoi(action_["cards"]["id"]);
-        int character_id = std::stoi(character_["cards"]["id"]);
-        auto gen_action = std::unique_ptr<TryToGiveGoods>(new TryToGiveGoods(user_id_, id, character_id));
-        return gen_action;
+        int id = action_["cards"]["id"];
+        int character_id = character_["cards"]["id"];
+        TryToGiveGoods action(user_id_, id, character_id);
+        return std::make_unique<TryToGiveGoods>(action);
     }
 }
 
-int GetCardId() {
-    int card_id = std::stoi(action_["cards"]["id"]);
+int ActionFactory::GetCardId() {
+    int card_id = action_["cards"]["id"];
     return card_id;
 }
 
 int ActionFactory::GetCharacterId() {
-    int character_id = std::stoi(character_["cards"]["id"]);
+    int character_id = character_["cards"]["id"];
     return character_id;
 }
 
