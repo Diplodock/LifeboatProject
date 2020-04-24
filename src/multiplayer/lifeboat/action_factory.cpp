@@ -14,7 +14,16 @@ ActionFactory::ActionFactory(json action, char* str, int user_id, json character
 }
 
 std::unique_ptr<GenericAction> ActionFactory::RegisterAction() {
-    
+    if (!strcmp(str_, "TakeItemsAction")) {
+        TakeItemsAction action;
+        action.exec(gs_);
+        return std::make_unique<TakeItemsAction>(action);
+    }
+    if (!strcmp(str_, "TakeNavigationCard")) {
+        TakeNavigationCard action;
+        action.exec(gs_);
+        return std::make_unique<TakeNavigationCard>(action);
+    }
     if (!strcmp(str_, "ChooseCharacterCard")) {
         int id = action_["cards"]["id"];
         ChooseCharacterCard action(user_id_, id);
