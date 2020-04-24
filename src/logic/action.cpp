@@ -5,9 +5,10 @@
 #include "game_state.h"
 #include "character.h"
 #include "item.h"
+#include <memory>
 
 void TakeItemsAction::exec(GameState& gs) {
-    for (std::size_t i = 0; i < 6; i++) {
+    for (std::size_t i = 0; i < gs.GetNumberOfPlayers(); i++) {
         Card* card = gs.GetItemCard();
         int id = gs.GetIdCard(card);
         gs.AddToChoice(id);
@@ -110,3 +111,7 @@ void Row::exec(GameState& gs) {
 //         return false;
 //     }
 // }
+
+std::unique_ptr<GenericAction> O(ChooseCharacterCard act) {
+    return std::make_unique<ChooseCharacterCard>(&act);
+}

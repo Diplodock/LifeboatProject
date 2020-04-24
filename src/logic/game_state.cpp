@@ -9,6 +9,10 @@ int GameState::GetNumberOfSeagulls() const {
     return number_of_seagulls_;
 }
 
+int GameState::GetNumberOfPlayers() const {
+    return number_of_players_;
+}
+
 Navigation* GameState::GetNavigationCard() {
     assert(not_used_navigation_cards_.size() > 0);
     Navigation* current_card_ = not_used_navigation_cards_[0];
@@ -107,8 +111,7 @@ void GameState::AddUsedNavigation(Navigation* current_navigation) {
 }
 
 void GameState::AddChosenNavigation(int id) {
-    Navigation* current_navigation = dynamic_cast<Navigation*> (get_card_using_id_[id]);
-    chosen_navigation_card_ = current_navigation;
+    chosen_navigation_card_ = id;
 }
 
 void GameState::AddUsedItem(Item* current_item) {
@@ -138,9 +141,17 @@ void GameState::SetPlayer(Player* player) {
     get_player_.push_back(player);
 }
 
+void GameState::SetLast(int player) {
+    last_player_ = player;
+}
+
 void GameState::FinishRound() {
     fought_.clear();
     rowed_.clear();
     outboard_.clear();
     current_choice_.clear();
 }
+
+GameState::GameState() {
+    
+};

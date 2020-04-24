@@ -13,7 +13,10 @@
 
 class GameState {
   public:
+    GameState();
+
     int GetNumberOfSeagulls() const;
+    int GetNumberOfPlayers() const;
     Navigation* GetChosenNavigationCard();
     Navigation* GetNavigationCard();
     Item* GetItemCard();
@@ -43,12 +46,16 @@ class GameState {
     void AddCharacter(Character* character);
     void BoundCardWithId(int id, Card* card);
     void SetPlayer(Player* player);
+    void SetLast(int player);
+
 
     void FinishRound();
 
   private:
     int number_of_seagulls_ = 0;
-    Navigation* chosen_navigation_card_;
+    int number_of_players_ = 4;
+    int last_player_ = 0;
+    int chosen_navigation_card_;
     int turn_ = 0;
     std::unordered_map<Card*, int> get_id_using_card_;
     std::unordered_map<Character*, int> get_player_using_character_id_;

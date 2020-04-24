@@ -278,146 +278,291 @@
     {
       "id": "31",
       "name": "Navigation",
+      "thirst": ["01"],
+      "outboard": ["01"],
+      "seagull": "0",
+      "fighers": "0",
+      "rowers": "0",
       "path": ":/resources/cards/navigations/navigation.jpg"
     },
     {
       "id": "32",
       "name": "Navigation2",
+      "thirst": ["02", "06"],
+      "outboard": ["03"],
+      "seagull": "0",
+      "fighers": "0",
+      "rowers": "0",
       "path": ":/resources/cards/navigations/navigation2.jpg"
     },
     {
       "id": "33",
       "name": "Navigation3",
+      "thirst": ["04"],
+      "outboard": ["00"],
+      "seagull": "1",
+      "fighers": "1",
+      "rowers": "0",
       "path": ":/resources/cards/navigations/navigation3.jpg"
     },
     {
       "id": "34",
       "name": "Navigation4",
+      "thirst": ["00", "01", "04"],
+      "outboard": ["02"],
+      "seagull": "0",
+      "fighers": "0",
+      "rowers": "1",
       "path": ":/resources/cards/navigations/navigation4.jpg"
     },
     {
       "id": "35",
       "name": "Navigation5",
+      "thirst": ["05"],
+      "outboard": ["00"],
+      "seagull": "0",
+      "fighers": "0",
+      "rowers": "0",
       "path": ":/resources/cards/navigations/navigation5.jpg"
     },
     {
       "id": "36",
       "name": "Navigation6",
+      "thirst": ["02"],
+      "outboard": ["01"],
+      "seagull": "0",
+      "fighers": "0",
+      "rowers": "0",
       "path": ":/resources/cards/navigations/navigation6.jpg"
     },
     {
       "id": "37",
       "name": "Navigation7",
+      "thirst": ["01", "02"],
+      "outboard": ["00"],
+      "seagull": "0",
+      "fighers": "1",
+      "rowers": "1",
       "path": ":/resources/cards/navigations/navigation7.jpg"
     },
     {
       "id": "38",
       "name": "Navigation8",
+      "thirst": ["00", "01", "02", "06"],
+      "outboard": ["02"],
+      "seagull": "0",
+      "fighers": "1",
+      "rowers": "1",
       "path": ":/resources/cards/navigations/navigation8.jpg"
     },
     {
       "id": "39",
       "name": "Navigation9",
+      "thirst": ["00", "01", "02", "03", "05", "06", "07"],
+      "outboard": ["04"],
+      "seagull": "0",
+      "fighers": "1",
+      "rowers": "0",
       "path": ":/resources/cards/navigations/navigation9.jpg"
     },
     {
       "id": "40",
       "name": "Navigation10",
+      "thirst": ["01", "05"],
+      "outboard": ["06"],
+      "seagull": "0",
+      "fighers": "1",
+      "rowers": "0",
       "path": ":/resources/cards/navigations/navigation10.jpg"
     },
     {
       "id": "41",
       "name": "Navigation11",
+      "thirst": ["00", "01", "02", "05"],
+      "outboard": ["04"],
+      "seagull": "0",
+      "fighers": "0",
+      "rowers": "0",
       "path": ":/resources/cards/navigations/navigation11.jpg"
     },
     {
       "id": "42",
       "name": "Navigation12",
+      "thirst": ["06"],
+      "outboard": ["01", "06"],
+      "seagull": "0",
+      "fighers": "0",
+      "rowers": "0",
       "path": ":/resources/cards/navigations/navigation12.jpg"
     },
     {
       "id": "43",
       "name": "Navigation13",
+      "thirst": ["00"],
+      "outboard": ["01"],
+      "seagull": "1",
+      "fighers": "1",
+      "rowers": "0",
       "path": ":/resources/cards/navigations/navigation13.jpg"
     },
     {
       "id": "44",
       "name": "Navigation14",
+      "thirst": ["00", "01", "02", "03", "05", "06", "07"],
+      "outboard": ["04"],
+      "seagull": "0",
+      "fighers": "0",
+      "rowers": "1",
       "path": ":/resources/cards/navigations/navigation14.jpg"
     },
     {
       "id": "45",
       "name": "Navigation15",
+      "thirst": ["00", "01"],
+      "outboard": ["03"],
+      "seagull": "1",
+      "fighers": "1",
+      "rowers": "1",
       "path": ":/resources/cards/navigations/navigation15.jpg"
     },
     {
       "id": "46",
       "name": "Navigation16",
+      "thirst": ["01", "03"],
+      "outboard": ["03"],
+      "seagull": "0",
+      "fighers": "0",
+      "rowers": "1",
       "path": ":/resources/cards/navigations/navigation16.jpg"
     },
     {
       "id": "47",
       "name": "Navigation17",
+      "thirst": ["01", "02", "03", "04", "07"],
+      "outboard": ["00", "01", "02", "03", "04", "05", "06", "07"],
+      "seagull": "0",
+      "fighers": "1",
+      "rowers": "0",
       "path": ":/resources/cards/navigations/navigation17.jpg"
     },
     {
       "id": "48",
       "name": "Navigation18",
+      "thirst": ["00", "01", "02", "03", "04", "06", "07"],
+      "outboard": ["04"],
+      "seagull": "1",
+      "fighers": "1",
+      "rowers": "1",
       "path": ":/resources/cards/navigations/navigation18.jpg"
     },
     {
       "id": "49",
       "name": "Navigation19",
+      "thirst": ["00", "01", "06"],
+      "outboard": ["02"],
+      "seagull": "1",
+      "fighers": "0",
+      "rowers": "0",
       "path": ":/resources/cards/navigations/navigation19.jpg"
     },
     {
       "id": "50",
       "name": "Navigation20",
+      "thirst": ["00", "03"],
+      "outboard": ["03"],
+      "seagull": "0",
+      "fighers": "1",
+      "rowers": "0",
       "path": ":/resources/cards/navigations/navigation20.jpg"
     },
     {
       "id": "51",
       "name": "Navigation21",
+      "thirst": ["00", "01", "02", "03"],
+      "outboard": ["07"],
+      "seagull": "1",
+      "fighers": "0",
+      "rowers": "1",
       "path": ":/resources/cards/navigations/navigation21.jpg"
     },
     {
       "id": "52",
       "name": "Navigation22",
+      "thirst": ["00", "01"],
+      "outboard": ["01"],
+      "seagull": "0",
+      "fighers": "0",
+      "rowers": "1",
       "path": ":/resources/cards/navigations/navigation22.jpg"
     },
     {
       "id": "53",
       "name": "Navigation23",
+      "thirst": ["06"],
+      "outboard": ["01"],
+      "seagull": "0",
+      "fighers": "1",
+      "rowers": "1",
       "path": ":/resources/cards/navigations/navigation23.jpg"
     },
     {
       "id": "54",
       "name": "Navigation24",
+      "thirst": ["00", "01", "02", "03", "04", "05", "06", "07"],
+      "outboard": ["00", "01", "02", "03", "04", "05", "06", "07"],
+      "seagull": "0",
+      "fighers": "1",
+      "rowers": "0",
       "path": ":/resources/cards/navigations/navigation24.jpg"
     },
     {
       "id": "55",
       "name": "Navigation25",
+      "thirst": ["00", "01", "02", "03", "04", "05", "06", "07"],
+      "outboard": ["00", "01", "02", "03", "04", "05", "06", "07"],
+      "seagull": "1",
+      "fighers": "1",
+      "rowers": "1",
       "path": ":/resources/cards/navigations/navigation25.jpg"
     },
     {
       "id": "56",
       "name": "Navigation26",
+      "thirst": ["00", "01", "05"],
+      "outboard": ["02"],
+      "seagull": "0",
+      "fighers": "1",
+      "rowers": "0",
       "path": ":/resources/cards/navigations/navigation26.jpg"
     },
     {
       "id": "57",
       "name": "Navigation27",
+      "thirst": ["00", "01", "02", "03", "04", "05", "06", "07"],
+      "outboard": ["05"],
+      "seagull": "-1",
+      "fighers": "0",
+      "rowers": "1",
       "path": ":/resources/cards/navigations/navigation27.jpg"
     },
     {
       "id": "58",
       "name": "Navigation28",
+      "thirst": [],
+      "outboard": [],
+      "seagull": "1",
+      "fighers": "0",
+      "rowers": "0",
       "path": ":/resources/cards/navigations/navigation28.jpg"
     },
     {
       "id": "59",
       "name": "Navigation29",
+      "thirst": ["00", "01", "02"],
+      "outboard": ["06"],
+      "seagull": "0",
+      "fighers": "1",
+      "rowers": "1",
       "path": ":/resources/cards/navigations/navigation29.jpg"
     },
     {
