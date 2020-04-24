@@ -2,8 +2,6 @@
 #include "json.hpp"
 
 #include <QApplication>
-#include <fstream>
-
 using json = nlohmann::json;
 
 int main(int argc, char *argv[]) {

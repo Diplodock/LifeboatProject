@@ -14,7 +14,7 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-set(CMAKE_PREFIX_PATH "/usr/local/Cellar/qt/5.14.1/bin") # Any macOS
+set(CMAKE_PREFIX_PATH "/usr/local/Cellar/qt/5.14.1/") # Any macOS
 
 
 # QtCreator supports the following variables for Android, which are identical to qmake Android variables.
@@ -63,4 +63,6 @@ else()
           )
 endif()
 
-target_link_libraries(lifeboat_ui PRIVATE Qt5::Widgets multiplayer)
+target_link_libraries(lifeboat_ui PRIVATE Qt5::Widgets)
+target_include_directories(lifeboat_ui PUBLIC ../../util)
+

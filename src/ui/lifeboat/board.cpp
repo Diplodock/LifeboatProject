@@ -6,8 +6,6 @@ Board::Board(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Board) {
     ui->setupUi(this);
-    addCard(ui->boat_layout);
-    addCard(ui->boat_layout);
 }
 
 Board::~Board() {
