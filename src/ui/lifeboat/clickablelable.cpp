@@ -11,5 +11,4 @@ ClickableLabel::~ClickableLabel() {
 
 void ClickableLabel::mousePressEvent(QMouseEvent* event) {
     emit clicked();
-    std::cout << "Game is started";
 }

@@ -81,5 +81,6 @@
         <file>resources/cards/weapons/vodka.jpg</file>
         <file>resources/background4.jpg</file>
         <file>resources/background.jpg</file>
+        <file>resources/seagull.png</file>
     </qresource>
 </RCC>
