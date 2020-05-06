@@ -12,13 +12,17 @@ void TakeItemsAction::exec(GameState& gs) {
         Card* card = gs.GetItemCard();
         int id = gs.GetIdCard(card);
         gs.AddToChoice(id);
+        gs.RemoveAvailableAction(id, "TakeItemsAction");
+        gs.AddAvailableAction(id, "ChooseItem");
     }
-};
+}
 
 void TakeNavigationCard::exec(GameState& gs) {
     Card* card = gs.GetNavigationCard();
     int id = gs.GetIdCard(card);
     gs.AddToChoice(id);
+    gs.RemoveAvailableAction(id, "TakeNavigationCard");
+    gs.AddAvailableAction(id, "ChooseNavigationCard");
 }
 
 ChooseCharacterCard::ChooseCharacterCard(int player, int id) {
@@ -42,6 +46,7 @@ void ChooseItem::exec(GameState& gs) {
     Character* character = current_player->GetCharacter();
     character->AddItem(item);
     gs.GetChosen(id_);
+    gs.RemoveAvailableAction(id_, "ChooseItem");
 }
 
 ChooseNavigationCard::ChooseNavigationCard(int player, int id) {
@@ -51,6 +56,7 @@ ChooseNavigationCard::ChooseNavigationCard(int player, int id) {
 
 void ChooseNavigationCard::exec(GameState& gs) {
     gs.GetChosen(id_);
+    gs.RemoveAvailableAction(id_, "ChooseNavigationCard");
     gs.AddChosenNavigation(id_);
     gs.AddTheRestNavigation();
     Navigation* current_navigation = dynamic_cast<Navigation*> (gs.GetCard(id_));

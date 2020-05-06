@@ -10,10 +10,15 @@
 #include "navigation.h"
 #include "weapon.h"
 #include "player.h"
+#include "listener.h"
+
+#include <json.hpp>
+
+using json = nlohmann::json;
 
 class GameState {
   public:
-    GameState();
+    GameState(std::size_t number_of_players);
 
     int GetNumberOfSeagulls() const;
     int GetNumberOfPlayers() const;
@@ -30,6 +35,8 @@ class GameState {
     Character* GetRowed(std::size_t index) const;
     std::size_t GetSizeOfFought() const;
     std::size_t GetSizeOfRowed() const;
+    std::vector<std::string> GetAvailableActions(int player, int id);
+    bool IsActionAvailable(int player, int id);
     
     void SetNumberOfSeagulls(int number_of_seagulls);
     void AddCardFought(Character* current_character);
@@ -47,11 +54,15 @@ class GameState {
     void BoundCardWithId(int id, Card* card);
     void SetPlayer(Player* player);
     void SetLast(int player);
-
+    void AddAvailableAction(int id, std::string action, int player = 10);
+    void RemoveAvailableAction(int id, std::string action, int player = 10);
 
     void FinishRound();
 
   private:
+    std::vector<std::vector<std::vector<std::string>>> available_actions_;
+    std::vector<std::vector<std::unordered_map<std::string, bool>>> is_action_;
+
     int number_of_seagulls_ = 0;
     int number_of_players_ = 4;
     int last_player_ = 0;
@@ -71,4 +82,14 @@ class GameState {
     std::vector<Navigation*> used_navigation_cards_;
     std::vector<Item*> used_items_;
     std::vector<int> current_choice_;
+
+    std::vector<SeagullsListener*> sListeners;
+    std::vector<AddCardsOnBoardListener*> addListeners;
+    std::vector<RemoveUsedCardsListener*> remUsedListeners;
+    std::vector<RemoveNotUsedCardsListener*> remNotUsedListeners;
+    std::vector<ExhaustedListener*> eListeners;
+    std::vector<DeathListener*> dListeners;
+    std::vector<ThirstListener*> tListeners;
+    std::vector<OutboardListener*> oListeners;
+    std::vector<TurnListener*> tListeners;
 };
