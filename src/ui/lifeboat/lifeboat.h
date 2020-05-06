@@ -22,6 +22,10 @@ private slots:
     void on__exit_clicked();
     void on__find_game_clicked();
     void on__new_game_clicked();
+    void on__back_clicked();
+
+    void on__back_2_clicked();
+
 private:
     Ui::Lifeboat *ui;
 };

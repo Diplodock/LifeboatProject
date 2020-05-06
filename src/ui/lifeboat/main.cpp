@@ -1,9 +1,8 @@
 #include "lifeboat.h"
 #include "json.hpp"
 
-#include <QApplication>
-#include <fstream>
 
+#include <QApplication>
 using json = nlohmann::json;
 
 int main(int argc, char *argv[]) {

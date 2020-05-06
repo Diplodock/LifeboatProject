@@ -1,6 +1,6 @@
 #include "lifeboat.h"
-#include "lifeboat_autogen/include/ui_lifeboat.h"
-#include "logindialog.h"
+#include "./ui_lifeboat.h"
+#include "board.h"
 
 Lifeboat::Lifeboat(QWidget *parent)
     : QMainWindow(parent)
@@ -18,11 +18,19 @@ void Lifeboat::on__exit_clicked() {
 }
 
 void Lifeboat::on__find_game_clicked() {
-    LoginDialog loginDialog;
-    loginDialog.setModal(true);
-    loginDialog.exec();
+    ui->stackedWidget->setCurrentIndex(1);
 }
 
 void Lifeboat::on__new_game_clicked() {
+//    ui->stackedWidget->setCurrentIndex(2);
+    Board* board = new Board(this);
+    board->show();
+}
 
+void Lifeboat::on__back_clicked() {
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void Lifeboat::on__back_2_clicked() {
+    ui->stackedWidget->setCurrentIndex(0);
 }

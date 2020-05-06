@@ -4,12 +4,14 @@
 #include <cstring>
 #include <json.hpp>
 
+#include "../../logic/game_state.h"
+
 using json = nlohmann::json;
 
 class ActionFactory {
 public:
 
-    ActionFactory(json action, char* str, int user_id, json character);
+    ActionFactory(json action, char* str, int user_id, json character, GameState& gs);
 
     std::unique_ptr<GenericAction> RegisterAction();
 
@@ -29,6 +31,8 @@ private:
     int user_id_;
 
     json character_;
+
+    GameState gs_;
 
 };
 

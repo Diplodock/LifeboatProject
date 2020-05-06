@@ -4,3 +4,5 @@ project (lifeboat)
 add_subdirectory(multiplayer)
 add_subdirectory(ui)
 add_subdirectory(logic)
+
+include_directories(util)
