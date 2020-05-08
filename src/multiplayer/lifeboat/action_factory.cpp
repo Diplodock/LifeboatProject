@@ -1,7 +1,7 @@
-#include "../../logic/action.h"
+//#include "../../logic/action.h"
 #include "action_factory.h"
 
-#include <cstring>
+/*#include <cstring>
 #include <utility>
 #include <memory>
 
@@ -91,4 +91,4 @@ int ActionFactory::GetUserId() {
 
 std::string ActionFactory::GetAction() {
     return action_;
-}
+}*/
