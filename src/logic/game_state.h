@@ -12,9 +12,9 @@
 #include "player.h"
 #include "listener.h"
 
-#include <json.hpp>
+//#include <json.hpp>
 
-using json = nlohmann::json;
+//using json = nlohmann::json;
 
 class GameState {
   public:
@@ -36,7 +36,7 @@ class GameState {
     std::size_t GetSizeOfFought() const;
     std::size_t GetSizeOfRowed() const;
     std::vector<std::string> GetAvailableActions(int player, int id);
-    bool IsActionAvailable(int player, int id);
+    bool IsActionAvailable(int player, int id, std::string action);
     
     void SetNumberOfSeagulls(int number_of_seagulls);
     void AddCardFought(Character* current_character);
@@ -91,5 +91,5 @@ class GameState {
     std::vector<DeathListener*> dListeners;
     std::vector<ThirstListener*> tListeners;
     std::vector<OutboardListener*> oListeners;
-    std::vector<TurnListener*> tListeners;
+    std::vector<TurnListener*> tuListeners;
 };

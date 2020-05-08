@@ -7,6 +7,11 @@
 #include "item.h"
 #include <memory>
 
+GenericAction::GenericAction(int player, int id, int other_card)
+    : player_(player), id_(id), other_card_(other_card) {}
+
+TakeItemsAction take(10, 2, 3);
+
 void TakeItemsAction::exec(GameState& gs) {
     for (std::size_t i = 0; i < gs.GetNumberOfPlayers(); i++) {
         Card* card = gs.GetItemCard();
@@ -25,19 +30,9 @@ void TakeNavigationCard::exec(GameState& gs) {
     gs.AddAvailableAction(id, "ChooseNavigationCard");
 }
 
-ChooseCharacterCard::ChooseCharacterCard(int player, int id) {
-    player_ = player;
-    id_ = id;
-}
-
 void ChooseCharacterCard::exec(GameState& gs) {
     gs.AddPlayerCharacter(player_, id_);
     gs.GetChosen(id_);
-}
-
-ChooseItem::ChooseItem(int player, int id) {
-    player_ = player;
-    id_ = id;
 }
 
 void ChooseItem::exec(GameState& gs) {
@@ -47,11 +42,6 @@ void ChooseItem::exec(GameState& gs) {
     character->AddItem(item);
     gs.GetChosen(id_);
     gs.RemoveAvailableAction(id_, "ChooseItem");
-}
-
-ChooseNavigationCard::ChooseNavigationCard(int player, int id) {
-    player_ = player;
-    id_ = id;
 }
 
 void ChooseNavigationCard::exec(GameState& gs) {
@@ -91,13 +81,10 @@ void ChooseNavigationCard::exec(GameState& gs) {
     gs.FinishRound();
 }
 
-Row::Row(int player) {
-    player_ = player;
-}
-
 void Row::exec(GameState& gs) {
     for (std::size_t i = 0; i < 2; i++) {
-        TakeNavigationCard();
+        TakeNavigationCard take(player_, id_, other_card_);
+        take.exec(gs);
     }
     Player* current_player = gs.GetPlayerUsingPlayerId(player_);
     Character* character = current_player->GetCharacter();
@@ -118,6 +105,6 @@ void Row::exec(GameState& gs) {
 //     }
 // }
 
-std::unique_ptr<GenericAction> O(ChooseCharacterCard act) {
-    return std::make_unique<ChooseCharacterCard>(&act);
-}
+// std::unique_ptr<GenericAction> O(ChooseCharacterCard act) {
+//     return std::make_unique<ChooseCharacterCard>(&act);
+// }

@@ -1,3 +1,5 @@
+#pragma once
+
 #include <vector>
 
 class Listener {
@@ -7,53 +9,53 @@ class Listener {
 
 class SeagullsListener : public Listener {
   public:
-    void notify(int number_of_seagulls);
+    void notify(int number_of_seagulls) {};
 };
 
 class AddCardsOnBoardListener : public Listener {
   public:
-    void notify(int id);
+    void notify(int id) {};
 };
 
 class RemoveUsedCardsListener : public Listener {
   public:
-    void notify(int id);
+    void notify(int id) {};
 };
 
 class RemoveNotUsedCardsListener : public Listener {
   public:
-    void notify(int id);
-    void notify(std::vector<int> ids);
+    void notify(int id) {};
+    void notify(std::vector<int> ids) {};
 };
 
 class HealthListener : public Listener {
   public:
-    void notify(int id, int health_points);
+    void notify(int id, int health_points) {};
 };
 
 class ExhaustedListener : public Listener {
   public:
-    void notify(int id, bool is_exhausted);
+    void notify(int id, bool is_exhausted) {};
 };
 
 class DeathListener : public Listener {
   public:
-    void notify(int id, bool is_dead);
+    void notify(int id, bool is_dead) {};
 };
 
 class ThirstListener : public Listener {
   public:
-    void notify(int id, bool is_thirsty);
+    void notify(int id, bool is_thirsty) {};
 };
 
 class OutboardListener : public Listener {
   public:
-    void notify(int id);
+    void notify(int id) {};
 };
 
 class TurnListener : public Listener {
   public:
-    void notify(int id);
+    void notify(int id) {};
 };
 
 
