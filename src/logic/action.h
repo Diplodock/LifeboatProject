@@ -5,7 +5,7 @@ class GameState;
 class GenericAction {
   public:
     GenericAction(int player, int id, int other_card);
-    virtual void exec(GameState& gs) = 0;
+    virtual void exec(GameState& gs) {};
   protected:
     int player_ = 0;
     int id_ = 0;

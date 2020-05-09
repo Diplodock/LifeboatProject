@@ -10,8 +10,6 @@
 GenericAction::GenericAction(int player, int id, int other_card)
     : player_(player), id_(id), other_card_(other_card) {}
 
-TakeItemsAction take(10, 2, 3);
-
 void TakeItemsAction::exec(GameState& gs) {
     for (std::size_t i = 0; i < gs.GetNumberOfPlayers(); i++) {
         Card* card = gs.GetItemCard();
