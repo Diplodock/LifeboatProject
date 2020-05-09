@@ -33,6 +33,8 @@ add_executable(lifeboat
         weapon.h
         universal.cpp
         universal.h
+        listener.cpp
+        listener.h
         )
 
 add_library(logic

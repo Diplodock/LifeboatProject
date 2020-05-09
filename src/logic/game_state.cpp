@@ -75,8 +75,13 @@ std::size_t GameState::GetSizeOfRowed() const {
     return rowed_.size();
 }
 
-std::vector<std::string> GetAvailableActions(int player, int id);
-    bool IsActionAvailable(int player, int id);
+std::vector<std::string> GameState::GetAvailableActions(int player, int id) {
+    return available_actions_[player][id];
+}
+
+bool GameState::IsActionAvailable(int player, int id, std::string action) {
+    return is_action_[player][id][action];
+}
 
 void GameState::SetNumberOfSeagulls(int number_of_seagulls) {
     for (auto x : sListeners) {
@@ -167,7 +172,7 @@ void GameState::SetLast(int player) {
     last_player_ = player;
 }
 
-void GameState::AddAvailableAction(int id, std::string action, int player = 10) {
+void GameState::AddAvailableAction(int id, std::string action, int player) {
     if (player == 10) {
         for (std::size_t i = 0; i < number_of_players_; i++) {
             available_actions_[i][id].push_back(action);
@@ -179,7 +184,7 @@ void GameState::AddAvailableAction(int id, std::string action, int player = 10) 
     is_action_[player][id][action] = 1;
 }
 
-void GameState::RemoveAvailableAction(int id, std::string action, int player = 10) {
+void GameState::RemoveAvailableAction(int id, std::string action, int player) {
     if (player == 10) {
         for (std::size_t i = 0; i < number_of_players_; i++) {
             std::size_t j = 0;

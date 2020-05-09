@@ -13,23 +13,19 @@ class Universal : public Item {
 class Paddle : public Universal {
   public:
     class PaddleCardAction : public GenericAction {
+      using GenericAction::GenericAction;
       public:
-        PaddleCardAction(Paddle* owner, int player);
         void exec(GameState& gs) override;
-      private:
-        Paddle* owner_;
     };
-    std::unique_ptr<GenericAction> GetAction(int player) override;
+    //std::unique_ptr<GenericAction> GetAction(int player) override;
 };
 
 class FlareGun : public Universal {
   public:
     class FlareGunCardAction : public GenericAction {
+      using GenericAction::GenericAction;
       public:
-        FlareGunCardAction(FlareGun* owner, int player);
         void exec(GameState& gs) override;
-      private:
-        FlareGun* owner_;
     };
-    std::unique_ptr<GenericAction> GetAction(int player) override;
+    //std::unique_ptr<GenericAction> GetAction(int player) override;
 };
