@@ -37,3 +37,24 @@ class Frenchy : public Character {
     Frenchy();
   private:
 };
+
+class DrHarter: public Character {
+  public:
+    DrHarter();
+  private:
+};
+
+class Wong : public Character {
+  public:
+    Wong();
+  private:
+};
+
+static FirstMate firstMate;
+static Captain captain;
+static Frenchy frenchy;
+static DrHarter drHarter;
+static TheKid kid;
+static LadyLauren ladyLauren;
+static SirStephen sirStephen;
+static Wong wong;

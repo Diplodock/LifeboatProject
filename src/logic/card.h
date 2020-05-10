@@ -3,7 +3,7 @@
 #include <string>
 
 struct CardOptions {
-    std::string name;
+    std::string name = "";
     std::string description;
     int owner;
 };

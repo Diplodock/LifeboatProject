@@ -188,95 +188,225 @@
     },
     {
       "id": "27",
-      "name": "Money",
+      "name": "Money1",
       "points": 1,
       "path": ":/resources/cards/goods/boatswain.jpg"
     },
     {
       "id": "28",
-      "name": "Jewelry1",
-      "points": 3,
-      "path": ":/resources/cards/goods/jewelry1.jpg"
+      "name": "Money2",
+      "points": 1,
+      "path": ":/resources/cards/goods/boatswain.jpg"
     },
     {
       "id": "29",
-      "name": "Jewelry2",
-      "points": 2,
-      "path": ":/resources/cards/goods/jewelry2.jpg"
+      "name": "Money3",
+      "points": 1,
+      "path": ":/resources/cards/goods/boatswain.jpg"
     },
     {
       "id": "30",
+      "name": "Money4",
+      "points": 1,
+      "path": ":/resources/cards/goods/boatswain.jpg"
+    },
+    {
+      "id": "31",
+      "name": "Money5",
+      "points": 1,
+      "path": ":/resources/cards/goods/boatswain.jpg"
+    },
+    {
+      "id": "32",
+      "name": "Money6",
+      "points": 1,
+      "path": ":/resources/cards/goods/boatswain.jpg"
+    },
+    {
+      "id": "33",
+      "name": "Jewelry1",
+      "points": 1,
+      "path": ":/resources/cards/goods/jewelry1.jpg"
+    },
+    {
+      "id": "34",
+      "name": "Jewelry2",
+      "points": 1,
+      "path": ":/resources/cards/goods/jewelry2.jpg"
+    },
+    {
+      "id": "35",
       "name": "Jewelry3",
-      "points": 3,
+      "points": 1,
       "path": ":/resources/cards/goods/jewelry3.jpg"
     },
     {
-      "id": "66",
-      "name": "Water",
+      "id": "36",
+      "name": "Water1",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
-      "id": "67",
+      "id": "37",
+      "name": "Water2",
+      "path": ":/resources/cards/tools/water.jpg"
+    },
+    {
+      "id": "38",
+      "name": "Water3",
+      "path": ":/resources/cards/tools/water.jpg"
+    },
+    {
+      "id": "39",
+      "name": "Water4",
+      "path": ":/resources/cards/tools/water.jpg"
+    },
+    {
+      "id": "40",
+      "name": "Water5",
+      "path": ":/resources/cards/tools/water.jpg"
+    },
+    {
+      "id": "41",
+      "name": "Water6",
+      "path": ":/resources/cards/tools/water.jpg"
+    },
+    {
+      "id": "42",
+      "name": "Water7",
+      "path": ":/resources/cards/tools/water.jpg"
+    },
+    {
+      "id": "43",
+      "name": "Water8",
+      "path": ":/resources/cards/tools/water.jpg"
+    },
+    {
+      "id": "44",
+      "name": "Water9",
+      "path": ":/resources/cards/tools/water.jpg"
+    },
+    {
+      "id": "45",
+      "name": "Water10",
+      "path": ":/resources/cards/tools/water.jpg"
+    },
+    {
+      "id": "46",
+      "name": "Water11",
+      "path": ":/resources/cards/tools/water.jpg"
+    },
+    {
+      "id": "47",
+      "name": "Water12",
+      "path": ":/resources/cards/tools/water.jpg"
+    },
+    {
+      "id": "48",
+      "name": "Water13",
+      "path": ":/resources/cards/tools/water.jpg"
+    },
+    {
+      "id": "49",
+      "name": "Water14",
+      "path": ":/resources/cards/tools/water.jpg"
+    },
+    {
+      "id": "50",
+      "name": "Water15",
+      "path": ":/resources/cards/tools/water.jpg"
+    },
+    {
+      "id": "51",
+      "name": "Water16",
+      "path": ":/resources/cards/tools/water.jpg"
+    },
+    {
+      "id": "52",
+      "name": "Water17",
+      "path": ":/resources/cards/tools/water.jpg"
+    },
+    {
+      "id": "53",
       "name": "Umbrella",
       "path": ":/resources/cards/tools/umbrella.jpg"
     },
     {
-      "id": "68",
-      "name": "Trap",
+      "id": "54",
+      "name": "Trap1",
       "path": ":/resources/cards/tools/trap.jpg"
     },
     {
-      "id": "69",
-      "name": "Medkit",
+      "id": "55",
+      "name": "Trap2",
+      "path": ":/resources/cards/tools/trap.jpg"
+    },
+    {
+      "id": "56",
+      "name": "Medkit1",
       "path": ":/resources/cards/tools/medkit.jpg"
     },
     {
-      "id": "70",
+      "id": "57",
+      "name": "Medkit2",
+      "path": ":/resources/cards/tools/medkit.jpg"
+    },
+    {
+      "id": "58",
+      "name": "Medkit3",
+      "path": ":/resources/cards/tools/medkit.jpg"
+    },
+    {
+      "id": "59",
       "name": "Lifebouy",
       "path": ":/resources/cards/tools/lifebouy.jpg"
     },
     {
-      "id": "71",
+      "id": "60",
       "name": "Compass",
       "path": ":/resources/cards/tools/compass.jpg"
     },
     {
-      "id": "72",
+      "id": "61",
       "name": "Cannibalism",
       "path": ":/resources/cards/tools/cannibalism.jpg"
     },
     {
-      "id": "73",
+      "id": "62",
       "name": "Vodka",
       "path": ":/resources/cards/weapons/vodka.jpg"
     },
     {
-      "id": "74",
-      "name": "Paddle",
+      "id": "63",
+      "name": "Paddle1",
       "path": ":/resources/cards/weapons/paddle.jpg"
     },
     {
-      "id": "75",
+      "id": "64",
+      "name": "Paddle2",
+      "path": ":/resources/cards/weapons/paddle.jpg"
+    },
+    {
+      "id": "65",
       "name": "Knife",
       "path": ":/resources/cards/weapons/knife.jpg"
     },
     {
-      "id": "76",
+      "id": "66",
       "name": "Harpoon",
       "path": ":/resources/cards/weapons/harpoon.jpg"
     },
     {
-      "id": "77",
+      "id": "67",
       "name": "FlareGun",
       "path": ":/resources/cards/weapons/flare_gun.jpg"
     },
     {
-      "id": "78",
+      "id": "68",
       "name": "Club",
       "path": ":/resources/cards/weapons/club.jpg"
     },
     {
-      "id": "31",
+      "id": "69",
       "name": "Navigation",
       "thirst": ["01"],
       "outboard": ["01"],
@@ -286,7 +416,7 @@
       "path": ":/resources/cards/navigations/navigation.jpg"
     },
     {
-      "id": "32",
+      "id": "70",
       "name": "Navigation2",
       "thirst": ["02", "06"],
       "outboard": ["03"],
@@ -296,7 +426,7 @@
       "path": ":/resources/cards/navigations/navigation2.jpg"
     },
     {
-      "id": "33",
+      "id": "71",
       "name": "Navigation3",
       "thirst": ["04"],
       "outboard": ["00"],
@@ -306,7 +436,7 @@
       "path": ":/resources/cards/navigations/navigation3.jpg"
     },
     {
-      "id": "34",
+      "id": "72",
       "name": "Navigation4",
       "thirst": ["00", "01", "04"],
       "outboard": ["02"],
@@ -316,7 +446,7 @@
       "path": ":/resources/cards/navigations/navigation4.jpg"
     },
     {
-      "id": "35",
+      "id": "73",
       "name": "Navigation5",
       "thirst": ["05"],
       "outboard": ["00"],
@@ -326,7 +456,7 @@
       "path": ":/resources/cards/navigations/navigation5.jpg"
     },
     {
-      "id": "36",
+      "id": "74",
       "name": "Navigation6",
       "thirst": ["02"],
       "outboard": ["01"],
@@ -336,7 +466,7 @@
       "path": ":/resources/cards/navigations/navigation6.jpg"
     },
     {
-      "id": "37",
+      "id": "75",
       "name": "Navigation7",
       "thirst": ["01", "02"],
       "outboard": ["00"],
@@ -346,7 +476,7 @@
       "path": ":/resources/cards/navigations/navigation7.jpg"
     },
     {
-      "id": "38",
+      "id": "76",
       "name": "Navigation8",
       "thirst": ["00", "01", "02", "06"],
       "outboard": ["02"],
@@ -356,7 +486,7 @@
       "path": ":/resources/cards/navigations/navigation8.jpg"
     },
     {
-      "id": "39",
+      "id": "77",
       "name": "Navigation9",
       "thirst": ["00", "01", "02", "03", "05", "06", "07"],
       "outboard": ["04"],
@@ -366,7 +496,7 @@
       "path": ":/resources/cards/navigations/navigation9.jpg"
     },
     {
-      "id": "40",
+      "id": "78",
       "name": "Navigation10",
       "thirst": ["01", "05"],
       "outboard": ["06"],
@@ -376,7 +506,7 @@
       "path": ":/resources/cards/navigations/navigation10.jpg"
     },
     {
-      "id": "41",
+      "id": "79",
       "name": "Navigation11",
       "thirst": ["00", "01", "02", "05"],
       "outboard": ["04"],
@@ -386,7 +516,7 @@
       "path": ":/resources/cards/navigations/navigation11.jpg"
     },
     {
-      "id": "42",
+      "id": "80",
       "name": "Navigation12",
       "thirst": ["06"],
       "outboard": ["01", "06"],
@@ -396,7 +526,7 @@
       "path": ":/resources/cards/navigations/navigation12.jpg"
     },
     {
-      "id": "43",
+      "id": "81",
       "name": "Navigation13",
       "thirst": ["00"],
       "outboard": ["01"],
@@ -406,7 +536,7 @@
       "path": ":/resources/cards/navigations/navigation13.jpg"
     },
     {
-      "id": "44",
+      "id": "82",
       "name": "Navigation14",
       "thirst": ["00", "01", "02", "03", "05", "06", "07"],
       "outboard": ["04"],
@@ -416,7 +546,7 @@
       "path": ":/resources/cards/navigations/navigation14.jpg"
     },
     {
-      "id": "45",
+      "id": "83",
       "name": "Navigation15",
       "thirst": ["00", "01"],
       "outboard": ["03"],
@@ -426,7 +556,7 @@
       "path": ":/resources/cards/navigations/navigation15.jpg"
     },
     {
-      "id": "46",
+      "id": "84",
       "name": "Navigation16",
       "thirst": ["01", "03"],
       "outboard": ["03"],
@@ -436,7 +566,7 @@
       "path": ":/resources/cards/navigations/navigation16.jpg"
     },
     {
-      "id": "47",
+      "id": "85",
       "name": "Navigation17",
       "thirst": ["01", "02", "03", "04", "07"],
       "outboard": ["00", "01", "02", "03", "04", "05", "06", "07"],
@@ -446,7 +576,7 @@
       "path": ":/resources/cards/navigations/navigation17.jpg"
     },
     {
-      "id": "48",
+      "id": "86",
       "name": "Navigation18",
       "thirst": ["00", "01", "02", "03", "04", "06", "07"],
       "outboard": ["04"],
@@ -456,7 +586,7 @@
       "path": ":/resources/cards/navigations/navigation18.jpg"
     },
     {
-      "id": "49",
+      "id": "87",
       "name": "Navigation19",
       "thirst": ["00", "01", "06"],
       "outboard": ["02"],
@@ -466,7 +596,7 @@
       "path": ":/resources/cards/navigations/navigation19.jpg"
     },
     {
-      "id": "50",
+      "id": "88",
       "name": "Navigation20",
       "thirst": ["00", "03"],
       "outboard": ["03"],
@@ -476,7 +606,7 @@
       "path": ":/resources/cards/navigations/navigation20.jpg"
     },
     {
-      "id": "51",
+      "id": "89",
       "name": "Navigation21",
       "thirst": ["00", "01", "02", "03"],
       "outboard": ["07"],
@@ -486,7 +616,7 @@
       "path": ":/resources/cards/navigations/navigation21.jpg"
     },
     {
-      "id": "52",
+      "id": "90",
       "name": "Navigation22",
       "thirst": ["00", "01"],
       "outboard": ["01"],
@@ -496,7 +626,7 @@
       "path": ":/resources/cards/navigations/navigation22.jpg"
     },
     {
-      "id": "53",
+      "id": "91",
       "name": "Navigation23",
       "thirst": ["06"],
       "outboard": ["01"],
@@ -506,7 +636,7 @@
       "path": ":/resources/cards/navigations/navigation23.jpg"
     },
     {
-      "id": "54",
+      "id": "92",
       "name": "Navigation24",
       "thirst": ["00", "01", "02", "03", "04", "05", "06", "07"],
       "outboard": ["00", "01", "02", "03", "04", "05", "06", "07"],
@@ -516,7 +646,7 @@
       "path": ":/resources/cards/navigations/navigation24.jpg"
     },
     {
-      "id": "55",
+      "id": "93",
       "name": "Navigation25",
       "thirst": ["00", "01", "02", "03", "04", "05", "06", "07"],
       "outboard": ["00", "01", "02", "03", "04", "05", "06", "07"],
@@ -526,7 +656,7 @@
       "path": ":/resources/cards/navigations/navigation25.jpg"
     },
     {
-      "id": "56",
+      "id": "94",
       "name": "Navigation26",
       "thirst": ["00", "01", "05"],
       "outboard": ["02"],
@@ -536,7 +666,7 @@
       "path": ":/resources/cards/navigations/navigation26.jpg"
     },
     {
-      "id": "57",
+      "id": "95",
       "name": "Navigation27",
       "thirst": ["00", "01", "02", "03", "04", "05", "06", "07"],
       "outboard": ["05"],
@@ -546,7 +676,7 @@
       "path": ":/resources/cards/navigations/navigation27.jpg"
     },
     {
-      "id": "58",
+      "id": "96",
       "name": "Navigation28",
       "thirst": [],
       "outboard": [],
@@ -556,7 +686,7 @@
       "path": ":/resources/cards/navigations/navigation28.jpg"
     },
     {
-      "id": "59",
+      "id": "97",
       "name": "Navigation29",
       "thirst": ["00", "01", "02"],
       "outboard": ["06"],
@@ -566,32 +696,32 @@
       "path": ":/resources/cards/navigations/navigation29.jpg"
     },
     {
-      "id": "60",
+      "id": "98",
       "name": "Supplies",
       "path": ":/resources/cards/shirts/supplies.jpg"
     },
     {
-      "id": "61",
+      "id": "99",
       "name": "Navigation",
       "path": ":/resources/cards/shirts/navigation.jpg"
     },
     {
-      "id": "62",
+      "id": "100",
       "name": "Friend",
       "path": ":/resources/cards/shirts/friend.jpg"
     },
     {
-      "id": "63",
+      "id": "101",
       "name": "Enemy",
       "path": ":/resources/cards/shirts/enemy.jpg"
     },
     {
-      "id": "64",
+      "id": "102",
       "name": "Character",
       "path": ":/resources/cards/shirts/character.jpg"
     },
     {
-      "id": "65",
+      "id": "103",
       "name": "Boat",
       "path": ":/resources/cards/shirts/boat.jpg"
     }

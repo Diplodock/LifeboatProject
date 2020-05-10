@@ -5,6 +5,7 @@
 #include <memory>
 #include <unordered_map>
 
+#include "all_cards.h"
 #include "all_characters.h"
 #include "additional.h"
 #include "navigation.h"
@@ -20,6 +21,7 @@ class GameState {
   public:
     GameState(std::size_t number_of_players);
 
+    int GetSizeOfChoice() const;
     int GetNumberOfSeagulls() const;
     int GetNumberOfPlayers() const;
     Navigation* GetChosenNavigationCard();
@@ -70,7 +72,7 @@ class GameState {
     int turn_ = 0;
     std::unordered_map<Card*, int> get_id_using_card_;
     std::unordered_map<Character*, int> get_player_using_character_id_;
-    std::vector<Card*> get_card_using_id_;
+    std::unordered_map<int, Card*> get_card_using_id_;
     std::vector<Character*> get_character_id_using_player_;
     std::vector<Player*> get_player_;
     std::vector<Character*> fought_;

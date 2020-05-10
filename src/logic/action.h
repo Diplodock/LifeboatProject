@@ -6,6 +6,9 @@ class GenericAction {
   public:
     GenericAction(int player, int id, int other_card);
     virtual void exec(GameState& gs) {};
+
+    int GetPlayer();
+    int GetId();
   protected:
     int player_ = 0;
     int id_ = 0;
@@ -45,34 +48,29 @@ class ChooseNavigationCard : public GenericAction {
 class Row : public GenericAction {
   using GenericAction::GenericAction;
   public:
-    Row(int player);
     void exec(GameState& gs) override;
 };
 
 class Fight : public GenericAction {
   using GenericAction::GenericAction;
   public:
-    Fight(int player, int id);
     void exec(GameState& gs) override;
 };
 
 class TryToSwap : public GenericAction {
   using GenericAction::GenericAction;
   public:
-    TryToSwap(int player, int id);
     void exec(GameState& gs) override;
 };
 
 class TryToTakeGoods : public GenericAction {
   using GenericAction::GenericAction;
   public:
-    TryToTakeGoods(int player, int id_thing, int id_character);
     void exec(GameState& gs) override;
 };
 
 class TryToGiveGoods : public GenericAction {
   using GenericAction::GenericAction;
   public:
-    TryToGiveGoods(int player, int id_thing, int id_character);
     void exec(GameState& gs) override;
 };

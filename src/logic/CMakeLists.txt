@@ -5,11 +5,12 @@ project(lifeboat)
 set(CMAKE_CXX_STANDARD 17)
 
 add_executable(lifeboat
+        all_cards.h
+        all_cards.cpp
         main.cpp
         action.cpp
         action.h
         additional.cpp
-        all_cards.cpp
         additional.h
         all_characters.cpp
         all_characters.h
@@ -38,10 +39,11 @@ add_executable(lifeboat
         )
 
 add_library(logic
+        all_cards.h
+        all_cards.cpp
         action.cpp
         action.h
         additional.cpp
-        all_cards.cpp
         additional.h
         all_characters.cpp
         all_characters.h

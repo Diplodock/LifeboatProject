@@ -42,3 +42,17 @@ Frenchy::Frenchy() {
     characterOptions_.strength = 6;
     characterOptions_.survival_bonus = 6;
 }
+
+DrHarter::DrHarter() {
+    cardOptions_.name = "Доктор Хартер";
+    cardOptions_.description = "Хороший врач: после использования карты аптечки она остаётся у него";
+    characterOptions_.strength = 4;
+    characterOptions_.survival_bonus = 8;
+}
+
+Wong::Wong() {
+    cardOptions_.name = "Мадам Вонг";
+    cardOptions_.description = "Пьёт на пару: когда любой из игроков использует воду, мадам Вонг также может получить эффект от этого";
+    characterOptions_.strength = 3;
+    characterOptions_.survival_bonus = 9;
+}

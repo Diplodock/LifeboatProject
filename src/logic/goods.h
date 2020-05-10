@@ -71,3 +71,34 @@ class Lifeline : public Goods {
     };
     //std::unique_ptr<GenericAction> GetAction(int player, int saved)  override;
 };
+
+static Water water1;
+static Water water2;
+static Water water3;
+static Water water4;
+static Water water5;
+static Water water6;
+static Water water7;
+static Water water8;
+static Water water9;
+static Water water10;
+static Water water11;
+static Water water12;
+static Water water13;
+static Water water14;
+static Water water15;
+static Water water16;
+static Water water17;
+
+static Umbrella umbrella;
+
+static Bait bait1;
+static Bait bait2;
+
+static FirstAidKit firstAidKit1;
+static FirstAidKit firstAidKit2;
+static FirstAidKit firstAidKit3;
+
+static Lifeline lifeline;
+
+static Compass compass;

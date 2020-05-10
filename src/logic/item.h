@@ -13,9 +13,9 @@ class Item : public Card {
     void SetPosition(bool position);
     void SetPoints(int points);
 
-    virtual std::unique_ptr<GenericAction> GetAction(int player) = 0;
-    virtual std::unique_ptr<GenericAction> GetAction(int player, int saved) = 0;
-    virtual std::unique_ptr<GenericAction> GetAction() = 0;
+    virtual std::unique_ptr<GenericAction> GetAction(int player) {return nullptr;}
+    virtual std::unique_ptr<GenericAction> GetAction(int player, int saved) {return nullptr;}
+    virtual std::unique_ptr<GenericAction> GetAction() {return nullptr;}
 
     int GetPlayer() const;
     void SetPlayer(int player);
