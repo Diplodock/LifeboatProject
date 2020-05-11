@@ -5,6 +5,14 @@
 #include "goods.h"
 #include "universal.h"
 
+int GameState::GetChosenNav() const {
+    return current_choice_[0];
+}
+
+int GameState::GetSizeUnusedNavigation() const {
+    return not_used_navigation_cards_.size();
+}
+
 int GameState::GetNumberOfSeagulls() const {
     return number_of_seagulls_;
 }
@@ -224,12 +232,24 @@ int GameState::GetSizeOfChoice() const {
     return current_choice_.size();
 }
 
-
 GameState::GameState(std::size_t number_of_players)
     : number_of_players_(number_of_players)
 {
+    std::random_device rd;
+    std::mt19937 mersenne(rd());
+
     available_actions_.resize(number_of_players_, std::vector<std::vector<std::string>>(200));
     is_action_.resize(number_of_players_, std::vector<std::unordered_map<std::string, bool>>(200));
+
+    sListeners.push_back(&seagullListener);
+    addListeners.push_back(&addOnBoardListener);
+    remUsedListeners.push_back(&rmUsedCardListener);
+    remNotUsedListeners.push_back(&rmNotUsedCardsListener);
+    eListeners.push_back(&exhaustedListener);
+    dListeners.push_back(&deathListener);
+    tListeners.push_back(&thirstListener);
+    oListeners.push_back(&outboardListener);
+    tuListeners.push_back(&turnListener);
 
     AddCharacter(&firstMate);
     BoundCardWithId(0, &firstMate);
@@ -298,7 +318,8 @@ GameState::GameState(std::size_t number_of_players)
 
     std::vector<Character*> randCharacters= characters_;
     for (std::size_t i = 0; i < characters_.size(); i++) {
-        int j = rand() % (characters_.size());
+        srand(time(0));
+        int j = mersenne() % (characters_.size());
         Character* swaped = randCharacters[i];
         randCharacters[i] = randCharacters[j];
         randCharacters[j] = swaped;
@@ -773,14 +794,15 @@ GameState::GameState(std::size_t number_of_players)
     AddAvailableAction(97, "TakeNavigationCard");
 
     for (std::size_t i = 0; i < not_used_items_.size(); i++) {
-        int j = rand() % (not_used_items_.size());
+        int j = mersenne() % (not_used_items_.size());
         Item* swaped = not_used_items_[i];
         not_used_items_[i] = not_used_items_[j];
         not_used_items_[j] = swaped;
     }
 
     for (std::size_t i = 0; i < not_used_navigation_cards_.size(); i++) {
-        int j = rand() % (not_used_navigation_cards_.size());
+        srand(time(0));
+        int j = mersenne() % (not_used_navigation_cards_.size());
         Navigation* swaped = not_used_navigation_cards_[i];
         not_used_navigation_cards_[i] = not_used_navigation_cards_[j];
         not_used_navigation_cards_[j] = swaped;

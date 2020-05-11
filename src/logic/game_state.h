@@ -4,6 +4,8 @@
 #include <deque>
 #include <memory>
 #include <unordered_map>
+#include <iostream>
+#include <random>
 
 #include "all_cards.h"
 #include "all_characters.h"
@@ -21,6 +23,8 @@ class GameState {
   public:
     GameState(std::size_t number_of_players);
 
+    int GetChosenNav() const;
+    int GetSizeUnusedNavigation() const;
     int GetSizeOfChoice() const;
     int GetNumberOfSeagulls() const;
     int GetNumberOfPlayers() const;
@@ -87,7 +91,7 @@ class GameState {
 
     std::vector<SeagullsListener*> sListeners;
     std::vector<AddCardsOnBoardListener*> addListeners;
-    std::vector<RemoveUsedCardsListener*> remUsedListeners;
+    std::vector<RemoveUsedCardListener*> remUsedListeners;
     std::vector<RemoveNotUsedCardsListener*> remNotUsedListeners;
     std::vector<ExhaustedListener*> eListeners;
     std::vector<DeathListener*> dListeners;
