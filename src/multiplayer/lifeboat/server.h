@@ -10,6 +10,7 @@
 #include <grpcpp/security/credentials.h>
 
 #include "lifeboat.grpc.pb.h"
+#include "action_factory.h"
 
 using grpc::Server;
 using grpc::ServerBuilder;
@@ -36,5 +37,6 @@ private:
     int get_user_id();
     
     int cnt_users = 0;
+    
+    ActionFactory af_;
 };
-

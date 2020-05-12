@@ -7,11 +7,17 @@ Status GameImpl::Play(ServerContext *context, ServerReaderWriter <Reply, Request
         int card_id = r.card_id();
         int other_user_id = r.other_user_id();
         std::string action = r.action();
+        std::function<ActionPtr(int, int, int)> constructor = [](int a, int b, int c) {
+            TakeNavigationCard action(a, b, c);
+            return std::make_unique<TakeNavigationCard>(action);
+        };
+        af_.RegisterAction(action, constructor);
+        af_.CreateAction(action, user_id, card_id, other_user_id);
         Reply reply;
-        request.set_user_id(user_id);
-        request.set_card_id(card_id);
-        request.set_other_user_id(other_user_id);
-        request.set_action(action);
+        reply.set_user_id(user_id);
+        reply.set_card_id(card_id);
+        reply.set_other_user_id(other_user_id);
+        reply.set_action(action);
         WriteOptions writeOptions;
         stream->Write(reply, writeOptions);
     }
