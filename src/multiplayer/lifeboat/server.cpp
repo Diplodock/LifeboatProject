@@ -8,10 +8,10 @@ Status GameImpl::Play(ServerContext *context, ServerReaderWriter <Reply, Request
         int other_user_id = r.other_user_id();
         std::string action = r.action();
         Reply reply;
-        reply.set_user_id(user_id);
-        reply.set_user_id(card_id);
-        reply.set_user_id(other_user_id);
-        reply.set_action(action);
+        request.set_user_id(user_id);
+        request.set_card_id(card_id);
+        request.set_other_user_id(other_user_id);
+        request.set_action(action);
         WriteOptions writeOptions;
         stream->Write(reply, writeOptions);
     }
