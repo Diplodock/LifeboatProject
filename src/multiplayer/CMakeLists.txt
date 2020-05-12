@@ -15,7 +15,7 @@ add_library(
 
 target_link_libraries(multiplayer grpc grpc++ grpc++_unsecure protobuf grpc++_reflection ${PROTOBUF_LIBRARY})
 
-add_executable(main lifeboat/main.cpp ../../util/json.hpp ../logic/action.h ../logic/action.cpp)
-target_link_libraries(main multiplayer logic)
+#add_executable(main lifeboat/main.cpp ../../util/json.hpp ../logic/action.h ../logic/action.cpp)
+#target_link_libraries(main multiplayer logic)
 
 include_directories(../../util)
