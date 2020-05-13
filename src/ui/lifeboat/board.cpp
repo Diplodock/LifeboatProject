@@ -4,7 +4,8 @@
 
 Board::Board(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Board) {
+    ui(new Ui::Board),
+    game(4) {
     ui->setupUi(this);
     auto *label = new ClickableLabel("", this);
     label->setPixmap(QPixmap(":/resources/cards/shirts/navigation.jpg"));
