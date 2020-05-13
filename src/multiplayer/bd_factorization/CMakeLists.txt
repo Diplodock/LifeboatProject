@@ -35,5 +35,5 @@ set(GENERATED_PROTOBUF_FILES ${PB_H_FILE} ${PB_CPP_FILE}
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 link_libraries(grpc grpc++ grpc++_unsecure protobuf grpc++_reflection ${PROTOBUF_LIBRARY})
 
-add_executable(server server.cc ${GENERATED_PROTOBUF_FILES})
-add_executable(client client.cc ${GENERATED_PROTOBUF_FILES})
+add_executable(server_bd server.cc ${GENERATED_PROTOBUF_FILES})
+add_executable(client_bd client.cc ${GENERATED_PROTOBUF_FILES})
