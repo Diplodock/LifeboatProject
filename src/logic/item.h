@@ -4,6 +4,7 @@
 #include "action.h"
 
 #include <memory>
+#include <vector>
 
 class Item : public Card {
   public:

@@ -1,26 +1,20 @@
 #pragma once
 
 #include <vector>
+#include <memory>
 
 #include "all_characters.h"
 
+using CharacterPtr = std::shared_ptr<Character>;
+
 class Player {
   public:
-    Character* GetCharacter() const;
+    CharacterPtr GetCharacter() const;
 
-    void SetCharacter(Character* character);
+    void SetCharacter(CharacterPtr character);
 
   private:
-    Character* character_;
-    Character* friend_;
-    Character* enemy_;
+    CharacterPtr character_;
+    CharacterPtr friend_;
+    CharacterPtr enemy_;
 };
-
-static Player player1;
-static Player player2;
-static Player player3;
-static Player player4;
-static Player player5;
-static Player player6;
-static Player player7;
-static Player player8;

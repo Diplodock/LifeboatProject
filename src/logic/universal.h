@@ -29,8 +29,3 @@ class FlareGun : public Universal {
     };
     //std::unique_ptr<GenericAction> GetAction(int player) override;
 };
-
-static Paddle paddle1;
-static Paddle paddle2;
-
-static FlareGun flareGun;

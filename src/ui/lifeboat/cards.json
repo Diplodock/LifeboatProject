@@ -387,8 +387,8 @@
     },
     {
       "id": "65",
-      "name": "Knife",
-      "path": ":/resources/cards/weapons/knife.jpg"
+      "name": "FlareGun",
+      "path": ":/resources/cards/weapons/flare_gun.jpg"
     },
     {
       "id": "66",
@@ -397,8 +397,8 @@
     },
     {
       "id": "67",
-      "name": "FlareGun",
-      "path": ":/resources/cards/weapons/flare_gun.jpg"
+      "name": "Knife",
+      "path": ":/resources/cards/weapons/knife.jpg"
     },
     {
       "id": "68",

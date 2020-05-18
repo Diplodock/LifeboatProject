@@ -1,6 +1,12 @@
 #include "all_characters.h"
 #include "character.h" 
 
+using CharacterPtr = std::shared_ptr<Character>;
+
+CharacterPtr create(Character obj) {
+    return std::make_shared<Character>(obj);
+}
+
 Captain::Captain() {
     cardOptions_.name = "Капитан";
     cardOptions_.description = "Двойной бонус за деньги";
@@ -56,3 +62,23 @@ Wong::Wong() {
     characterOptions_.strength = 3;
     characterOptions_.survival_bonus = 9;
 }
+
+static FirstMate firstMate;
+static Captain captain;
+static Frenchy frenchy;
+static DrHarter drHarter;
+static TheKid kid;
+static LadyLauren ladyLauren;
+static SirStephen sirStephen;
+static Wong wong;
+
+std::vector<CharacterPtr> list =
+    {create(firstMate),
+    create(captain),
+    create(frenchy),
+    create(drHarter),
+    create(kid),
+    create(ladyLauren),
+    create(sirStephen),
+    create(wong)
+};

@@ -49,7 +49,7 @@ bool Character::IfHoldsUmbrella() const {
     return characterOptions_.hold_umbrella;
 };
 
-Item* Character::GetItem(int i) const {
+ItemPtr Character::GetItem(int i) const {
     return backpack_[i];
 }
 
@@ -69,26 +69,13 @@ void Character::SetExhausted(bool if_exhausted) {
     characterOptions_.exhausted = if_exhausted;
 }
 
-void Character::AddItem(Item* item) {
+void Character::AddItem(ItemPtr item) {
     backpack_.push_back(item);
 }
 
 void Character::HoldUmbrella(bool holds) {
     characterOptions_.hold_umbrella = holds;
 };
-
-// int Character::GetMaxWeaponPoints() {
-//     int max_points = 0;
-//     for (int i = 0; i < backpack_.size(); i++) {
-//         Weapon *current_weapon = dynamic_cast<Weapon*> (backpack_[i]); 
-//         if (current_weapon != nullptr) {
-//             if (max_points < (*current_weapon).GetDamagePoints()) {
-//                 max_points = (*current_weapon).GetDamagePoints();
-//             };
-//         }
-//     }
-//     return max_points;
-// }
 
 void Character::UpdateState() {
     if (characterOptions_.health <= 100 / characterOptions_.strength) {

@@ -49,12 +49,3 @@ class Wong : public Character {
     Wong();
   private:
 };
-
-static FirstMate firstMate;
-static Captain captain;
-static Frenchy frenchy;
-static DrHarter drHarter;
-static TheKid kid;
-static LadyLauren ladyLauren;
-static SirStephen sirStephen;
-static Wong wong;

@@ -20,20 +20,20 @@ int GenericAction::GetId() {
 
 void TakeItemsAction::exec(GameState& gs) {
     for (std::size_t i = 0; i < gs.GetNumberOfPlayers(); i++) {
-        Card* card = gs.GetItemCard();
+        CardPtr card = gs.GetItemCard();
         int id = gs.GetIdCard(card);
         gs.AddToChoice(id);
-        gs.RemoveAvailableAction(id, "TakeItemsAction");
-        gs.AddAvailableAction(id, "ChooseItem");
+        card->RemoveAvailableAction("TakeItemsAction");
+        card->AddAvailableAction("ChooseItem");
     }
 }
 
 void TakeNavigationCard::exec(GameState& gs) {
-    Card* card = gs.GetNavigationCard();
+    CardPtr card = gs.GetNavigationCard();
     int id = gs.GetIdCard(card);
     gs.AddToChoice(id);
-    gs.RemoveAvailableAction(id, "TakeNavigationCard");
-    gs.AddAvailableAction(id, "ChooseNavigationCard");
+    card->RemoveAvailableAction("TakeNavigationCard");
+    card->AddAvailableAction("ChooseNavigationCard");
 }
 
 void ChooseCharacterCard::exec(GameState& gs) {
@@ -42,45 +42,46 @@ void ChooseCharacterCard::exec(GameState& gs) {
 }
 
 void ChooseItem::exec(GameState& gs) {
-    Item* item = dynamic_cast<Item *> (gs.GetCard(id_));
-    Player* current_player = gs.GetPlayerUsingPlayerId(player_);
-    Character* character = current_player->GetCharacter();
+    ItemPtr item = std::dynamic_pointer_cast<Item>(gs.GetCard(id_));
+    PlayerPtr current_player = gs.GetPlayerUsingPlayerId(player_);
+    CharacterPtr character = current_player->GetCharacter();
     character->AddItem(item);
     gs.GetChosen(id_);
-    gs.RemoveAvailableAction(id_, "ChooseItem");
+    item->RemoveAvailableAction("ChooseItem");
 }
 
 void ChooseNavigationCard::exec(GameState& gs) {
+    NavigationPtr nav = std::dynamic_pointer_cast<Navigation>(gs.GetCard(id_));
     gs.GetChosen(id_);
-    gs.RemoveAvailableAction(id_, "ChooseNavigationCard");
+    nav->RemoveAvailableAction("ChooseNavigationCard");
     gs.AddChosenNavigation(id_);
     gs.AddTheRestNavigation();
-    Navigation* current_navigation = dynamic_cast<Navigation*> (gs.GetCard(id_));
+    NavigationPtr current_navigation = std::dynamic_pointer_cast<Navigation> (gs.GetCard(id_));
     int current_number_of_seagulls = gs.GetNumberOfSeagulls();
     gs.SetNumberOfSeagulls(current_number_of_seagulls + current_navigation->GetSeagull());
     if (current_navigation->GetThirstyFighters()) {
         for (std::size_t i = 0; i < gs.GetSizeOfFought(); i++) {
-            Character* character = gs.GetFought(i);
+            CharacterPtr character = gs.GetFought(i);
             character->SetThirst(true);
             character->UpdateState();
         }
     }
     if (current_navigation->GetThirstyRowers()) {
         for (std::size_t i = 0; i < gs.GetSizeOfRowed(); i++) {
-            Character* character = gs.GetRowed(i);
+            CharacterPtr character = gs.GetRowed(i);
             character->SetThirst(true);
             character->UpdateState();
         }
     }
     for (std::size_t i = 0; i < current_navigation->GetOutboardSize(); i++) {
-        Character* character = current_navigation->GetOutboard(i);
+        CharacterPtr character = current_navigation->GetOutboard(i);
         character->SetWounds(character->GetWounds() + 1);
         character->SetHealth(character->GetHealth() - 100 / character->GetStrength());
         character->UpdateState();
         gs.AddCardOutboard(character);
     }
     for (std::size_t i = 0; i < current_navigation->GetThirstySize(); i++) {
-        Character* character = current_navigation->GetThirsty(i);
+        CharacterPtr character = current_navigation->GetThirsty(i);
         character->SetThirst(true);
         character->UpdateState();
     }
@@ -92,8 +93,8 @@ void Row::exec(GameState& gs) {
         TakeNavigationCard take(player_, id_, other_card_);
         take.exec(gs);
     }
-    Player* current_player = gs.GetPlayerUsingPlayerId(player_);
-    Character* character = current_player->GetCharacter();
+    PlayerPtr current_player = gs.GetPlayerUsingPlayerId(player_);
+    CharacterPtr character = current_player->GetCharacter();
     gs.AddCardRowed(character);
     character->SetExhausted(true);
 }

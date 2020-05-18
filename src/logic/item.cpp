@@ -1,5 +1,6 @@
 #include "item.h"
 
+using ItemPtr = std::shared_ptr<Item>;
 
 int Item::GetPlayer() const {
     return player_;

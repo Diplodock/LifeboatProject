@@ -1,7 +1,7 @@
 #include "universal.h"
 
 void Paddle::PaddleCardAction::exec(GameState& gs) {
-    Card* card = gs.GetNavigationCard();
+    CardPtr card = gs.GetNavigationCard();
     int id = gs.GetIdCard(card);
     gs.AddToChoice(id);
 }
@@ -12,7 +12,7 @@ void Paddle::PaddleCardAction::exec(GameState& gs) {
 
 void FlareGun::FlareGunCardAction::exec(GameState& gs) {
     for (std::size_t i = 0; i < 3; i++) {
-        Card* card = gs.GetNavigationCard();
+        CardPtr card = gs.GetNavigationCard();
         int id = gs.GetIdCard(card);
         gs.AddToChoice(id);
     }
@@ -21,3 +21,14 @@ void FlareGun::FlareGunCardAction::exec(GameState& gs) {
 // std::unique_ptr<GenericAction> FlareGun::GetAction(int player)  {
 //     return std::make_unique<FlareGunCardAction>(this, player);
 // }
+
+ItemPtr createUni(Item obj) {
+    return std::make_shared<Item>(obj);
+}
+
+static Paddle paddle1;
+static Paddle paddle2;
+
+static FlareGun flareGun;
+
+std::vector<ItemPtr> listUni = {createUni(paddle1), createUni(paddle2), createUni(flareGun)};

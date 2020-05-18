@@ -7,6 +7,10 @@
 #include "item.h"
 #include "weapon.h"
 
+class Item;
+
+using ItemPtr = std::shared_ptr<Item>;
+
 struct CharacterOptions {
     int health;
     int strength;
@@ -32,17 +36,17 @@ class Character : public Card {
     bool IfThirsty() const;
     bool IfHoldsUmbrella() const;
 
-    Item* GetItem(int item) const;
+    ItemPtr GetItem(int item) const;
     void SetHealth(int health);
     void SetWounds(int number_of_wounds);
     void SetThirst(bool is_thirsty);
     void SetExhausted(bool is_exhausted);
-    void AddItem(Item* item);
+    void AddItem(ItemPtr item);
     void HoldUmbrella(bool holds);
     
     void UpdateState();
 
   protected:
     CharacterOptions characterOptions_;
-    std::vector<Item*> backpack_;
+    std::vector<ItemPtr> backpack_;
 };

@@ -1,3 +1,5 @@
+#include <functional>
+
 #include "additional.h"
 #include "all_characters.h"
 #include "game_state.h"
@@ -8,7 +10,10 @@
 #include "weapon.h"
 #include "universal.h"
 #include "action.h"
+#include "action_factory.h"
  
+using ActionPtr = std::shared_ptr<GenericAction>;
+
 int main() {
-    
+    GameState gs(6);
 }

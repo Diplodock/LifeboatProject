@@ -9,9 +9,7 @@ class Listener {
 
 class SeagullsListener : public Listener {
   public:
-    void SetFunction(void (*func)(int numberOfSeagulls)) {
-      callbackFunc = func;
-    }
+    SeagullsListener(void (*func)(int numberOfSeagulls));
     void notify(int numberOfSeagulls) {
       callbackFunc(numberOfSeagulls);
     }
@@ -21,9 +19,7 @@ class SeagullsListener : public Listener {
 
 class AddCardsOnBoardListener : public Listener {
   public:
-    void SetFunction(void (*func)(int id)) {
-      callbackFunc = func;
-    }
+    AddCardsOnBoardListener(void (*func)(int id));
     void notify(int id) {
       callbackFunc(id);
     }
@@ -33,9 +29,7 @@ class AddCardsOnBoardListener : public Listener {
 
 class RemoveUsedCardListener : public Listener {
   public:
-    void SetFunction(void (*func)(int id)) {
-      callbackFunc = func;
-    }
+    RemoveUsedCardListener(void (*func)(int id));
     void notify(int id) {
       callbackFunc(id);
     }
@@ -45,9 +39,7 @@ class RemoveUsedCardListener : public Listener {
 
 class RemoveNotUsedCardsListener : public Listener {
   public:
-    void SetFunction(void (*func)(std::vector<int> ids)) {
-      callbackFunc = func;
-    }
+    RemoveNotUsedCardsListener(void (*func)(std::vector<int> ids));
     void notify(std::vector<int> ids) {
       callbackFunc(ids);
     }
@@ -57,9 +49,7 @@ class RemoveNotUsedCardsListener : public Listener {
 
 class HealthListener : public Listener {
   public:
-    void SetFunction(void (*func)(int id, int healthPoints)) {
-      callbackFunc = func;
-    }
+    HealthListener(void (*func)(int id, int healthPoints));
     void notify(int id, int healthPoints) {
       callbackFunc(id, healthPoints);
     }
@@ -69,9 +59,7 @@ class HealthListener : public Listener {
 
 class ExhaustedListener : public Listener {
   public:
-    void SetFunction(void (*func)(int id, bool is_exhausted)) {
-      callbackFunc = func;
-    }
+    ExhaustedListener(void (*func)(int id, bool is_exhausted));
     void notify(int id, bool is_exhausted) {
       callbackFunc(id, is_exhausted);
     }
@@ -81,9 +69,7 @@ class ExhaustedListener : public Listener {
 
 class DeathListener : public Listener {
   public:
-    void SetFunction(void (*func)(int id, bool is_dead)) {
-      callbackFunc = func;
-    }
+    DeathListener(void (*func)(int id, bool is_dead));
     void notify(int id, bool is_dead) {
       callbackFunc(id, is_dead);
     }
@@ -93,9 +79,7 @@ class DeathListener : public Listener {
 
 class ThirstListener : public Listener {
   public:
-    void SetFunction(void (*func)(int id, bool is_thirsty)) {
-      callbackFunc = func;
-    }
+    ThirstListener(void (*func)(int id, bool is_thirsty));
     void notify(int id, bool is_thirsty) {
       callbackFunc(id, is_thirsty);
     }
@@ -105,9 +89,7 @@ class ThirstListener : public Listener {
 
 class OutboardListener : public Listener {
   public:
-    void SetFunction(void (*func)(int id)) {
-      callbackFunc = func;
-    }
+    OutboardListener(void (*func)(int id));
     void notify(int id) {
       callbackFunc(id);
     }
@@ -117,23 +99,10 @@ class OutboardListener : public Listener {
 
 class TurnListener : public Listener {
   public:
-    void SetFunction(void (*func)(int id)) {
-      callbackFunc = func;
-    }
+    TurnListener(void (*func)(int id));
     void notify(int id) {
       callbackFunc(id);
     }
   private:
     void (*callbackFunc)(int id);
 };
-
-static SeagullsListener seagullListener;
-static AddCardsOnBoardListener addOnBoardListener;
-static RemoveNotUsedCardsListener rmNotUsedCardsListener;
-static RemoveUsedCardListener rmUsedCardListener;
-static HealthListener healthListener;
-static ExhaustedListener exhaustedListener;
-static DeathListener deathListener;
-static ThirstListener thirstListener;
-static OutboardListener outboardListener;
-static TurnListener turnListener;
