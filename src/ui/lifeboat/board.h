@@ -6,6 +6,7 @@
 #include <QMenu>
 #include "../../logic/game_state.h"
 #include "../../multiplayer/lifeboat/action_factory.h"
+#include "../../logic/listener.h"
 #include "clickablelable.h"
 
 
@@ -19,6 +20,7 @@ class Board : public QWidget {
 public:
     explicit Board(QWidget *parent = nullptr);
     ~Board();
+    Ui::Board* getUi();
     GameState gs;
     ActionFactory af;
 
