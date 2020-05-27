@@ -13,13 +13,13 @@
 
 ### Используемые библиотеки
 
-*[Qt](https://doc.qt.io/qt-5/gettingstarted.html)
-*[gRPC](https://grpc.io/docs/quickstart/)
+* [Qt](https://doc.qt.io/qt-5/gettingstarted.html)
+* [gRPC](https://grpc.io/docs/quickstart/)
 
 ### Сборка проекта
 
 1. Установка исплользуемых библиотек (указаны ссылки на интсрукцию по установке)
-2. `cmake .`
-   `make`
-   `./lifeboat_ui`
+2. ```cmake .
+   make
+   ./lifeboat_ui```
    
