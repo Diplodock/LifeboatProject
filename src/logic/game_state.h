@@ -25,9 +25,11 @@ using PlayerPtr = std::shared_ptr<Player>;
 using CardPtr = std::shared_ptr<Card>;
 using AddPtr = std::shared_ptr<Additional>;
 
+class Board;
+
 class GameState {
   public:
-    GameState(std::size_t number_of_players);
+    GameState(std::size_t number_of_players, Board* b);
 
     int GetChosenNav() const;
     int GetSizeUnusedNavigation() const;
@@ -84,6 +86,7 @@ class GameState {
   private:
     std::vector<std::vector<std::string>> available_actions_;
 
+    Board* b_;
     int number_of_seagulls_ = 0;
     int number_of_players_ = 6;
     int last_player_ = 0;
