@@ -28,6 +28,10 @@ void TakeItemsAction::exec(GameState& gs) {
     }
 }
 
+void Example::exec(GameState& gs) {
+    gs.SetNumberOfSeagulls(gs.GetNumberOfSeagulls() + 1);
+}
+
 void TakeNavigationCard::exec(GameState& gs) {
     CardPtr card = gs.GetNavigationCard();
     int id = gs.GetIdCard(card);
