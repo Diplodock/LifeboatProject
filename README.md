@@ -22,6 +22,7 @@
 * ```
    cmake .
    make
+   cd src/ui/lifeboat
    ./lifeboat_ui
    ```
    
