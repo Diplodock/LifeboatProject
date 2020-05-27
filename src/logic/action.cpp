@@ -26,6 +26,7 @@ void TakeItemsAction::exec(GameState& gs) {
         card->RemoveAvailableAction("TakeItemsAction");
         card->AddAvailableAction("ChooseItem");
     }
+    gs.UpdatePart();
 }
 
 void Example::exec(GameState& gs) {
@@ -41,17 +42,21 @@ void TakeNavigationCard::exec(GameState& gs) {
 }
 
 void ChooseCharacterCard::exec(GameState& gs) {
+    gs.SetLast(player_);
     gs.AddPlayerCharacter(player_, id_);
     gs.GetChosen(id_);
 }
 
 void ChooseItem::exec(GameState& gs) {
+    gs.SetLast(player_);
     ItemPtr item = std::dynamic_pointer_cast<Item>(gs.GetCard(id_));
     PlayerPtr current_player = gs.GetPlayerUsingPlayerId(player_);
     CharacterPtr character = current_player->GetCharacter();
     character->AddItem(item);
     gs.GetChosen(id_);
     item->RemoveAvailableAction("ChooseItem");
+    gs.UpdatePart();
+    
 }
 
 void ChooseNavigationCard::exec(GameState& gs) {
@@ -90,6 +95,7 @@ void ChooseNavigationCard::exec(GameState& gs) {
         character->UpdateState();
     }
     gs.FinishRound();
+    gs.UpdatePart();
 }
 
 void Row::exec(GameState& gs) {
@@ -101,6 +107,7 @@ void Row::exec(GameState& gs) {
     CharacterPtr character = current_player->GetCharacter();
     gs.AddCardRowed(character);
     character->SetExhausted(true);
+    gs.UpdatePart();
 }
 
 // bool Character::Fight(Character* target) { // TODO: add ally support and weapon
