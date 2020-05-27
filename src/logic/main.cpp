@@ -17,5 +17,4 @@ using ActionPtr = std::shared_ptr<GenericAction>;
 int main() {
     GameState gs(6);
     ActionFactory af;
-    
 }

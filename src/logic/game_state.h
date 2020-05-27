@@ -48,6 +48,7 @@ class GameState {
     std::size_t GetSizeOfFought() const;
     std::size_t GetSizeOfRowed() const;
     std::vector<std::string> GetAvailableActions();
+    std::vector<std::string> GetAvailableActions(int id, int player);
 
     void SetNumberOfSeagulls(int number_of_seagulls);
     void AddCardFought(CharacterPtr current_character);
@@ -79,11 +80,12 @@ class GameState {
     void AddTuListener(std::shared_ptr<TurnListener> l);
 
     void FinishRound();
+    void UpdatePart();
   private:
     std::vector<std::vector<std::string>> available_actions_;
 
     int number_of_seagulls_ = 0;
-    int number_of_players_ = 4;
+    int number_of_players_ = 6;
     int last_player_ = 0;
     int chosen_navigation_card_;
     int turn_ = 0;

@@ -207,6 +207,18 @@ void GameState::FinishRound() {
     current_choice_.clear();
 }
 
+void GameState::UpdatePart() {
+    if (last_player_ == number_of_players_ - 1) {
+        round_ = (round_ + 1) % 4; 
+        last_player_ = 0;
+    }
+}
+
+std::vector<std::string> GameState::GetAvailableActions(int id, int player) {
+    return get_card_using_id_[id]->GetAvailableActions(player, *this);
+}
+
+
 int GameState::GetSizeOfChoice() const {
     return current_choice_.size();
 }
