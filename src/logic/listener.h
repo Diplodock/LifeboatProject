@@ -2,6 +2,8 @@
 
 #include <vector>
 
+class Board;
+
 class Listener {
   public:
     virtual void notify() {};
@@ -9,12 +11,12 @@ class Listener {
 
 class SeagullsListener : public Listener {
   public:
-    SeagullsListener(void (*func)(int numberOfSeagulls));
-    void notify(int numberOfSeagulls) {
-      callbackFunc(numberOfSeagulls);
+    SeagullsListener(void (*func)(int numberOfSeagulls, Board* b));
+    void notify(int numberOfSeagulls, Board *b) {
+      callbackFunc(numberOfSeagulls, b);
     }
     private:
-      void (*callbackFunc)(int numberOfSeagulls);
+      void (*callbackFunc)(int numberOfSeagulls, Board *b);
 };
 
 class AddCardsOnBoardListener : public Listener {
