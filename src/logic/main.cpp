@@ -12,7 +12,6 @@
 #include "action.h"
 #include "action_factory.h"
  
-using ActionPtr = std::unique_ptr<GenericAction>;
 
 int main() {
     GameState gs(6);

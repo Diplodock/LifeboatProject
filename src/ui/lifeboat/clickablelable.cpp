@@ -1,13 +1,11 @@
 #include "clickablelable.h"
-#include <iostream>
 
-ClickableLabel::ClickableLabel(const QString& text, QWidget* parent)
-    : QLabel(parent) {
+ClickableLabel::ClickableLabel(const QString& text, QWidget* parent, int id)
+    : QLabel(parent), id_(id) {
     setText(text);
 }
 
-ClickableLabel::~ClickableLabel() {
-}
+ClickableLabel::~ClickableLabel() {}
 
 void ClickableLabel::mousePressEvent(QMouseEvent* event) {
     emit clicked();

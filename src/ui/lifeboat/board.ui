@@ -25,122 +25,7 @@
      <height>251</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="boat_layout">
-    <item>
-     <widget class="QLabel" name="label_2">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/characters/captain.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_10">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/characters/kid.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/characters/boatswain.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_5">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/characters/snob.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_4">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/characters/lady.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_3">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/characters/frenchy.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-   </layout>
+   <layout class="QHBoxLayout" name="boat_layout"/>
   </widget>
   <widget class="QLabel" name="bg">
    <property name="enabled">
@@ -173,12 +58,12 @@
      <height>291</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="player1layout">
+   <layout class="QGridLayout" name="player1_layout">
     <property name="spacing">
      <number>0</number>
     </property>
     <item row="0" column="0">
-     <widget class="QLabel" name="label_6">
+     <widget class="QLabel" name="player1_icon">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -197,7 +82,7 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QLabel" name="label_8">
+     <widget class="QLabel" name="player1_enemy">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -216,7 +101,7 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QLabel" name="label_9">
+     <widget class="QLabel" name="player1_friend">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -235,7 +120,7 @@
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QLabel" name="supplies_4">
+     <widget class="QLabel" name="player1_supplies">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -264,12 +149,12 @@
      <height>291</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="player4layout">
+   <layout class="QGridLayout" name="player4_layout">
     <property name="spacing">
      <number>0</number>
     </property>
     <item row="0" column="0">
-     <widget class="QLabel" name="label_13">
+     <widget class="QLabel" name="plyaer4_icon">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -288,7 +173,7 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QLabel" name="label_14">
+     <widget class="QLabel" name="player4_enemy">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -307,7 +192,7 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QLabel" name="label_15">
+     <widget class="QLabel" name="player4_friend">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -326,7 +211,7 @@
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QLabel" name="supplies_6">
+     <widget class="QLabel" name="player4_supplies">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -355,12 +240,12 @@
      <height>291</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="player2layout">
+   <layout class="QGridLayout" name="player2_layout">
     <property name="spacing">
      <number>0</number>
     </property>
     <item row="0" column="0">
-     <widget class="QLabel" name="label_7">
+     <widget class="QLabel" name="player2_icon">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -379,7 +264,7 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QLabel" name="label_11">
+     <widget class="QLabel" name="player2_enemy">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -398,7 +283,7 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QLabel" name="label_12">
+     <widget class="QLabel" name="player2_friend">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -417,7 +302,7 @@
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QLabel" name="supplies_5">
+     <widget class="QLabel" name="player2_supplies">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -446,12 +331,12 @@
      <height>291</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="player5layout">
+   <layout class="QGridLayout" name="player5_layout">
     <property name="spacing">
      <number>0</number>
     </property>
     <item row="0" column="0">
-     <widget class="QLabel" name="label_25">
+     <widget class="QLabel" name="plyaer5_icon">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -470,7 +355,7 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QLabel" name="label_26">
+     <widget class="QLabel" name="player5_enemy">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -489,7 +374,7 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QLabel" name="label_27">
+     <widget class="QLabel" name="player5_friend">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -508,7 +393,7 @@
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QLabel" name="supplies_10">
+     <widget class="QLabel" name="plyaer5_supplies">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -537,12 +422,12 @@
      <height>291</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="player6layout">
+   <layout class="QGridLayout" name="player6_layout">
     <property name="spacing">
      <number>0</number>
     </property>
     <item row="0" column="0">
-     <widget class="QLabel" name="label_28">
+     <widget class="QLabel" name="player6_icon">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -561,7 +446,7 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QLabel" name="label_29">
+     <widget class="QLabel" name="player6_enemy">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -580,7 +465,7 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QLabel" name="label_30">
+     <widget class="QLabel" name="player6_friend">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -599,7 +484,7 @@
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QLabel" name="supplies_11">
+     <widget class="QLabel" name="player6_supplies">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -628,12 +513,12 @@
      <height>291</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="player3layout">
+   <layout class="QGridLayout" name="player3_layout">
     <property name="spacing">
      <number>0</number>
     </property>
     <item row="0" column="0">
-     <widget class="QLabel" name="label_31">
+     <widget class="QLabel" name="player3_icon">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -652,7 +537,7 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QLabel" name="label_32">
+     <widget class="QLabel" name="player3_enemy">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -671,7 +556,7 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QLabel" name="label_33">
+     <widget class="QLabel" name="player3_friend">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -690,7 +575,7 @@
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QLabel" name="supplies_12">
+     <widget class="QLabel" name="player3_supplies">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -710,7 +595,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QLabel" name="label_34">
+  <widget class="QLabel" name="supplies">
    <property name="geometry">
     <rect>
      <x>210</x>
@@ -741,26 +626,30 @@
      <x>1180</x>
      <y>350</y>
      <width>112</width>
-     <height>131</height>
+     <height>137</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="navLayout"/>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>1180</x>
-     <y>350</y>
-     <width>112</width>
-     <height>131</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="flat">
-    <bool>true</bool>
-   </property>
+   <layout class="QGridLayout" name="nav_layout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="navigations">
+      <property name="maximumSize">
+       <size>
+        <width>95</width>
+        <height>135</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="images.qrc">:/resources/cards/shirts/navigation.jpg</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QWidget" name="gridLayoutWidget_8">
    <property name="geometry">
@@ -771,7 +660,7 @@
      <height>131</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="gullLayout"/>
+   <layout class="QGridLayout" name="gull_layout"/>
   </widget>
   <zorder>bg</zorder>
   <zorder>horizontalLayoutWidget</zorder>
@@ -781,9 +670,8 @@
   <zorder>gridLayoutWidget_4</zorder>
   <zorder>gridLayoutWidget_5</zorder>
   <zorder>gridLayoutWidget_6</zorder>
-  <zorder>label_34</zorder>
+  <zorder>supplies</zorder>
   <zorder>gridLayoutWidget_7</zorder>
-  <zorder>pushButton</zorder>
   <zorder>gridLayoutWidget_8</zorder>
  </widget>
  <resources>

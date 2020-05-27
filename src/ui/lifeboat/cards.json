@@ -1,70 +1,70 @@
 {
   "cards": [
     {
-      "id": "00",
+      "id": "0",
       "name": "Boatswain",
       "power": 8,
       "survival_bonus": 4,
       "path": ":/resources/cards/characters/boatswain.jpg"
     },
     {
-      "id": "01",
+      "id": "1",
       "name": "Captain",
       "power": 7,
       "survival_bonus": 5,
       "path": ":/resources/cards/characters/captain.jpg"
     },
     {
-      "id": "02",
+      "id": "2",
       "name": "Frenchy",
       "power": 6,
       "survival_bonus": 6,
       "path": ":/resources/cards/characters/frenchy.jpg"
     },
     {
-      "id": "03",
+      "id": "3",
       "name": "Harter",
       "power": 4,
       "survival_bonus": 8,
       "path": ":/resources/cards/characters/harter.jpg"
     },
     {
-      "id": "04",
+      "id": "4",
       "name": "Kid",
       "power": 3,
       "survival_bonus": 9,
       "path": ":/resources/cards/characters/kid.jpg"
     },
     {
-      "id": "05",
+      "id": "5",
       "name": "Lady",
       "power": 4,
       "survival_bonus": 8,
       "path": ":/resources/cards/characters/lady.jpg"
     },
     {
-      "id": "06",
+      "id": "6",
       "name": "Snob",
       "power": 5,
       "survival_bonus": 7,
       "path": ":/resources/cards/characters/snob.jpg"
     },
     {
-      "id": "07",
+      "id": "7",
       "name": "Wong",
       "power": 3,
       "survival_bonus": 9,
       "path": ":/resources/cards/characters/wong.jpg"
     },
     {
-      "id": "08",
+      "id": "8",
       "name": "Boatswain",
       "power": 8,
       "survival_bonus": 4,
       "path": ":/resources/cards/enemies/boatswain.jpg"
     },
     {
-      "id": "09",
+      "id": "9",
       "name": "Captain",
       "power": 7,
       "survival_bonus": 5,

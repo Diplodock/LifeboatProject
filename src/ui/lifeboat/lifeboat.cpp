@@ -22,8 +22,7 @@ void Lifeboat::on__find_game_clicked() {
 }
 
 void Lifeboat::on__new_game_clicked() {
-//    ui->stackedWidget->setCurrentIndex(2);
-    Board* board = new Board(this);
+    auto* board = new Board(this);
     board->show();
 }
 
