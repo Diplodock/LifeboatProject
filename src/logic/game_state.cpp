@@ -97,7 +97,7 @@ std::vector<std::string> GameState::GetAvailableActions() {
 
 void GameState::SetNumberOfSeagulls(int number_of_seagulls) {
     for (auto x : sListeners) {
-        x->notify(number_of_seagulls);
+        x->notify(number_of_seagulls - number_of_seagulls_);
     }
     number_of_seagulls_ = number_of_seagulls;
 }
@@ -235,12 +235,14 @@ GameState::GameState(std::size_t number_of_players)
      {"TryToSwap",
      "TryToTakeGoods",
      "TryToGiveGoods",
-     "Fight"};
+     "Fight",
+     "Example"
+    };
 
     for (std::size_t i = 0; i < 8; i++) {
         AddCharacter(list[0]);
         BoundCardWithId(i, list[i]);
-        for (std::size_t j = 0; j < 4; j++) {
+        for (std::size_t j = 0; j < 5; j++) {
             get_card_using_id_[i]->AddAvailableAction(listAction[j]);
         }
     }
@@ -333,7 +335,7 @@ GameState::GameState(std::size_t number_of_players)
 
     std::vector<int> listSeagull = 
     {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1,
-    0, 0, 0, 1, 0, -1, 1, 0};
+    0, 0, 0, 1, 0, 1, 1, 0};
     std::vector<std::pair<bool, bool>> thirstyFightersRowers = 
     {{0, 0}, {0, 0}, {1, 0}, {0, 1}, {0, 0}, {0, 0}, {1, 1}, {1, 1},
     {1, 0}, {1, 0}, {0, 0}, {0, 0}, {1, 0}, {0, 1}, {1, 1}, {0, 1},
