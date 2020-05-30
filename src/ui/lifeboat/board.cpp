@@ -1,11 +1,10 @@
 #include "board.h"
 #include "ui_board.h"
-#include "clickablelable.h"
 
 Board::Board(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Board),
-    gs(6) {
+    gs(6, this) {
     ui->setupUi(this);
     addBoat();
     std::function<ActionPtr(int, int, int)> constructor1 = [](int a, int b, int c) {
@@ -38,10 +37,15 @@ Board::Board(QWidget *parent) :
         return std::make_unique<Row>(action);
     };
     af.RegisterAction("Row", constructor6);
+
 }
 
 Board::~Board() {
     delete ui;
+}
+
+Ui::Board* Board::getUi() {
+    return ui;
 }
 
 void Board::addCard(ClickableLabel* label, QLayout* lo, const char* path) {
@@ -59,6 +63,8 @@ void Board::addSeagull() {
     seagull->setMaximumHeight(35);
     seagull->setMaximumWidth(35);
     ui->gull_layout->addWidget(seagull);
+    gs.SetNumberOfSeagulls(gs.GetNumberOfSeagulls() + 1);
+    if (gs.GetNumberOfSeagulls() == 4) this->close();
 }
 
 void Board::addBoat() {
@@ -96,8 +102,9 @@ void Board::handleClick() {
 }
 
 void Board::getAction(const std::string& str, int card_id_) {
-    ActionPtr p1 = af.CreateAction(str, player_, card_id_, 0);
-    p1->exec(gs);
+//    ActionPtr p1 = af.CreateAction(str, player_, card_id_, 0);
+//    p1->exec(gs);
+    addSeagull();
 }
 
 void Board::sChange(int counter) {

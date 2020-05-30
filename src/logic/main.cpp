@@ -52,6 +52,4 @@ int main() {
     af.RegisterAction("Example", constructor2);
     ActionPtr a = af.CreateAction("Example", -1, 0, 0);
     a->exec(gs);
-
-
 }
