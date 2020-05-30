@@ -6,13 +6,14 @@
 class GameState;
 
 struct CardOptions {
-    std::string name = "";
+    std::string name;
     std::string description;
-    int owner = -1;
+    int owner;
 };
 
 class Card {
   public:
+    Card();
     std::string GetName() const;
     std::string GetDescription() const;
     virtual int GetOwner() const;

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <functional>
 
 class Board;
 
@@ -11,12 +12,12 @@ class Listener {
 
 class SeagullsListener : public Listener {
   public:
-    SeagullsListener(void (*func)(int numberOfSeagulls, Board* b));
-    void notify(int numberOfSeagulls, Board *b) {
-      callbackFunc(numberOfSeagulls, b);
+    SeagullsListener(std::function<void(int)> func);
+    void notify(int numberOfSeagulls) {
+      callbackFunc(numberOfSeagulls);
     }
     private:
-      void (*callbackFunc)(int numberOfSeagulls, Board *b);
+      std::function<void(int)> callbackFunc;
 };
 
 class AddCardsOnBoardListener : public Listener {

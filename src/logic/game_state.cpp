@@ -11,7 +11,8 @@ extern std::vector<AddPtr> listAdditional;
 extern std::vector<ItemPtr> listWeapon, listUni, listGoods;
 extern std::vector<NavigationPtr> listNav;
 
-
+static Card supplies;
+static Card navigation;
 
 int GameState::GetChosenNav() const {
     return current_choice_[0];
@@ -97,7 +98,7 @@ std::vector<std::string> GameState::GetAvailableActions() {
 
 void GameState::SetNumberOfSeagulls(int number_of_seagulls) {
     for (auto x : sListeners) {
-        x->notify(number_of_seagulls - number_of_seagulls_, b_);
+        x->notify(number_of_seagulls - number_of_seagulls_);
     }
     number_of_seagulls_ = number_of_seagulls;
 }
@@ -223,8 +224,8 @@ int GameState::GetSizeOfChoice() const {
     return current_choice_.size();
 }
 
-GameState::GameState(std::size_t number_of_players, Board* b)
-    : number_of_players_(number_of_players), b_(b)
+GameState::GameState(std::size_t number_of_players)
+    : number_of_players_(number_of_players)
 {
     std::random_device rd;
     std::mt19937 mersenne(rd());
@@ -367,6 +368,11 @@ GameState::GameState(std::size_t number_of_players, Board* b)
         not_used_navigation_cards_[i] = not_used_navigation_cards_[j];
         not_used_navigation_cards_[j] = swaped;
     }
+    supplies.AddAvailableAction("TakeItemsAction");
+    supplies.AddAvailableAction("TakeNavigationCard");
+    BoundCardWithId(98, std::make_shared<Card>(supplies));
+    BoundCardWithId(99, std::make_shared<Card>(navigation));
+ 
     
 }
 
