@@ -4,7 +4,7 @@
 Board::Board(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Board),
-    gs(6, this) {
+    gs(6) {
     ui->setupUi(this);
     addBoat();
     std::function<ActionPtr(int, int, int)> constructor1 = [](int a, int b, int c) {
@@ -37,15 +37,15 @@ Board::Board(QWidget *parent) :
         return std::make_unique<Row>(action);
     };
     af.RegisterAction("Row", constructor6);
-
+    std::function<void()> func = [&]() {
+        addSeagull();
+    };
+    auto *seag = new SeagullsListener(func);
+    gs.AddSListener(std::make_shared<SeagullsListener>(*seag));
 }
 
 Board::~Board() {
     delete ui;
-}
-
-Ui::Board* Board::getUi() {
-    return ui;
 }
 
 void Board::addCard(ClickableLabel* label, QLayout* lo, const char* path) {
@@ -63,29 +63,44 @@ void Board::addSeagull() {
     seagull->setMaximumHeight(35);
     seagull->setMaximumWidth(35);
     ui->gull_layout->addWidget(seagull);
-    gs.SetNumberOfSeagulls(gs.GetNumberOfSeagulls() + 1);
-    if (gs.GetNumberOfSeagulls() == 4) this->close();
+}
+
+void Board::moveCard(int card_id) {
+
 }
 
 void Board::addBoat() {
+    addCard(map[5], ui->boat_layout,":/resources/cards/characters/lady.jpg");
+    addCard(map[1], ui->boat_layout,":/resources/cards/characters/captain.jpg");
+    addCard(map[2], ui->boat_layout,":/resources/cards/characters/frenchy.jpg");
+    addCard(map[0], ui->boat_layout,":/resources/cards/characters/boatswain.jpg");
+    addCard(map[6], ui->boat_layout,":/resources/cards/characters/snob.jpg");
+    addCard(map[4], ui->boat_layout,":/resources/cards/characters/kid.jpg");
+    addCard(map[98], ui->supplies, ":/resources/cards/shirts/supplies.jpg");
+}
+
+void Board::initializeCards() {
     auto *lady = new ClickableLabel("", this, 5);
     auto *captain = new ClickableLabel("", this, 1);
     auto *frenchy = new ClickableLabel("", this, 2);
-    auto boatswain = new ClickableLabel("", this, 0);
+    auto *boatswain = new ClickableLabel("", this, 0);
     auto *snob = new ClickableLabel("", this, 6);
     auto *kid = new ClickableLabel("", this, 4);
+    auto *supplies = new ClickableLabel("", this, 98);
+    map[5] = lady;
+    map[1] = captain;
+    map[2] = frenchy;
+    map[0] = boatswain;
+    map[6] = snob;
+    map[4] = kid;
+    map[98] = supplies;
     connect(lady, &ClickableLabel::clicked, this, &Board::handleClick);
     connect(captain, &ClickableLabel::clicked, this, &Board::handleClick);
     connect(frenchy, &ClickableLabel::clicked, this, &Board::handleClick);
     connect(boatswain, &ClickableLabel::clicked, this, &Board::handleClick);
     connect(snob, &ClickableLabel::clicked, this, &Board::handleClick);
     connect(kid, &ClickableLabel::clicked, this, &Board::handleClick);
-    addCard(lady, ui->boat_layout,":/resources/cards/characters/lady.jpg");
-    addCard(captain, ui->boat_layout,":/resources/cards/characters/captain.jpg");
-    addCard(frenchy, ui->boat_layout,":/resources/cards/characters/frenchy.jpg");
-    addCard(boatswain, ui->boat_layout,":/resources/cards/characters/boatswain.jpg");
-    addCard(snob, ui->boat_layout,":/resources/cards/characters/snob.jpg");
-    addCard(kid, ui->boat_layout,":/resources/cards/characters/kid.jpg");
+    connect(supplies, &ClickableLabel::clicked, this, &Board::handleClick);
 }
 
 void Board::handleClick() {
@@ -102,9 +117,8 @@ void Board::handleClick() {
 }
 
 void Board::getAction(const std::string& str, int card_id_) {
-//    ActionPtr p1 = af.CreateAction(str, player_, card_id_, 0);
-//    p1->exec(gs);
-    addSeagull();
+    ActionPtr p1 = af.CreateAction(str, player_, card_id_, 0);
+    p1->exec(gs);
 }
 
 void Board::sChange(int counter) {
