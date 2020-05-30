@@ -22,90 +22,90 @@ class SeagullsListener : public Listener {
 
 class AddCardsOnBoardListener : public Listener {
   public:
-    AddCardsOnBoardListener(void (*func)(int id));
+    AddCardsOnBoardListener(std::function<void(int)> func);
     void notify(int id) {
       callbackFunc(id);
     }
   private:
-    void (*callbackFunc)(int id);
+    std::function<void(int id)> callbackFunc;
 };
 
 class RemoveUsedCardListener : public Listener {
   public:
-    RemoveUsedCardListener(void (*func)(int id));
+    RemoveUsedCardListener(std::function<void(int)> func);
     void notify(int id) {
       callbackFunc(id);
     }
   private:
-    void (*callbackFunc)(int id);
+    std::function<void(int id)> callbackFunc;
 };
 
 class RemoveNotUsedCardsListener : public Listener {
   public:
-    RemoveNotUsedCardsListener(void (*func)(std::vector<int> ids));
+    RemoveNotUsedCardsListener(std::function<void(std::vector<int> ids)> func);
     void notify(std::vector<int> ids) {
       callbackFunc(ids);
     }
   private:
-    void (*callbackFunc)(std::vector<int> ids);
+    std::function<void(std::vector<int> ids)> callbackFunc;
 };
 
 class HealthListener : public Listener {
   public:
-    HealthListener(void (*func)(int id, int healthPoints));
+    HealthListener(std::function<void(int, int)> func);
     void notify(int id, int healthPoints) {
       callbackFunc(id, healthPoints);
     }
   private:
-    void (*callbackFunc)(int id, int healthPoints);
+    std::function<void(int, int)> callbackFunc;
 };
 
 class ExhaustedListener : public Listener {
   public:
-    ExhaustedListener(void (*func)(int id, bool is_exhausted));
+    ExhaustedListener(std::function<void(int, int)> func);
     void notify(int id, bool is_exhausted) {
       callbackFunc(id, is_exhausted);
     }
   private:
-    void (*callbackFunc)(int id, bool is_exhausted);
+    std::function<void(int, int)> callbackFunc;
 };
 
 class DeathListener : public Listener {
   public:
-    DeathListener(void (*func)(int id, bool is_dead));
+    DeathListener(std::function<void(int, int)> func);
     void notify(int id, bool is_dead) {
       callbackFunc(id, is_dead);
     }
   private:
-    void (*callbackFunc)(int id, bool is_dead);
+    std::function<void(int, int)> callbackFunc;
 };
 
 class ThirstListener : public Listener {
   public:
-    ThirstListener(void (*func)(int id, bool is_thirsty));
+    ThirstListener(std::function<void(int, int)> func);
     void notify(int id, bool is_thirsty) {
       callbackFunc(id, is_thirsty);
     }
   private:
-    void (*callbackFunc)(int id, bool is_thirsty);
+    std::function<void(int, int)> callbackFunc;
 };
 
 class OutboardListener : public Listener {
   public:
-    OutboardListener(void (*func)(int id));
+    OutboardListener(std::function<void(int)> func);
     void notify(int id) {
       callbackFunc(id);
     }
   private:
-    void (*callbackFunc)(int id);
+    std::function<void(int id)> callbackFunc;
 };
 
 class TurnListener : public Listener {
   public:
-    TurnListener(void (*func)(int id));
+    TurnListener(std::function<void(int)> func);
     void notify(int id) {
       callbackFunc(id);
     }
   private:
-    void (*callbackFunc)(int id);
+    std::function<void(int id)> callbackFunc;
 };
