@@ -98,7 +98,7 @@ std::vector<std::string> GameState::GetAvailableActions() {
 
 void GameState::SetNumberOfSeagulls(int number_of_seagulls) {
     for (auto x : sListeners) {
-        x->notify(number_of_seagulls - number_of_seagulls_);
+        x->notify();
     }
     number_of_seagulls_ = number_of_seagulls;
 }
@@ -369,7 +369,7 @@ GameState::GameState(std::size_t number_of_players)
         not_used_navigation_cards_[j] = swaped;
     }
     supplies.AddAvailableAction("TakeItemsAction");
-    supplies.AddAvailableAction("TakeNavigationCard");
+    navigation.AddAvailableAction("TakeNavigationCard");
     BoundCardWithId(98, std::make_shared<Card>(supplies));
     BoundCardWithId(99, std::make_shared<Card>(navigation));
  

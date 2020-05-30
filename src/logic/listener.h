@@ -12,12 +12,12 @@ class Listener {
 
 class SeagullsListener : public Listener {
   public:
-    SeagullsListener(std::function<void(int)> func);
-    void notify(int numberOfSeagulls) {
-      callbackFunc(numberOfSeagulls);
+    SeagullsListener(std::function<void()> func);
+    void notify() {
+      callbackFunc();
     }
     private:
-      std::function<void(int)> callbackFunc;
+      std::function<void()> callbackFunc;
 };
 
 class AddCardsOnBoardListener : public Listener {

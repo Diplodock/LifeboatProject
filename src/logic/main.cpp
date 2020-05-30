@@ -16,19 +16,19 @@
 class Vot {
 public:
     Vot(GameState &gs) : gs_(gs){}
-    static void add(int a);
+    static void add();
 
     void setseagul();
     GameState &gs_;
 };
 
-void Vot::add(int a) {
+void Vot::add() {
     std::cout << "added";
 }
 
 void Vot::setseagul() {
-    std::function<void(int)> func = [](int a) {
-        add(a);
+    std::function<void()> func = []() {
+        add();
     };
     SeagullsListener *seag = new SeagullsListener(func);
     gs_.AddSListener(std::make_shared<SeagullsListener>(*seag));

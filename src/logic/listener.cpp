@@ -1,6 +1,6 @@
 #include "listener.h"
 
-SeagullsListener::SeagullsListener(std::function<void(int)> func) 
+SeagullsListener::SeagullsListener(std::function<void()> func) 
     : callbackFunc(func) {}
 
 AddCardsOnBoardListener::AddCardsOnBoardListener(void (*func)(int id))
