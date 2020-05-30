@@ -53,7 +53,7 @@
    <property name="geometry">
     <rect>
      <x>100</x>
-     <y>30</y>
+     <y>-50</y>
      <width>211</width>
      <height>291</height>
     </rect>
@@ -74,45 +74,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/character.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLabel" name="player1_enemy">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/enemy.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="player1_friend">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/friend.jpg</pixmap>
+       <pixmap resource="images.qrc">:/resources/cards/characters/lady.jpg</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -144,7 +106,7 @@
    <property name="geometry">
     <rect>
      <x>110</x>
-     <y>500</y>
+     <y>570</y>
      <width>211</width>
      <height>291</height>
     </rect>
@@ -165,45 +127,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/character.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLabel" name="player4_enemy">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/enemy.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="player4_friend">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/friend.jpg</pixmap>
+       <pixmap resource="images.qrc">:/resources/cards/characters/boatswain.jpg</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -235,7 +159,7 @@
    <property name="geometry">
     <rect>
      <x>580</x>
-     <y>30</y>
+     <y>-50</y>
      <width>211</width>
      <height>291</height>
     </rect>
@@ -256,45 +180,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/character.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLabel" name="player2_enemy">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/enemy.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="player2_friend">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/friend.jpg</pixmap>
+       <pixmap resource="images.qrc">:/resources/cards/characters/captain.jpg</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -326,7 +212,7 @@
    <property name="geometry">
     <rect>
      <x>590</x>
-     <y>500</y>
+     <y>570</y>
      <width>211</width>
      <height>291</height>
     </rect>
@@ -347,45 +233,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/character.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLabel" name="player5_enemy">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/enemy.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="player5_friend">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/friend.jpg</pixmap>
+       <pixmap resource="images.qrc">:/resources/cards/characters/snob.jpg</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -417,7 +265,7 @@
    <property name="geometry">
     <rect>
      <x>1070</x>
-     <y>500</y>
+     <y>570</y>
      <width>211</width>
      <height>291</height>
     </rect>
@@ -426,63 +274,6 @@
     <property name="spacing">
      <number>0</number>
     </property>
-    <item row="0" column="0">
-     <widget class="QLabel" name="player6_icon">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/character.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLabel" name="player6_enemy">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/enemy.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="player6_friend">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/friend.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="1">
      <widget class="QLabel" name="player6_supplies">
       <property name="maximumSize">
@@ -502,13 +293,32 @@
       </property>
      </widget>
     </item>
+    <item row="0" column="0">
+     <widget class="QLabel" name="player6_icon">
+      <property name="maximumSize">
+       <size>
+        <width>95</width>
+        <height>135</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="images.qrc">:/resources/cards/characters/kid.jpg</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
   <widget class="QWidget" name="gridLayoutWidget_6">
    <property name="geometry">
     <rect>
      <x>1060</x>
-     <y>30</y>
+     <y>-50</y>
      <width>211</width>
      <height>291</height>
     </rect>
@@ -529,45 +339,7 @@
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/character.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="1">
-     <widget class="QLabel" name="player3_enemy">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/enemy.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0">
-     <widget class="QLabel" name="player3_friend">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/friend.jpg</pixmap>
+       <pixmap resource="images.qrc">:/resources/cards/characters/frenchy.jpg</pixmap>
       </property>
       <property name="scaledContents">
        <bool>true</bool>
@@ -594,31 +366,6 @@
      </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QLabel" name="supplies">
-   <property name="geometry">
-    <rect>
-     <x>210</x>
-     <y>350</y>
-     <width>95</width>
-     <height>135</height>
-    </rect>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>95</width>
-     <height>135</height>
-    </size>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-   <property name="pixmap">
-    <pixmap resource="images.qrc">:/resources/cards/shirts/supplies.jpg</pixmap>
-   </property>
-   <property name="scaledContents">
-    <bool>true</bool>
-   </property>
   </widget>
   <widget class="QWidget" name="gridLayoutWidget_7">
    <property name="geometry">
@@ -662,6 +409,28 @@
    </property>
    <layout class="QGridLayout" name="gull_layout"/>
   </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget_2">
+   <property name="geometry">
+    <rect>
+     <x>309</x>
+     <y>489</y>
+     <width>861</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="game_layout"/>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_9">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>340</y>
+     <width>111</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="supplies"/>
+  </widget>
   <zorder>bg</zorder>
   <zorder>horizontalLayoutWidget</zorder>
   <zorder>gridLayoutWidget</zorder>
@@ -670,9 +439,10 @@
   <zorder>gridLayoutWidget_4</zorder>
   <zorder>gridLayoutWidget_5</zorder>
   <zorder>gridLayoutWidget_6</zorder>
-  <zorder>supplies</zorder>
   <zorder>gridLayoutWidget_7</zorder>
   <zorder>gridLayoutWidget_8</zorder>
+  <zorder>horizontalLayoutWidget_2</zorder>
+  <zorder>gridLayoutWidget_9</zorder>
  </widget>
  <resources>
   <include location="images.qrc"/>

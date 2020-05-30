@@ -67,4 +67,6 @@ add_library(logic
         weapon.h
         universal.cpp
         universal.h
+        listener.cpp
+        listener.h
         )
