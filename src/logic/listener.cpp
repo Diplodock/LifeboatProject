@@ -3,29 +3,29 @@
 SeagullsListener::SeagullsListener(std::function<void()> func) 
     : callbackFunc(func) {}
 
-AddCardsOnBoardListener::AddCardsOnBoardListener(void (*func)(int id))
+AddCardsOnBoardListener::AddCardsOnBoardListener(std::function<void(int)> func)
     : callbackFunc(func) {}
 
-RemoveUsedCardListener::RemoveUsedCardListener(void (*func)(int id))
+RemoveUsedCardListener::RemoveUsedCardListener(std::function<void(int)> func)
     : callbackFunc(func) {}
 
-RemoveNotUsedCardsListener::RemoveNotUsedCardsListener(void (*func)(std::vector<int> ids))
+RemoveNotUsedCardsListener::RemoveNotUsedCardsListener(std::function<void(std::vector<int> ids)> func)
     : callbackFunc(func) {}
 
-HealthListener::HealthListener(void (*func)(int id, int healthPoints))
+HealthListener::HealthListener(std::function<void(int, int)> func)
     : callbackFunc(func) {}
 
-ExhaustedListener::ExhaustedListener(void (*func)(int id, bool is_exhausted))
+ExhaustedListener::ExhaustedListener(std::function<void(int, int)> func)
     : callbackFunc(func) {}
 
-DeathListener::DeathListener(void (*func)(int id, bool is_dead))
+DeathListener::DeathListener(std::function<void(int, int)> func)
     : callbackFunc(func) {}
 
-ThirstListener::ThirstListener(void (*func)(int id, bool is_thirsty))
+ThirstListener::ThirstListener(std::function<void(int, int)> func)
     : callbackFunc(func) {}
 
-OutboardListener::OutboardListener(void (*func)(int id))
+OutboardListener::OutboardListener(std::function<void(int)> func)
     : callbackFunc(func) {}
 
-TurnListener::TurnListener(void (*func)(int id))
+TurnListener::TurnListener(std::function<void(int)> func)
     : callbackFunc(func) {}
