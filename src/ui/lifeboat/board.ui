@@ -38,324 +38,6 @@
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QWidget" name="gridLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>100</x>
-     <y>-50</y>
-     <width>211</width>
-     <height>291</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="player1_layout">
-    <property name="spacing">
-     <number>0</number>
-    </property>
-    <item row="0" column="0">
-     <widget class="QLabel" name="player1_icon">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/characters/lady.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLabel" name="player1_supplies">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/supplies.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="gridLayoutWidget_3">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>640</y>
-     <width>211</width>
-     <height>291</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="player4_layout">
-    <property name="spacing">
-     <number>0</number>
-    </property>
-    <item row="0" column="0">
-     <widget class="QLabel" name="plyaer4_icon">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/characters/boatswain.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLabel" name="player4_supplies">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/supplies.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="gridLayoutWidget_2">
-   <property name="geometry">
-    <rect>
-     <x>580</x>
-     <y>-50</y>
-     <width>211</width>
-     <height>291</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="player2_layout">
-    <property name="spacing">
-     <number>0</number>
-    </property>
-    <item row="0" column="0">
-     <widget class="QLabel" name="player2_icon">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/characters/captain.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLabel" name="player2_supplies">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/supplies.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="gridLayoutWidget_4">
-   <property name="geometry">
-    <rect>
-     <x>590</x>
-     <y>640</y>
-     <width>211</width>
-     <height>291</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="player5_layout">
-    <property name="spacing">
-     <number>0</number>
-    </property>
-    <item row="0" column="0">
-     <widget class="QLabel" name="plyaer5_icon">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/characters/snob.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLabel" name="plyaer5_supplies">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/supplies.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="gridLayoutWidget_5">
-   <property name="geometry">
-    <rect>
-     <x>1070</x>
-     <y>640</y>
-     <width>211</width>
-     <height>291</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="player6_layout">
-    <property name="spacing">
-     <number>0</number>
-    </property>
-    <item row="0" column="1">
-     <widget class="QLabel" name="player6_supplies">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/supplies.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QLabel" name="player6_icon">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/characters/kid.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="gridLayoutWidget_6">
-   <property name="geometry">
-    <rect>
-     <x>1060</x>
-     <y>-50</y>
-     <width>211</width>
-     <height>291</height>
-    </rect>
-   </property>
-   <layout class="QGridLayout" name="player3_layout">
-    <property name="spacing">
-     <number>0</number>
-    </property>
-    <item row="0" column="0">
-     <widget class="QLabel" name="player3_icon">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/characters/frenchy.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QLabel" name="player3_supplies">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/supplies.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
   <widget class="QWidget" name="gridLayoutWidget_7">
    <property name="geometry">
     <rect>
@@ -382,7 +64,7 @@
    <property name="geometry">
     <rect>
      <x>310</x>
-     <y>560</y>
+     <y>550</y>
      <width>861</width>
      <height>151</height>
     </rect>
@@ -1054,6 +736,203 @@
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="QWidget" name="gridLayoutWidget_16">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>370</y>
+     <width>111</width>
+     <height>141</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="button_layout"/>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>40</y>
+     <width>251</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="player0_layout">
+    <item>
+     <widget class="QLabel" name="plyaer0_icon">
+      <property name="maximumSize">
+       <size>
+        <width>95</width>
+        <height>135</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="images.qrc">:/resources/cards/characters/lady.jpg</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget_3">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>40</y>
+     <width>251</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="player1_layout">
+    <item>
+     <widget class="QLabel" name="plyaer1_icon_3">
+      <property name="maximumSize">
+       <size>
+        <width>95</width>
+        <height>135</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="images.qrc">:/resources/cards/characters/captain.jpg</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget_4">
+   <property name="geometry">
+    <rect>
+     <x>1000</x>
+     <y>40</y>
+     <width>251</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="player2_layout">
+    <item>
+     <widget class="QLabel" name="plyaer2_icon_4">
+      <property name="maximumSize">
+       <size>
+        <width>95</width>
+        <height>135</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="images.qrc">:/resources/cards/characters/frenchy.jpg</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget_5">
+   <property name="geometry">
+    <rect>
+     <x>1000</x>
+     <y>710</y>
+     <width>251</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="player5_layout">
+    <item>
+     <widget class="QLabel" name="player5_icon">
+      <property name="maximumSize">
+       <size>
+        <width>95</width>
+        <height>135</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="images.qrc">:/resources/cards/characters/kid.jpg</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget_6">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>710</y>
+     <width>251</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="player4_layout">
+    <item>
+     <widget class="QLabel" name="player4_icon">
+      <property name="maximumSize">
+       <size>
+        <width>95</width>
+        <height>135</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="images.qrc">:/resources/cards/characters/snob.jpg</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="horizontalLayoutWidget_7">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>710</y>
+     <width>251</width>
+     <height>161</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="player3_layout">
+    <item>
+     <widget class="QLabel" name="player3_icon">
+      <property name="maximumSize">
+       <size>
+        <width>95</width>
+        <height>135</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="images.qrc">:/resources/cards/characters/boatswain.jpg</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
   <zorder>bg</zorder>
   <zorder>cur_player_5</zorder>
   <zorder>cur_player_3</zorder>
@@ -1061,12 +940,6 @@
   <zorder>cur_player_1</zorder>
   <zorder>cur_player_2</zorder>
   <zorder>cur_player_0</zorder>
-  <zorder>gridLayoutWidget</zorder>
-  <zorder>gridLayoutWidget_3</zorder>
-  <zorder>gridLayoutWidget_2</zorder>
-  <zorder>gridLayoutWidget_4</zorder>
-  <zorder>gridLayoutWidget_5</zorder>
-  <zorder>gridLayoutWidget_6</zorder>
   <zorder>gridLayoutWidget_7</zorder>
   <zorder>gridLayoutWidget_8</zorder>
   <zorder>horizontalLayoutWidget_2</zorder>
@@ -1101,6 +974,13 @@
   <zorder>exhaust_0</zorder>
   <zorder>exhaust_5</zorder>
   <zorder>exhaust_3</zorder>
+  <zorder>gridLayoutWidget_16</zorder>
+  <zorder>horizontalLayoutWidget</zorder>
+  <zorder>horizontalLayoutWidget_3</zorder>
+  <zorder>horizontalLayoutWidget_4</zorder>
+  <zorder>horizontalLayoutWidget_5</zorder>
+  <zorder>horizontalLayoutWidget_6</zorder>
+  <zorder>horizontalLayoutWidget_7</zorder>
  </widget>
  <resources>
   <include location="images.qrc"/>

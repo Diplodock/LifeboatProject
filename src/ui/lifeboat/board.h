@@ -42,7 +42,7 @@ private:
     void markDead(int id, bool b);
     void markThirsty(int id, bool b);
     void markExhaust(int id, bool b);
-    void markCurPlayer(int id);
+    void markCurPlayer(int prev_id, int cur_id);
     void sChange(int counter);
     void addCard(int id);
     void remUsed(int id);
@@ -60,7 +60,8 @@ private:
     int player_ = -1;
 
 public slots:
-    void handleClick();
+    void handleActionClick();
+    void handleInvClick();
     void getAction(const std::string& str, int card_id_);
 };
 #endif // BOARD_H

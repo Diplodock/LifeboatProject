@@ -12,6 +12,11 @@ Board::Board(QWidget *parent) :
     initializeMarks();
     initializePos();
     addBoat();
+    map[104]->setPixmap(QPixmap(":/resources/button.png"));
+    map[104]->setScaledContents(true);
+    map[104]->setMaximumHeight(60);
+    map[104]->setMaximumWidth(60);
+    ui->button_layout->addWidget(map[104]);
     std::function<ActionPtr(int, int, int)> constructor1 = [](int a, int b, int c) {
         TakeItemsAction action(a, b, c);
         return std::make_unique<TakeItemsAction>(action);
@@ -54,14 +59,34 @@ Board::Board(QWidget *parent) :
     std::function<void(std::vector<int> ids)> func4 = [&](const std::vector<int>& ids) {
         for (int x : ids) removeCard(x);
     };
-    auto *seag = new SeagullsListener(func);
-    auto *cardsonboard = new AddCardsOnBoardListener(func2);
-    auto *remusedcard = new RemoveUsedCardListener(func3);
-    auto *remnotusedcard = new RemoveNotUsedCardsListener(func4);
-    gs.AddSListener(std::make_shared<SeagullsListener>(*seag));
-    gs.AddAddListener(std::make_shared<AddCardsOnBoardListener>(*cardsonboard));
-    gs.AddRemUsedListener(std::make_shared<RemoveUsedCardListener>(*remusedcard));
-    gs.AddRemNotUsedListener(std::make_shared<RemoveNotUsedCardsListener>(*remnotusedcard));
+    std::function<void(int, int)> func5 = [&](int id, int hp) {
+        hpChange(id, hp);
+    };
+    std::function<void(int, int)> func6 = [&](int id, bool b) {
+        markExhaust(id, b);
+    };
+    std::function<void(int, int)> func7 = [&](int id, bool b) {
+        markThirsty(id, b);
+    };
+    std::function<void(int, int)> func8 = [&](int id, bool b) {
+        markDead(id, b);
+    };
+    auto *sListener = new SeagullsListener(func);
+    auto *cardsOnBoardListener = new AddCardsOnBoardListener(func2);
+    auto *remUsedCardListener = new RemoveUsedCardListener(func3);
+    auto *remNotUsedCardListener = new RemoveNotUsedCardsListener(func4);
+    auto *hListener = new HealthListener(func5);
+    auto *exListener = new ExhaustedListener(func6);
+    auto *thirstListener = new ThirstListener(func7);
+    auto *deathListener = new DeathListener(func8);
+    gs.AddSListener(std::make_shared<SeagullsListener>(*sListener));
+    gs.AddAddListener(std::make_shared<AddCardsOnBoardListener>(*cardsOnBoardListener));
+    gs.AddRemUsedListener(std::make_shared<RemoveUsedCardListener>(*remUsedCardListener));
+    gs.AddRemNotUsedListener(std::make_shared<RemoveNotUsedCardsListener>(*remNotUsedCardListener));
+    gs.AddHealthListener(std::make_shared<HealthListener>(*hListener));
+    gs.AddEListener(std::make_shared<ExhaustedListener>(*exListener));
+    gs.AddTListener(std::make_shared<ThirstListener>(*thirstListener));
+    gs.AddDListener(std::make_shared<DeathListener>(*deathListener));
 }
 
 Board::~Board() {
@@ -104,6 +129,8 @@ void Board::hpChange(int id, int hp) {
             ui->hp_4->display(hp);
         case 5:
             ui->hp_5->display(hp);
+        default:
+            return;
     }
 }
 
@@ -120,6 +147,12 @@ void Board::addBoat() {
     addCard(map[4], ui->player_5,j["cards"][4]["path"]);
     addCard(map[98], ui->supplies, j["cards"][98]["path"]);
     addCard(map[99], ui->nav_layout, j["cards"][99]["path"]);
+    addCard(map[105], ui->player0_layout,j["cards"][98]["path"]);
+    addCard(map[106], ui->player1_layout,j["cards"][98]["path"]);
+    addCard(map[107], ui->player2_layout,j["cards"][98]["path"]);
+    addCard(map[108], ui->player3_layout,j["cards"][98]["path"]);
+    addCard(map[109], ui->player4_layout, j["cards"][98]["path"]);
+    addCard(map[110], ui->player5_layout, j["cards"][98]["path"]);
 }
 
 void Board::markDead(int id, bool b) {
@@ -195,30 +228,61 @@ void Board::markExhaust(int id, bool b) {
     }
 }
 
-void Board::markCurPlayer(int id) {
-//    int player_pos = pos[id];
-//    switch (player_pos) {
-//        case 0:
-//            if (b) ui->exhaust_0->show();
-//            if (!b) ui->exhaust_0->hide();
-//        case 1:
-//            if (b) ui->exhaust_1->show();
-//            if (!b) ui->exhaust_1->hide();
-//        case 2:
-//            if (b) ui->exhaust_2->show();
-//            if (!b) ui->exhaust_2->hide();
-//        case 3:
-//            if (b) ui->exhaust_3->show();
-//            if (!b) ui->exhaust_3->hide();
-//        case 4:
-//            if (b) ui->exhaust_4->show();
-//            if (!b) ui->exhaust_4->hide();
-//        case 5:
-//            if (b) ui->exhaust_5->show();
-//            if (!b) ui->exhaust_5->hide();
-//        default:
-//            return;
-//    }
+void Board::markCurPlayer(int prev_id, int cur_id) {
+    int player_prev_pos = pos[prev_id];
+    int player_cur_pos = pos[cur_id];
+    switch (player_cur_pos) {
+        case 0:
+            ui->cur_player_0->show();
+            if (player_prev_pos == 0) ui->cur_player_0->hide();
+            if (player_prev_pos == 1) ui->cur_player_1->hide();
+            if (player_prev_pos == 2) ui->cur_player_2->hide();
+            if (player_prev_pos == 3) ui->cur_player_3->hide();
+            if (player_prev_pos == 4) ui->cur_player_4->hide();
+            if (player_prev_pos == 5) ui->cur_player_5->hide();
+        case 1:
+            ui->cur_player_1->show();
+            if (player_prev_pos == 0) ui->cur_player_0->hide();
+            if (player_prev_pos == 1) ui->cur_player_1->hide();
+            if (player_prev_pos == 2) ui->cur_player_2->hide();
+            if (player_prev_pos == 3) ui->cur_player_3->hide();
+            if (player_prev_pos == 4) ui->cur_player_4->hide();
+            if (player_prev_pos == 5) ui->cur_player_5->hide();
+        case 2:
+            ui->cur_player_2->show();
+            if (player_prev_pos == 0) ui->cur_player_0->hide();
+            if (player_prev_pos == 1) ui->cur_player_1->hide();
+            if (player_prev_pos == 2) ui->cur_player_2->hide();
+            if (player_prev_pos == 3) ui->cur_player_3->hide();
+            if (player_prev_pos == 4) ui->cur_player_4->hide();
+            if (player_prev_pos == 5) ui->cur_player_5->hide();
+        case 3:
+            ui->cur_player_3->show();
+            if (player_prev_pos == 0) ui->cur_player_0->hide();
+            if (player_prev_pos == 1) ui->cur_player_1->hide();
+            if (player_prev_pos == 2) ui->cur_player_2->hide();
+            if (player_prev_pos == 3) ui->cur_player_3->hide();
+            if (player_prev_pos == 4) ui->cur_player_4->hide();
+            if (player_prev_pos == 5) ui->cur_player_5->hide();
+        case 4:
+            ui->cur_player_4->show();
+            if (player_prev_pos == 0) ui->cur_player_0->hide();
+            if (player_prev_pos == 1) ui->cur_player_1->hide();
+            if (player_prev_pos == 2) ui->cur_player_2->hide();
+            if (player_prev_pos == 3) ui->cur_player_3->hide();
+            if (player_prev_pos == 4) ui->cur_player_4->hide();
+            if (player_prev_pos == 5) ui->cur_player_5->hide();
+        case 5:
+            ui->cur_player_5->show();
+            if (player_prev_pos == 0) ui->cur_player_0->hide();
+            if (player_prev_pos == 1) ui->cur_player_1->hide();
+            if (player_prev_pos == 2) ui->cur_player_2->hide();
+            if (player_prev_pos == 3) ui->cur_player_3->hide();
+            if (player_prev_pos == 4) ui->cur_player_4->hide();
+            if (player_prev_pos == 5) ui->cur_player_5->hide();
+        default:
+            return;
+    }
 }
 
 void Board::initializeCards() {
@@ -304,6 +368,13 @@ void Board::initializeCards() {
     auto *nav27 = new ClickableLabel("", this, 95);
     auto *nav28 = new ClickableLabel("", this, 96);
     auto *nav29 = new ClickableLabel("", this, 97);
+    auto *but = new ClickableLabel("", this, 104);
+    auto *inv0 = new ClickableLabel("", this, 105);
+    auto *inv1 = new ClickableLabel("", this, 106);
+    auto *inv2 = new ClickableLabel("", this, 107);
+    auto *inv3 = new ClickableLabel("", this, 108);
+    auto *inv4 = new ClickableLabel("", this, 109);
+    auto *inv5 = new ClickableLabel("", this, 110);
     map[5] = lady;
     map[1] = captain;
     map[2] = frenchy;
@@ -386,88 +457,102 @@ void Board::initializeCards() {
     map[95] = nav27;
     map[96] = nav28;
     map[97] = nav29;
-    connect(lady, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(captain, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(frenchy, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(boatswain, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(snob, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(kid, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(supplies, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(navigation, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(compass, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(cannibalism, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(vodka, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(paddle1, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(paddle2, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(flaregun, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(harpoon, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(knife, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(club, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(painting1, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(painting2, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(painting3, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(money1, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(money2, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(money3, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(money4, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(money5, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(money6, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(jewelry1, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(jewelry2, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(jewelry3, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(water1, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(water2, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(water3, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(water4, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(water5, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(water6, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(water7, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(water8, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(water9, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(water10, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(water11, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(water12, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(water13, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(water14, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(water15, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(water16, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(water17, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(umbrella, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(trap1, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(trap2, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(medkit1, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(medkit2, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(medkit3, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(lifebouy, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav1, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav2, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav3, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav4, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav5, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav6, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav7, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav8, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav9, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav10, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav11, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav12, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav13, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav14, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav15, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav16, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav17, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav18, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav19, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav20, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav21, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav22, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav23, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav24, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav25, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav26, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav27, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav28, &ClickableLabel::clicked, this, &Board::handleClick);
-    connect(nav29, &ClickableLabel::clicked, this, &Board::handleClick);
+    map[104] = but;
+    map[105] = inv0;
+    map[106] = inv1;
+    map[107] = inv2;
+    map[108] = inv3;
+    map[109] = inv4;
+    map[110] = inv5;
+    connect(lady, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(captain, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(frenchy, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(boatswain, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(snob, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(kid, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(supplies, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(navigation, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(compass, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(cannibalism, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(vodka, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(paddle1, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(paddle2, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(flaregun, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(harpoon, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(knife, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(club, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(painting1, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(painting2, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(painting3, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(money1, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(money2, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(money3, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(money4, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(money5, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(money6, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(jewelry1, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(jewelry2, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(jewelry3, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(water1, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(water2, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(water3, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(water4, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(water5, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(water6, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(water7, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(water8, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(water9, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(water10, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(water11, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(water12, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(water13, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(water14, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(water15, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(water16, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(water17, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(umbrella, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(trap1, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(trap2, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(medkit1, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(medkit2, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(medkit3, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(lifebouy, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav1, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav2, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav3, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav4, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav5, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav6, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav7, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav8, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav9, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav10, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav11, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav12, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav13, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav14, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav15, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav16, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav17, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav18, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav19, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav20, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav21, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav22, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav23, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav24, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav25, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav26, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav27, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav28, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(nav29, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(but, &ClickableLabel::clicked, this, &Board::handleActionClick);
+    connect(inv0, &ClickableLabel::clicked, this, &Board::handleInvClick);
+    connect(inv1, &ClickableLabel::clicked, this, &Board::handleInvClick);
+    connect(inv2, &ClickableLabel::clicked, this, &Board::handleInvClick);
+    connect(inv3, &ClickableLabel::clicked, this, &Board::handleInvClick);
+    connect(inv4, &ClickableLabel::clicked, this, &Board::handleInvClick);
+    connect(inv5, &ClickableLabel::clicked, this, &Board::handleInvClick);
 }
 
 void Board::initializeMarks() {
@@ -506,8 +591,7 @@ void Board::initializePos() {
     pos[4] = 5;
 }
 
-
-void Board::handleClick() {
+void Board::handleActionClick() {
     auto* menu = new QMenu( this);
     auto* card = reinterpret_cast<ClickableLabel*>(sender());
     std::vector<std::string> cur = gs.GetAvailableActions(card->id_, player_);
@@ -518,6 +602,34 @@ void Board::handleClick() {
         menu->addAction(act);
     }
     menu->exec(QCursor::pos());
+}
+
+void Board::handleInvClick() {
+//    auto* menu = new QMenu( this);
+//    auto* card = reinterpret_cast<ClickableLabel*>(sender());
+//    int char_id = -1;
+//    switch (card->id_) {
+//        case 105:
+//            char_id = 5;
+//        case 106:
+//            char_id = 1;
+//        case 107:
+//            char_id = 2;
+//        case 108:
+//            char_id = 0;
+//        case 109:
+//            char_id = 6;
+//        case 110:
+//            char_id = 4;
+//    }
+//    std::vector<std::string> cur = gs.GetBackpack(char_id);
+//    for (const std::string& it : cur) {
+//        auto* act = new QAction(QString::fromStdString(it), this);
+//        connect(act, &QAction::triggered, this,
+//                [&] {getAction(it, card->id_);});
+//        menu->addAction(act);
+//    }
+//    menu->exec(QCursor::pos());
 }
 
 void Board::getAction(const std::string& str, int card_id_) {
