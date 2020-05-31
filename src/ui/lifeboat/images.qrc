@@ -86,5 +86,6 @@
         <file>resources/exhausted_icon.png</file>
         <file>resources/thirsty_icon.png</file>
         <file>resources/cur_player.jpg</file>
+        <file>resources/button.png</file>
     </qresource>
 </RCC>

@@ -724,6 +724,11 @@
       "id": "103",
       "name": "Boat",
       "path": ":/resources/cards/shirts/boat.jpg"
+    },
+    {
+      "id": "104",
+      "name": "Button",
+      "path": ":/resources/button.png"
     }
   ]
 }
