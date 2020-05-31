@@ -35,3 +35,6 @@ UmbrellaListener::UmbrellaListener(std::function<void(int, bool)> func)
 
 OwnerListener::OwnerListener(std::function<void(int, int)> func)
     : callbackFunc(func) {}
+
+RoundListener::RoundListener(std::function<void(std::string)> func)
+    : callbackFunc(func) {}

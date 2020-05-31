@@ -129,3 +129,13 @@ class OwnerListener : public Listener {
   private:
     std::function<void(int id, int card)> callbackFunc;
 };
+
+class RoundListener : public Listener {
+  public:
+    RoundListener(std::function<void(std::string)> func);
+    void notify(std::string name) {
+      callbackFunc(name);
+    }
+  private:
+    std::function<void(std::string)> callbackFunc;
+};

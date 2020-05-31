@@ -18,6 +18,7 @@ class Card {
     int GetId() const;
     virtual int GetOwner() const;
     std::vector<std::string> GetAvailableActions(int player, GameState &gs) const;
+    std::string GetSpecificAction() const;
     
     void SetName(std::string new_name);
     void SetDescription(std::string new_description);

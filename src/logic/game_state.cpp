@@ -129,8 +129,8 @@ void GameState::AddTheRestNavigation() {
     }
     for (std::size_t i = 0; i < current_choice_.size(); i++) {
         NavigationPtr current_navigation = std::dynamic_pointer_cast<Navigation>(get_card_using_id_[current_choice_[i]]);
+        current_navigation->RemoveAvailableAction("ChooseNavigationCard");
         not_used_navigation_cards_.push_back(current_navigation);
-        get_card_using_id_[current_choice_[i]]->RemoveAvailableAction("ChooseNavigationCard");
     }
 }
 
@@ -257,9 +257,36 @@ void GameState::FinishRound() {
 }
 
 void GameState::UpdatePart() {
-    if (last_player_ == number_of_players_ - 1) {
-        round_ = (round_ + 1) % 4; 
+    if (last_player_ == number_of_players_ - 1 || round_ == 2) {
+        round_ = (round_ + 1) % 3;
+        if (round_ == 0) {
+            supplies.AddAvailableAction("TakeItemsAction");
+        }
+        else if (round_ == 1) {
+            button.AddAvailableAction("Row");
+            button.AddAvailableAction("Skip");
+        }
+        else {
+            button.RemoveAvailableAction("Row");
+            button.RemoveAvailableAction("Skip");
+            for (auto x : current_choice_) {
+                GetCard(x)->AddAvailableAction("ChooseNavigationCard");
+            }
+        }
+        for (auto x : roundListeners) {
+            x->notify(rounds_[round_]);
+        }
         last_player_ = 0;
+        for (auto x : tuListeners) {
+           x->notify(turn_, 0);
+        }
+        turn_ = 0;
+    }
+    else {
+        turn_++;
+        for (auto x : tuListeners) {
+            x->notify(turn_ - 1, turn_);
+        }
     }
 }
 
@@ -453,4 +480,7 @@ void GameState::AddTuListener(std::shared_ptr<TurnListener> l) {
 }
 void GameState::AddOwnerListener(std::shared_ptr<OwnerListener> l) {
     ownListeners.push_back(l);
+}
+void GameState::AddRoundListener(std::shared_ptr<RoundListener> l) {
+    roundListeners.push_back(l);
 }

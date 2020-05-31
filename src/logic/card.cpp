@@ -30,6 +30,10 @@ std::vector<std::string> Card::GetAvailableActions(int player, GameState &gs) co
     return available_actions_;
 }
 
+std::string Card::GetSpecificAction() const {
+    return specific_action_;
+}
+
 void Card::SetName(std::string new_name) {
     cardOptions_.name = new_name;
 }

@@ -41,7 +41,6 @@ void TakeNavigationCard::exec(GameState& gs) {
     CardPtr card = gs.GetNavigationCard();
     int id = gs.GetIdCard(card);
     gs.AddToChoice(id);
-    card->AddAvailableAction("ChooseNavigationCard");
 }
 
 void ChooseCharacterCard::exec(GameState& gs) {
@@ -57,10 +56,9 @@ void ChooseItem::exec(GameState& gs) {
     CharacterPtr character = current_player->GetCharacter();
     character->AddItem(item, gs);
     gs.GetChosen(id_);
-    // item->RemoveAvailableAction("ChooseItem");
-    // item->RemoveAvailableAction("ChooseItem");
-    // gs.UpdatePart();
-    
+    item->RemoveAvailableAction("ChooseItem");
+    item->AddAvailableAction(item->GetSpecificAction());
+    gs.UpdatePart();
 }
 
 void ChooseNavigationCard::exec(GameState& gs) {
@@ -98,6 +96,7 @@ void ChooseNavigationCard::exec(GameState& gs) {
         character->SetThirst(true, gs);
         character->UpdateState(gs);
     }
+    gs.AddUsedNavigation(nav);
     gs.FinishRound();
     gs.UpdatePart();
 }
@@ -111,6 +110,10 @@ void Row::exec(GameState& gs) {
     CharacterPtr character = current_player->GetCharacter();
     gs.AddCardRowed(character);
     character->SetExhausted(true, gs);
+    gs.UpdatePart();
+}
+
+void Skip::exec(GameState &gs) {
     gs.UpdatePart();
 }
 

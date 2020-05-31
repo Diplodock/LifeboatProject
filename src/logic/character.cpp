@@ -75,6 +75,7 @@ void Character::SetExhausted(bool if_exhausted, GameState &gs) {
 
 void Character::AddItem(ItemPtr item, GameState &gs) {
     gs.NotifyOwner(id_, item->GetId());
+    item->SetOwner(id_);
     backpack_.push_back(item);
 }
 

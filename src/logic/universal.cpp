@@ -16,8 +16,8 @@ void FlareGunCardAction::exec(GameState& gs) {
         int id = gs.GetIdCard(card);
         gs.AddToChoice(id);
     }
-    gs.GetCard(id_)->RemoveAvailableAction("FlareGunCardAction");
-    //gs.AddUsedItem(std::GetCard(id_));
+    CharacterPtr charac = std::dynamic_pointer_cast<Character>(gs.GetCard(gs.GetCard(id_)->GetOwner()));
+    charac->RemoveItem(std::dynamic_pointer_cast<Item>(gs.GetCard(id_)), gs);
 }
 
 // std::unique_ptr<GenericAction> FlareGun::GetAction(int player)  {

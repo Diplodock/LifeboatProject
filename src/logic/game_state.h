@@ -83,6 +83,7 @@ class GameState {
     void AddTListener(std::shared_ptr<ThirstListener> l);
     void AddOListener(std::shared_ptr<OutboardListener> l);
     void AddTuListener(std::shared_ptr<TurnListener> l);
+    void AddRoundListener(std::shared_ptr<RoundListener> l);
 
     void NotifyHealth(int id, int points);
     void NotifyExhausted(int id, bool is);
@@ -104,6 +105,9 @@ class GameState {
     int chosen_navigation_card_;
     int turn_ = 0;
     int round_ = 0;
+    std::vector<std::string> rounds_ = {
+      "Distribution of supplies", "Action time", "Choose navigation card"
+    };
     std::unordered_map<CardPtr, int> get_id_using_card_;
     std::unordered_map<CharacterPtr, int> get_player_using_character_id_;
     std::unordered_map<int, CardPtr> get_card_using_id_;
@@ -131,4 +135,5 @@ class GameState {
     std::vector<std::shared_ptr<ThirstListener>> tListeners;
     std::vector<std::shared_ptr<OutboardListener>> oListeners;
     std::vector<std::shared_ptr<TurnListener>> tuListeners;
+    std::vector<std::shared_ptr<RoundListener>> roundListeners;
 };

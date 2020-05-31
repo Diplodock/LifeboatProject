@@ -62,5 +62,4 @@ int main() {
     for (int x : cur) {
         std::cout << x << '\n';
     }
-
 }
