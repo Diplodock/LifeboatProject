@@ -6,7 +6,11 @@ Board::Board(QWidget *parent) :
     ui(new Ui::Board),
     gs(6) {
     ui->setupUi(this);
+    std::ifstream jsonreader("cards.json");
+    jsonreader >> j;
     initializeCards();
+    initializeMarks();
+    initializePos();
     addBoat();
     std::function<ActionPtr(int, int, int)> constructor1 = [](int a, int b, int c) {
         TakeItemsAction action(a, b, c);
@@ -41,16 +45,31 @@ Board::Board(QWidget *parent) :
     std::function<void()> func = [&]() {
         addSeagull();
     };
+    std::function<void(int)> func2 = [&](int id) {
+        moveCard(id);
+    };
+    std::function<void(int)> func3 = [&](int id) {
+        removeCard(id);
+    };
+    std::function<void(std::vector<int> ids)> func4 = [&](const std::vector<int>& ids) {
+        for (int x : ids) removeCard(x);
+    };
     auto *seag = new SeagullsListener(func);
+    auto *cardsonboard = new AddCardsOnBoardListener(func2);
+    auto *remusedcard = new RemoveUsedCardListener(func3);
+    auto *remnotusedcard = new RemoveNotUsedCardsListener(func4);
     gs.AddSListener(std::make_shared<SeagullsListener>(*seag));
+    gs.AddAddListener(std::make_shared<AddCardsOnBoardListener>(*cardsonboard));
+    gs.AddRemUsedListener(std::make_shared<RemoveUsedCardListener>(*remusedcard));
+    gs.AddRemNotUsedListener(std::make_shared<RemoveNotUsedCardsListener>(*remnotusedcard));
 }
 
 Board::~Board() {
     delete ui;
 }
 
-void Board::addCard(ClickableLabel* label, QLayout* lo, const char* path) {
-    label->setPixmap(QPixmap(path));
+void Board::addCard(ClickableLabel* label, QLayout* lo, const std::string& path) {
+    label->setPixmap(QPixmap(path.c_str()));
     label->setScaledContents(true);
     label->setMaximumHeight(135);
     label->setMaximumWidth(95);
@@ -67,17 +86,139 @@ void Board::addSeagull() {
 }
 
 void Board::moveCard(int card_id) {
+    addCard(map[card_id], ui->game_layout, j["cards"][card_id]["path"]);
+}
 
+void Board::hpChange(int id, int hp) {
+    int player_pos = pos[id];
+    switch (player_pos) {
+        case 0:
+            ui->hp_0->display(hp);
+        case 1:
+            ui->hp_1->display(hp);
+        case 2:
+            ui->hp_2->display(hp);
+        case 3:
+            ui->hp_3->display(hp);
+        case 4:
+            ui->hp_4->display(hp);
+        case 5:
+            ui->hp_5->display(hp);
+    }
+}
+
+void Board::removeCard(int card_id) {
+    map[card_id]->close();
 }
 
 void Board::addBoat() {
-    addCard(map[5], ui->boat_layout,":/resources/cards/characters/lady.jpg");
-    addCard(map[1], ui->boat_layout,":/resources/cards/characters/captain.jpg");
-    addCard(map[2], ui->boat_layout,":/resources/cards/characters/frenchy.jpg");
-    addCard(map[0], ui->boat_layout,":/resources/cards/characters/boatswain.jpg");
-    addCard(map[6], ui->boat_layout,":/resources/cards/characters/snob.jpg");
-    addCard(map[4], ui->boat_layout,":/resources/cards/characters/kid.jpg");
-    addCard(map[98], ui->supplies, ":/resources/cards/shirts/supplies.jpg");
+    addCard(map[5], ui->player_0,j["cards"][5]["path"]);
+    addCard(map[1], ui->player_1,j["cards"][1]["path"]);
+    addCard(map[2], ui->player_2,j["cards"][2]["path"]);
+    addCard(map[0], ui->player_3,j["cards"][0]["path"]);
+    addCard(map[6], ui->player_4,j["cards"][6]["path"]);
+    addCard(map[4], ui->player_5,j["cards"][4]["path"]);
+    addCard(map[98], ui->supplies, j["cards"][98]["path"]);
+    addCard(map[99], ui->nav_layout, j["cards"][99]["path"]);
+}
+
+void Board::markDead(int id, bool b) {
+    (void) b;
+    int player_pos = pos[id];
+    switch (player_pos) {
+        case 0:
+            ui->dead_0->show();
+        case 1:
+            ui->dead_1->show();
+        case 2:
+            ui->dead_2->show();
+        case 3:
+            ui->dead_3->show();
+        case 4:
+            ui->dead_4->show();
+        case 5:
+            ui->dead_5->show();
+        default:
+            return;
+    }
+}
+
+void Board::markThirsty(int id, bool b) {
+    int player_pos = pos[id];
+    switch (player_pos) {
+        case 0:
+            if (b) ui->thirsty_0->show();
+            if (!b) ui->thirsty_0->hide();
+        case 1:
+            if (b) ui->thirsty_1->show();
+            if (!b) ui->thirsty_1->hide();
+        case 2:
+            if (b) ui->thirsty_2->show();
+            if (!b) ui->thirsty_2->hide();
+        case 3:
+            if (b) ui->thirsty_3->show();
+            if (!b) ui->thirsty_3->hide();
+        case 4:
+            if (b) ui->thirsty_4->show();
+            if (!b) ui->thirsty_4->hide();
+        case 5:
+            if (b) ui->thirsty_5->show();
+            if (!b) ui->thirsty_5->hide();
+        default:
+            return;
+    }
+}
+
+void Board::markExhaust(int id, bool b) {
+    int player_pos = pos[id];
+    switch (player_pos) {
+        case 0:
+            if (b) ui->exhaust_0->show();
+            if (!b) ui->exhaust_0->hide();
+        case 1:
+            if (b) ui->exhaust_1->show();
+            if (!b) ui->exhaust_1->hide();
+        case 2:
+            if (b) ui->exhaust_2->show();
+            if (!b) ui->exhaust_2->hide();
+        case 3:
+            if (b) ui->exhaust_3->show();
+            if (!b) ui->exhaust_3->hide();
+        case 4:
+            if (b) ui->exhaust_4->show();
+            if (!b) ui->exhaust_4->hide();
+        case 5:
+            if (b) ui->exhaust_5->show();
+            if (!b) ui->exhaust_5->hide();
+        default:
+            return;
+    }
+}
+
+void Board::markCurPlayer(int id) {
+//    int player_pos = pos[id];
+//    switch (player_pos) {
+//        case 0:
+//            if (b) ui->exhaust_0->show();
+//            if (!b) ui->exhaust_0->hide();
+//        case 1:
+//            if (b) ui->exhaust_1->show();
+//            if (!b) ui->exhaust_1->hide();
+//        case 2:
+//            if (b) ui->exhaust_2->show();
+//            if (!b) ui->exhaust_2->hide();
+//        case 3:
+//            if (b) ui->exhaust_3->show();
+//            if (!b) ui->exhaust_3->hide();
+//        case 4:
+//            if (b) ui->exhaust_4->show();
+//            if (!b) ui->exhaust_4->hide();
+//        case 5:
+//            if (b) ui->exhaust_5->show();
+//            if (!b) ui->exhaust_5->hide();
+//        default:
+//            return;
+//    }
 }
 
 void Board::initializeCards() {
@@ -88,6 +229,7 @@ void Board::initializeCards() {
     auto *snob = new ClickableLabel("", this, 6);
     auto *kid = new ClickableLabel("", this, 4);
     auto *supplies = new ClickableLabel("", this, 98);
+    auto *navigation = new ClickableLabel("", this, 99);
     auto *painting1 = new ClickableLabel("", this, 24);
     auto *painting2 = new ClickableLabel("", this, 25);
     auto *painting3 = new ClickableLabel("", this, 26);
@@ -169,6 +311,7 @@ void Board::initializeCards() {
     map[6] = snob;
     map[4] = kid;
     map[98] = supplies;
+    map[99] = navigation;
     map[24] = painting1;
     map[25] = painting2;
     map[26] = painting3;
@@ -239,10 +382,10 @@ void Board::initializeCards() {
     map[91] = nav23;
     map[92] = nav24;
     map[93] = nav25;
-    map[95] = nav26;
-    map[96] = nav27;
-    map[97] = nav28;
-    map[98] = nav29;
+    map[94] = nav26;
+    map[95] = nav27;
+    map[96] = nav28;
+    map[97] = nav29;
     connect(lady, &ClickableLabel::clicked, this, &Board::handleClick);
     connect(captain, &ClickableLabel::clicked, this, &Board::handleClick);
     connect(frenchy, &ClickableLabel::clicked, this, &Board::handleClick);
@@ -250,6 +393,7 @@ void Board::initializeCards() {
     connect(snob, &ClickableLabel::clicked, this, &Board::handleClick);
     connect(kid, &ClickableLabel::clicked, this, &Board::handleClick);
     connect(supplies, &ClickableLabel::clicked, this, &Board::handleClick);
+    connect(navigation, &ClickableLabel::clicked, this, &Board::handleClick);
     connect(compass, &ClickableLabel::clicked, this, &Board::handleClick);
     connect(cannibalism, &ClickableLabel::clicked, this, &Board::handleClick);
     connect(vodka, &ClickableLabel::clicked, this, &Board::handleClick);
@@ -326,6 +470,43 @@ void Board::initializeCards() {
     connect(nav29, &ClickableLabel::clicked, this, &Board::handleClick);
 }
 
+void Board::initializeMarks() {
+    ui->dead_0->hide();
+    ui->dead_1->hide();
+    ui->dead_2->hide();
+    ui->dead_3->hide();
+    ui->dead_4->hide();
+    ui->dead_5->hide();
+    ui->thirsty_0->hide();
+    ui->thirsty_1->hide();
+    ui->thirsty_2->hide();
+    ui->thirsty_3->hide();
+    ui->thirsty_4->hide();
+    ui->thirsty_5->hide();
+    ui->exhaust_0->hide();
+    ui->exhaust_1->hide();
+    ui->exhaust_2->hide();
+    ui->exhaust_3->hide();
+    ui->exhaust_4->hide();
+    ui->exhaust_5->hide();
+    ui->cur_player_0->hide();
+    ui->cur_player_1->hide();
+    ui->cur_player_2->hide();
+    ui->cur_player_3->hide();
+    ui->cur_player_4->hide();
+    ui->cur_player_5->hide();
+}
+
+void Board::initializePos() {
+    pos[5] = 0;
+    pos[1] = 1;
+    pos[2] = 2;
+    pos[0] = 3;
+    pos[6] = 4;
+    pos[4] = 5;
+}
+
+
 void Board::handleClick() {
     auto* menu = new QMenu( this);
     auto* card = reinterpret_cast<ClickableLabel*>(sender());
@@ -333,7 +514,7 @@ void Board::handleClick() {
     for (const std::string& it : cur) {
         auto* act = new QAction(QString::fromStdString(it), this);
         connect(act, &QAction::triggered, this,
-                [=] {getAction(it, card->id_);});
+                [&] {getAction(it, card->id_);});
         menu->addAction(act);
     }
     menu->exec(QCursor::pos());
@@ -342,45 +523,5 @@ void Board::handleClick() {
 void Board::getAction(const std::string& str, int card_id_) {
     ActionPtr p1 = af.CreateAction(str, player_, card_id_, 0);
     p1->exec(gs);
-}
-
-void Board::sChange(int counter) {
-
-}
-
-void Board::addCard(int id) {
-
-}
-
-void Board::remUsed(int id) {
-
-}
-
-void Board::remNotUsed(std::vector<int> ids) {
-
-}
-
-void Board::hpChange(int id, int hp) {
-
-}
-
-void Board::exChange(int id, bool is) {
-
-}
-
-void Board::dChange(int id, bool is) {
-
-}
-
-void Board::thirstChange(int id, bool is) {
-
-}
-
-void Board::addOutboard(int id) {
-
-}
-
-void Board::turnChange(int id) {
-
 }
 
