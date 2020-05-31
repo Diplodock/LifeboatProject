@@ -64,4 +64,5 @@ void Card::RemoveAvailableAction(std::string action) {
     for (; j < available_actions_.size() - 1; j++) {
         available_actions_[j] = available_actions_[j + 1]; 
     }
+    available_actions_.pop_back();
 }
