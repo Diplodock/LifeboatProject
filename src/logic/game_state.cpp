@@ -278,14 +278,14 @@ void GameState::UpdatePart() {
         }
         last_player_ = 0;
         for (auto x : tuListeners) {
-           x->notify(turn_, 0);
+           x->notify(GetIdCard(GetPlayerUsingPlayerId(turn_)->GetCharacter()), GetIdCard(GetPlayerUsingPlayerId(0)->GetCharacter()));
         }
         turn_ = 0;
     }
     else {
         turn_++;
         for (auto x : tuListeners) {
-            x->notify(turn_ - 1, turn_);
+            x->notify(GetIdCard(GetPlayerUsingPlayerId(turn_ - 1)->GetCharacter()), GetIdCard(GetPlayerUsingPlayerId(turn_)->GetCharacter()));
         }
     }
 }
