@@ -6,8 +6,8 @@ Lifeboat::Lifeboat(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Lifeboat) {
     ui->setupUi(this);
+    QMainWindow::showFullScreen();
 }
-
 
 Lifeboat::~Lifeboat() {
     delete ui;

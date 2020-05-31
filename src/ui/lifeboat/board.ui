@@ -16,17 +16,6 @@
   <property name="styleSheet">
    <string notr="true"/>
   </property>
-  <widget class="QWidget" name="horizontalLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>300</x>
-     <y>290</y>
-     <width>871</width>
-     <height>251</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="boat_layout"/>
-  </widget>
   <widget class="QLabel" name="bg">
    <property name="enabled">
     <bool>true</bool>
@@ -106,7 +95,7 @@
    <property name="geometry">
     <rect>
      <x>110</x>
-     <y>570</y>
+     <y>640</y>
      <width>211</width>
      <height>291</height>
     </rect>
@@ -212,7 +201,7 @@
    <property name="geometry">
     <rect>
      <x>590</x>
-     <y>570</y>
+     <y>640</y>
      <width>211</width>
      <height>291</height>
     </rect>
@@ -265,7 +254,7 @@
    <property name="geometry">
     <rect>
      <x>1070</x>
-     <y>570</y>
+     <y>640</y>
      <width>211</width>
      <height>291</height>
     </rect>
@@ -371,38 +360,18 @@
    <property name="geometry">
     <rect>
      <x>1180</x>
-     <y>350</y>
+     <y>380</y>
      <width>112</width>
      <height>137</height>
     </rect>
    </property>
-   <layout class="QGridLayout" name="nav_layout">
-    <item row="0" column="0">
-     <widget class="QLabel" name="navigations">
-      <property name="maximumSize">
-       <size>
-        <width>95</width>
-        <height>135</height>
-       </size>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap resource="images.qrc">:/resources/cards/shirts/navigation.jpg</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-   </layout>
+   <layout class="QGridLayout" name="nav_layout"/>
   </widget>
   <widget class="QWidget" name="gridLayoutWidget_8">
    <property name="geometry">
     <rect>
      <x>1300</x>
-     <y>350</y>
+     <y>380</y>
      <width>112</width>
      <height>131</height>
     </rect>
@@ -412,8 +381,8 @@
   <widget class="QWidget" name="horizontalLayoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>309</x>
-     <y>489</y>
+     <x>310</x>
+     <y>560</y>
      <width>861</width>
      <height>151</height>
     </rect>
@@ -424,15 +393,674 @@
    <property name="geometry">
     <rect>
      <x>200</x>
-     <y>340</y>
+     <y>370</y>
      <width>111</width>
      <height>151</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="supplies"/>
   </widget>
+  <widget class="QLCDNumber" name="hp_0">
+   <property name="geometry">
+    <rect>
+     <x>355</x>
+     <y>340</y>
+     <width>64</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="value" stdset="0">
+    <double>100.000000000000000</double>
+   </property>
+  </widget>
+  <widget class="QLCDNumber" name="hp_1">
+   <property name="geometry">
+    <rect>
+     <x>495</x>
+     <y>340</y>
+     <width>64</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="value" stdset="0">
+    <double>100.000000000000000</double>
+   </property>
+  </widget>
+  <widget class="QLCDNumber" name="hp_2">
+   <property name="geometry">
+    <rect>
+     <x>635</x>
+     <y>340</y>
+     <width>64</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="intValue" stdset="0">
+    <number>100</number>
+   </property>
+  </widget>
+  <widget class="QLCDNumber" name="hp_3">
+   <property name="geometry">
+    <rect>
+     <x>775</x>
+     <y>340</y>
+     <width>64</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="intValue" stdset="0">
+    <number>100</number>
+   </property>
+  </widget>
+  <widget class="QLCDNumber" name="hp_4">
+   <property name="geometry">
+    <rect>
+     <x>915</x>
+     <y>340</y>
+     <width>64</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="intValue" stdset="0">
+    <number>100</number>
+   </property>
+  </widget>
+  <widget class="QLCDNumber" name="hp_5">
+   <property name="geometry">
+    <rect>
+     <x>1055</x>
+     <y>340</y>
+     <width>64</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="intValue" stdset="0">
+    <number>100</number>
+   </property>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_10">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>370</y>
+     <width>111</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="player_0"/>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_11">
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>370</y>
+     <width>111</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="player_1"/>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_12">
+   <property name="geometry">
+    <rect>
+     <x>610</x>
+     <y>370</y>
+     <width>111</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="player_2"/>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_13">
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>370</y>
+     <width>111</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="player_3"/>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_14">
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>370</y>
+     <width>111</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="player_4"/>
+  </widget>
+  <widget class="QWidget" name="gridLayoutWidget_15">
+   <property name="geometry">
+    <rect>
+     <x>1030</x>
+     <y>370</y>
+     <width>111</width>
+     <height>151</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="player_5"/>
+  </widget>
+  <widget class="QLabel" name="dead_0">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>348</x>
+     <y>413</y>
+     <width>75</width>
+     <height>75</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/death_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="dead_1">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>490</x>
+     <y>413</y>
+     <width>75</width>
+     <height>75</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/death_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="dead_2">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>413</y>
+     <width>75</width>
+     <height>75</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/death_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="dead_3">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>413</y>
+     <width>75</width>
+     <height>75</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/death_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="dead_4">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>910</x>
+     <y>413</y>
+     <width>75</width>
+     <height>75</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/death_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="dead_5">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>1050</x>
+     <y>413</y>
+     <width>75</width>
+     <height>75</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/death_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="thirsty_0">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>318</x>
+     <y>470</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/thirsty_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="thirsty_5">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>1020</x>
+     <y>470</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/thirsty_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="thirsty_1">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>470</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/thirsty_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="thirsty_4">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>880</x>
+     <y>470</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/thirsty_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="thirsty_3">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>740</x>
+     <y>470</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/thirsty_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="thirsty_2">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>470</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/thirsty_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="exhaust_4">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>890</x>
+     <y>370</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/exhausted_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="exhaust_2">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>610</x>
+     <y>370</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/exhausted_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="exhaust_1">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>470</x>
+     <y>370</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/exhausted_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="exhaust_0">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>328</x>
+     <y>370</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/exhausted_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="exhaust_5">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>1030</x>
+     <y>370</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/exhausted_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="exhaust_3">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>750</x>
+     <y>370</y>
+     <width>50</width>
+     <height>50</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/exhausted_icon.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="cur_player_0">
+   <property name="geometry">
+    <rect>
+     <x>325</x>
+     <y>365</y>
+     <width>120</width>
+     <height>160</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/cur_player.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="cur_player_1">
+   <property name="geometry">
+    <rect>
+     <x>465</x>
+     <y>365</y>
+     <width>120</width>
+     <height>160</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/cur_player.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="cur_player_2">
+   <property name="geometry">
+    <rect>
+     <x>605</x>
+     <y>365</y>
+     <width>120</width>
+     <height>160</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/cur_player.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="cur_player_5">
+   <property name="geometry">
+    <rect>
+     <x>1025</x>
+     <y>365</y>
+     <width>120</width>
+     <height>160</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/cur_player.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="cur_player_4">
+   <property name="geometry">
+    <rect>
+     <x>885</x>
+     <y>365</y>
+     <width>120</width>
+     <height>160</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/cur_player.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="cur_player_3">
+   <property name="geometry">
+    <rect>
+     <x>745</x>
+     <y>365</y>
+     <width>120</width>
+     <height>160</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="images.qrc">:/resources/cur_player.jpg</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
   <zorder>bg</zorder>
-  <zorder>horizontalLayoutWidget</zorder>
+  <zorder>cur_player_5</zorder>
+  <zorder>cur_player_3</zorder>
+  <zorder>cur_player_4</zorder>
+  <zorder>cur_player_1</zorder>
+  <zorder>cur_player_2</zorder>
+  <zorder>cur_player_0</zorder>
   <zorder>gridLayoutWidget</zorder>
   <zorder>gridLayoutWidget_3</zorder>
   <zorder>gridLayoutWidget_2</zorder>
@@ -443,6 +1071,36 @@
   <zorder>gridLayoutWidget_8</zorder>
   <zorder>horizontalLayoutWidget_2</zorder>
   <zorder>gridLayoutWidget_9</zorder>
+  <zorder>hp_0</zorder>
+  <zorder>hp_1</zorder>
+  <zorder>hp_2</zorder>
+  <zorder>hp_3</zorder>
+  <zorder>hp_4</zorder>
+  <zorder>hp_5</zorder>
+  <zorder>gridLayoutWidget_10</zorder>
+  <zorder>gridLayoutWidget_11</zorder>
+  <zorder>gridLayoutWidget_12</zorder>
+  <zorder>gridLayoutWidget_13</zorder>
+  <zorder>gridLayoutWidget_14</zorder>
+  <zorder>gridLayoutWidget_15</zorder>
+  <zorder>dead_0</zorder>
+  <zorder>dead_1</zorder>
+  <zorder>dead_2</zorder>
+  <zorder>dead_3</zorder>
+  <zorder>dead_4</zorder>
+  <zorder>dead_5</zorder>
+  <zorder>thirsty_0</zorder>
+  <zorder>thirsty_5</zorder>
+  <zorder>thirsty_1</zorder>
+  <zorder>thirsty_4</zorder>
+  <zorder>thirsty_3</zorder>
+  <zorder>thirsty_2</zorder>
+  <zorder>exhaust_4</zorder>
+  <zorder>exhaust_2</zorder>
+  <zorder>exhaust_1</zorder>
+  <zorder>exhaust_0</zorder>
+  <zorder>exhaust_5</zorder>
+  <zorder>exhaust_3</zorder>
  </widget>
  <resources>
   <include location="images.qrc"/>

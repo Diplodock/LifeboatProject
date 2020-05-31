@@ -66,8 +66,8 @@
        <widget class="QPushButton" name="_new_game">
         <property name="geometry">
          <rect>
-          <x>490</x>
-          <y>130</y>
+          <x>580</x>
+          <y>220</y>
           <width>300</width>
           <height>75</height>
          </rect>
@@ -102,8 +102,8 @@ font-family: Arial Black</string>
        <widget class="QPushButton" name="_find_game">
         <property name="geometry">
          <rect>
-          <x>490</x>
-          <y>323</y>
+          <x>580</x>
+          <y>413</y>
           <width>300</width>
           <height>75</height>
          </rect>
@@ -132,8 +132,8 @@ font-family: Arial Black</string>
        <widget class="QPushButton" name="_exit">
         <property name="geometry">
          <rect>
-          <x>490</x>
-          <y>516</y>
+          <x>580</x>
+          <y>606</y>
           <width>300</width>
           <height>75</height>
          </rect>
