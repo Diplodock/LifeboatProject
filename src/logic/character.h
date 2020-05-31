@@ -31,6 +31,7 @@ class Character : public Card {
     int GetStrength() const;
     int GetSurvivalBonus() const;
     int GetWounds() const;
+    std::vector<ItemPtr> GetCharBackpack() const;
     bool IfExhausted() const;
     bool IfCriticalState() const;
     bool IfAlive() const;

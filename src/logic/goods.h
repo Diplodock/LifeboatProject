@@ -13,61 +13,72 @@ class Goods : public Item {
 
 class Water : public Goods {
   public:
-    class WaterCardAction : public GenericAction {
-      using GenericAction::GenericAction;
-      public:
-        void exec(GameState& gs) override;
-    };
+    Water() { specific_action_ = "WaterCardAction"; }
     //std::unique_ptr<GenericAction> GetAction(int player)  override;
 };
 
+class WaterCardAction : public GenericAction {
+  using GenericAction::GenericAction;
+  public:
+    void exec(GameState& gs) override;
+};
 
 class Umbrella : public Goods {
   public:
-    class UmbrellaCardAction : public GenericAction {
-      using GenericAction::GenericAction;
-      public:
-        void exec(GameState& gs) override;
-    };
+    Umbrella() { specific_action_ = "UmbrellaCardAction"; }
     //std::unique_ptr<GenericAction> GetAction(int player)  override;
+};
+
+class UmbrellaCardAction : public GenericAction {
+  using GenericAction::GenericAction;
+  public:
+    void exec(GameState& gs) override;
 };
 
 class FirstAidKit : public Goods {
   public:
-    class FirstAidKitCardAction : public GenericAction {
-      using GenericAction::GenericAction;
-      public:
-        void exec(GameState& gs) override;
-    };
+    FirstAidKit() { specific_action_ = "FirstAidCardAction"; }
     //std::unique_ptr<GenericAction> GetAction(int player, int saved)  override;
+};
+
+class FirstAidCardAction : public GenericAction {
+  using GenericAction::GenericAction;
+  public:
+    void exec(GameState& gs) override;
 };
 
 class Compass : public Goods {
   public:
-    class CompassCardAction : public GenericAction {
-      using GenericAction::GenericAction;
-      public:
-        void exec(GameState& gs) override;
-    };
+    Compass() { specific_action_ = "CompassCardAction"; }
     //std::unique_ptr<GenericAction> GetAction()  override;
 };
 
+class CompassCardAction : public GenericAction {
+  using GenericAction::GenericAction;
+  public:
+    void exec(GameState& gs) override;
+};
+
 class Bait : public Goods {
-    public:
-    class BaitCardAction : public GenericAction {
-      using GenericAction::GenericAction;
-      public:
-        void exec(GameState& gs) override;
-    };
+  public:
+    Bait() { specific_action_ = "BaitCardAction"; }
     //std::unique_ptr<GenericAction> GetAction()  override;
+};
+
+class BaitCardAction : public GenericAction {
+  using GenericAction::GenericAction;
+  public:
+    void exec(GameState& gs) override;
 };
 
 class Lifeline : public Goods {
   public:
-    class LifelineCardAction : public GenericAction {
-      using GenericAction::GenericAction;
-      public:
-        void exec(GameState& gs) override;
-    };
+    Lifeline() { specific_action_ = "LifelineCardAction"; }
     //std::unique_ptr<GenericAction> GetAction(int player, int saved)  override;
+};
+
+class LifelineCardAction : public GenericAction {
+  using GenericAction::GenericAction;
+  public:
+    void exec(GameState& gs) override;
 };

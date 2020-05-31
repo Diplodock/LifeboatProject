@@ -95,3 +95,10 @@ class TryToGiveGoods : public GenericAction {
     TryToGiveGoods();
     void exec(GameState& gs) override;
 };
+
+class Skip : public GenericAction {
+  using GenericAction::GenericAction;
+  public:
+    Skip();
+    void exec(GameState& gs) override;
+};

@@ -82,7 +82,7 @@ void Character::RemoveItem(ItemPtr item, GameState &gs) {
     std::size_t i = 0;
     for (; i < backpack_.size(); i++) {
         if (gs.GetIdCard(backpack_[i]) == gs.GetIdCard(item)) {
-            gs.NotifyUsed(gs.GetIdCard(item));
+            gs.AddUsedItem(item);
             break;
         }
     }
@@ -106,4 +106,8 @@ void Character::UpdateState(GameState &gs) {
         SetHealth(characterOptions_.health - 100 / characterOptions_.strength, gs);
         characterOptions_.health -= 100 / characterOptions_.strength;
     }
+}
+
+std::vector<ItemPtr> Character::GetCharBackpack() const {
+    return backpack_;
 }

@@ -13,6 +13,7 @@ extern std::vector<NavigationPtr> listNav;
 
 static Card supplies;
 static Card navigation;
+static Card button;
 
 int GameState::GetChosenNav() const {
     return current_choice_[0];
@@ -238,6 +239,16 @@ void GameState::NotifyUsed(int id) {
     }
 }
 
+std::vector<int> GameState::GetBackpack(int id) {
+    CharacterPtr character = std::dynamic_pointer_cast<Character>(GetCard(id));
+    std::vector<ItemPtr> items = character->GetCharBackpack();
+    std::vector<int> cur;
+    for (auto x : items) {
+        cur.push_back(GetIdCard(x));
+    }
+    return cur;
+}
+
 void GameState::FinishRound() {
     fought_.clear();
     rowed_.clear();
@@ -267,22 +278,17 @@ GameState::GameState(std::size_t number_of_players)
     std::random_device rd;
     std::mt19937 mersenne(rd());
 
-    available_actions_.resize(4, std::vector<std::string>());
+    available_actions_.resize(8, std::vector<std::string>());
 
     std::vector<std::string> listAction =
-     {"TryToSwap",
-     "TryToTakeGoods",
-     "TryToGiveGoods",
-     "Fight",
+    {
      "Example"
     };
 
     for (std::size_t i = 0; i < 8; i++) {
         AddCharacter(list[0]);
         BoundCardWithId(i, list[i]);
-        for (std::size_t j = 0; j < 5; j++) {
-            get_card_using_id_[i]->AddAvailableAction(listAction[j]);
-        }
+        get_card_using_id_[i]->AddAvailableAction(listAction[0]);
     }
 
     std::vector<CharacterPtr> randCharacters = characters_;
@@ -319,7 +325,6 @@ GameState::GameState(std::size_t number_of_players)
         }
         BoundCardWithId(k, listAdditional[i]);
         AddNotUsedItem(listAdditional[i]);
-        get_card_using_id_[k]->AddAvailableAction("TakeItemsAction");
     }
 
     std::vector<int> listDamages = {1, 1, 8, 4, 3, 2};
@@ -327,14 +332,12 @@ GameState::GameState(std::size_t number_of_players)
     for (std::size_t i = 0, j = 36; i < 25; i++, j++) {
         BoundCardWithId(j, listGoods[i]);
         AddNotUsedItem(listGoods[i]);
-        get_card_using_id_[j]->AddAvailableAction("TakeItemsAction");
     }
     
     for (std::size_t i = 0, j = 63; i < 3; i++, j++) {
         listUni[i]->SetPoints(listDamages[i]);
         BoundCardWithId(j, listUni[i]);
         AddNotUsedItem(listUni[i]);
-        get_card_using_id_[j]->AddAvailableAction("TakeItemsAction");
 
     }
 
@@ -342,7 +345,6 @@ GameState::GameState(std::size_t number_of_players)
         listWeapon[k]->SetPoints(listDamages[i]);
         BoundCardWithId(j, listWeapon[k]);
         AddNotUsedItem(listWeapon[k]);
-        get_card_using_id_[j]->AddAvailableAction("TakeItemsAction");
     }
 
     std::vector<std::vector<CharacterPtr>> listThirsty =
@@ -388,7 +390,6 @@ GameState::GameState(std::size_t number_of_players)
         listNav[i]->SetThirstyRowers(thirstyFightersRowers[i].second);
         AddNotUsedNavigation(listNav[i]);
         BoundCardWithId(j, listNav[i]);
-        get_card_using_id_[j]->AddAvailableAction("TakeNavigationCard");
     }
 
     for (std::size_t i = 0; i < not_used_items_.size(); i++) {
@@ -406,9 +407,13 @@ GameState::GameState(std::size_t number_of_players)
         not_used_navigation_cards_[j] = swaped;
     }
     supplies.AddAvailableAction("TakeItemsAction");
-    navigation.AddAvailableAction("TakeNavigationCard");
+    // navigation.AddAvailableAction("TakeNavigationCard");
+    // button.AddAvailableAction("Row");
+    // button.AddAvailableAction("Skip");
+    button.SetOwner(9);
     BoundCardWithId(98, std::make_shared<Card>(supplies));
     BoundCardWithId(99, std::make_shared<Card>(navigation));
+    BoundCardWithId(104, std::make_shared<Card>(button));
  
     
 }

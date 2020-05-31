@@ -91,6 +91,8 @@ class GameState {
     void NotifyOwner(int id, int card);
     void NotifyUsed(int id);
 
+    std::vector<int> GetBackpack(int id);
+
     void FinishRound();
     void UpdatePart();
   private:

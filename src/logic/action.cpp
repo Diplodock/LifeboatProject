@@ -19,16 +19,12 @@ int GenericAction::GetId() {
 }
 
 void TakeItemsAction::exec(GameState& gs) {
+    gs.GetCard(98)->RemoveAvailableAction("TakeItemsAction");
     for (std::size_t i = 0; i < gs.GetNumberOfPlayers(); i++) {
         CardPtr card = gs.GetItemCard();
         int id = gs.GetIdCard(card);
         gs.AddToChoice(id);
-        card->RemoveAvailableAction("TakeItemsAction");
         card->AddAvailableAction("ChooseItem");
-        std::vector<std::string> avail = (gs.GetCard(98))->GetAvailableActions(-1, gs);
-        for (std::string x : avail) {
-            std::cout << x;
-        }
     }
     gs.UpdatePart();
 }
@@ -45,7 +41,6 @@ void TakeNavigationCard::exec(GameState& gs) {
     CardPtr card = gs.GetNavigationCard();
     int id = gs.GetIdCard(card);
     gs.AddToChoice(id);
-    card->RemoveAvailableAction("TakeNavigationCard");
     card->AddAvailableAction("ChooseNavigationCard");
 }
 
@@ -62,8 +57,9 @@ void ChooseItem::exec(GameState& gs) {
     CharacterPtr character = current_player->GetCharacter();
     character->AddItem(item, gs);
     gs.GetChosen(id_);
-    item->RemoveAvailableAction("ChooseItem");
-    gs.UpdatePart();
+    // item->RemoveAvailableAction("ChooseItem");
+    // item->RemoveAvailableAction("ChooseItem");
+    // gs.UpdatePart();
     
 }
 

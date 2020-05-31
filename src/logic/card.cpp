@@ -4,10 +4,6 @@
 
 using NavigationPtr = std::shared_ptr<Navigation>;
 
-Card::Card() {
-    cardOptions_.name = "";
-    cardOptions_.owner = -1;
-}
 
 std::string Card::GetName() const {
     return cardOptions_.name;

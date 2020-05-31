@@ -16,22 +16,22 @@
 class Vot {
 public:
     Vot(GameState &gs) : gs_(gs){}
-    static void add(int a, int b);
+    static void add(int a);
 
     void setseagul();
     GameState &gs_;
 };
 
-void Vot::add(int a, int b) {
-    std::cout << a << ' ' << b;
+void Vot::add(int a) {
+    std::cout << "removed";
 }
 
 void Vot::setseagul() {
-    std::function<void(int, bool)> func = [](int a, bool b) {
-        add(a, b);
+    std::function<void(int)> func = [](int a) {
+        add(a);
     };
-    ThirstListener *thirstListener = new ThirstListener(func);
-    gs_.AddTListener(std::make_shared<ThirstListener>(*thirstListener));
+    RemoveUsedCardListener *thirstListener = new RemoveUsedCardListener(func);
+    gs_.AddRemUsedListener(std::make_shared<RemoveUsedCardListener>(*thirstListener));
 }
 
 
@@ -41,15 +41,26 @@ int main() {
     Vot v(gs);
     v.setseagul();
     std::function<ActionPtr(int, int, int)> constructor1 = [](int a, int b, int c) {
-        TakeItemsAction action(a, b, c);
-        return std::make_unique<TakeItemsAction>(action);
+        FlareGunCardAction action(a, b, c);
+        return std::make_unique<FlareGunCardAction>(action);
     };
-    af.RegisterAction("TakeItemsAction", constructor1);
-    std::function<ActionPtr(int, int, int)> constructor2 = [](int a, int b, int c) {
-        Example action(a, b, c);
-        return std::make_unique<Example>(action);
-    };
-    af.RegisterAction("Example", constructor2);
-    ActionPtr p = af.CreateAction("Example", -1, 0, 0);
-    p->exec(gs);
+    af.RegisterAction("FlareGunCardAction", constructor1);
+    // std::function<ActionPtr(int, int, int)> constructor2 = [](int a, int b, int c) {
+    //     FlareGunCardAction action(a, b, c);
+    //     return std::make_unique<FlareGunCardAction>(action);
+    // };
+    // af.RegisterAction("Example", constructor2); 
+    // ItemPtr a = std::dynamic_pointer_cast<Item>(gs.GetCard(65));
+    // std::cout << a->GetId();
+    // ActionPtr p = af.CreateAction("FlareGunCardAction", 3, 65, 0);
+    // p->exec(gs);
+
+    CharacterPtr charact = std::dynamic_pointer_cast<Character>(gs.GetCard(2));
+    charact->AddItem(std::dynamic_pointer_cast<Item>(gs.GetCard(52)), gs);
+    charact->AddItem(std::dynamic_pointer_cast<Item>(gs.GetCard(44)), gs);
+    std::vector<int> cur = gs.GetBackpack(2);
+    for (int x : cur) {
+        std::cout << x << '\n';
+    }
+
 }

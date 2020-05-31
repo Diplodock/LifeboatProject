@@ -1,57 +1,69 @@
 #include "goods.h"
 
-void Water::WaterCardAction::exec(GameState& gs) {
-    PlayerPtr player = gs.GetPlayerUsingPlayerId(this->player_);
+void WaterCardAction::exec(GameState& gs) {
+    PlayerPtr player = gs.GetPlayerUsingPlayerId(player_);
     player->GetCharacter()->SetThirst(false, gs);
+    CharacterPtr charac = std::dynamic_pointer_cast<Character>(gs.GetCard(gs.GetCard(id_)->GetOwner()));
+    charac->RemoveItem(std::dynamic_pointer_cast<Item>(gs.GetCard(id_)), gs);
 }
 
 // std::unique_ptr<GenericAction> Water::GetAction(int player) {
 //     return std::make_unique<WaterCardAction>(this, player);
 // }
 
-void Umbrella::UmbrellaCardAction::exec(GameState& gs) {
-    PlayerPtr player = gs.GetPlayerUsingPlayerId(this->player_);
+void UmbrellaCardAction::exec(GameState& gs) {
+    PlayerPtr player = gs.GetPlayerUsingPlayerId(player_);
     player->GetCharacter()->HoldUmbrella(true, gs);
+    CharacterPtr charac = std::dynamic_pointer_cast<Character>(gs.GetCard(gs.GetCard(id_)->GetOwner()));
+    charac->RemoveItem(std::dynamic_pointer_cast<Item>(gs.GetCard(id_)), gs);
 }
 
 // std::unique_ptr<GenericAction> Umbrella::GetAction(int player)  {
 //     return std::make_unique<UmbrellaCardAction>(this, player);
 // }
 
-void FirstAidKit::FirstAidKitCardAction::exec(GameState& gs) {
-    PlayerPtr saved = gs.GetPlayerUsingPlayerId(this->other_card_);
-    saved->GetCharacter()->SetWounds(saved->GetCharacter()->GetWounds() - 1);
+void FirstAidCardAction::exec(GameState& gs) {
+    PlayerPtr player = gs.GetPlayerUsingPlayerId(player_);
+    CharacterPtr saved = player->GetCharacter();
+    saved->SetHealth(saved->GetHealth() + 100 / saved->GetStrength(), gs);
+    saved->RemoveItem(std::dynamic_pointer_cast<Item>(gs.GetCard(id_)), gs);
 }
 
 // std::unique_ptr<GenericAction> FirstAidKit::GetAction(int player, int saved)  {
 //     return std::make_unique<FirstAidKitCardAction>(this, player, saved);
 // }
 
-void Compass::CompassCardAction::exec(GameState& gs) {
+void CompassCardAction::exec(GameState& gs) {
     CardPtr card = gs.GetNavigationCard();
     int id = gs.GetIdCard(card);
     gs.AddToChoice(id);
+    CharacterPtr charac = std::dynamic_pointer_cast<Character>(gs.GetCard(gs.GetCard(id_)->GetOwner()));
+    charac->RemoveItem(std::dynamic_pointer_cast<Item>(gs.GetCard(id_)), gs);
 }
 
 // std::unique_ptr<GenericAction> Compass::GetAction()  {
 //     return std::make_unique<CompassCardAction>(this);
 // }
 
-void Bait::BaitCardAction::exec(GameState& gs) {
+void BaitCardAction::exec(GameState& gs) {
     std::size_t current_size = gs.GetSizeOfOutboard();
     for (std::size_t i = 0; i < current_size; i++) {
         CharacterPtr outboard_character = gs.GetCharacterOutboard(i);
-        outboard_character->SetWounds(outboard_character->GetWounds() + 1);
+        outboard_character->SetHealth(outboard_character->GetHealth() - 100 / outboard_character->GetStrength(), gs);
     }
+    CharacterPtr charac = std::dynamic_pointer_cast<Character>(gs.GetCard(gs.GetCard(id_)->GetOwner()));
+    charac->RemoveItem(std::dynamic_pointer_cast<Item>(gs.GetCard(id_)), gs);
 }
 
 // std::unique_ptr<GenericAction> Bait::GetAction()  {
 //     return std::make_unique<BaitCardAction>(this);
 // }
 
-void Lifeline::LifelineCardAction::exec(GameState& gs) {
-    PlayerPtr saved = gs.GetPlayerUsingPlayerId(this->other_card_);
-    saved->GetCharacter()->SetWounds(saved->GetCharacter()->GetWounds() - 1);
+void LifelineCardAction::exec(GameState& gs) {
+    PlayerPtr player = gs.GetPlayerUsingPlayerId(player_);
+    CharacterPtr saved = player->GetCharacter();
+    saved->SetHealth(saved->GetHealth() + 100 / saved->GetStrength(), gs);
+    saved->RemoveItem(std::dynamic_pointer_cast<Item>(gs.GetCard(id_)), gs);
 }
 
 // std::unique_ptr<GenericAction> Lifeline::GetAction(int player, int saved)  {
