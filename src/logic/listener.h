@@ -102,10 +102,30 @@ class OutboardListener : public Listener {
 
 class TurnListener : public Listener {
   public:
-    TurnListener(std::function<void(int)> func);
-    void notify(int id) {
-      callbackFunc(id);
+    TurnListener(std::function<void(int, int)> func);
+    void notify(int prev, int cur) {
+      callbackFunc(prev, cur);
     }
   private:
-    std::function<void(int id)> callbackFunc;
+    std::function<void(int prev, int cur)> callbackFunc;
+};
+
+class UmbrellaListener : public Listener {
+  public:
+    UmbrellaListener(std::function<void(int, bool)> func);
+    void notify(int id, bool is) {
+      callbackFunc(id, is);
+    }
+  private:
+    std::function<void(int id, bool is)> callbackFunc;
+};
+
+class OwnerListener : public Listener {
+  public:
+    OwnerListener(std::function<void(int, int)> func);
+    void notify(int id, int card) {
+      callbackFunc(id, card);
+    }
+  private:
+    std::function<void(int id, int card)> callbackFunc;
 };

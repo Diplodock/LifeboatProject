@@ -2,7 +2,7 @@
 
 void Water::WaterCardAction::exec(GameState& gs) {
     PlayerPtr player = gs.GetPlayerUsingPlayerId(this->player_);
-    player->GetCharacter()->SetThirst(false);
+    player->GetCharacter()->SetThirst(false, gs);
 }
 
 // std::unique_ptr<GenericAction> Water::GetAction(int player) {
@@ -11,7 +11,7 @@ void Water::WaterCardAction::exec(GameState& gs) {
 
 void Umbrella::UmbrellaCardAction::exec(GameState& gs) {
     PlayerPtr player = gs.GetPlayerUsingPlayerId(this->player_);
-    player->GetCharacter()->HoldUmbrella(true);
+    player->GetCharacter()->HoldUmbrella(true, gs);
 }
 
 // std::unique_ptr<GenericAction> Umbrella::GetAction(int player)  {

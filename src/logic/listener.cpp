@@ -27,5 +27,11 @@ ThirstListener::ThirstListener(std::function<void(int, int)> func)
 OutboardListener::OutboardListener(std::function<void(int)> func)
     : callbackFunc(func) {}
 
-TurnListener::TurnListener(std::function<void(int)> func)
+TurnListener::TurnListener(std::function<void(int, int)> func)
+    : callbackFunc(func) {}
+
+UmbrellaListener::UmbrellaListener(std::function<void(int, bool)> func)
+    : callbackFunc(func) {}
+
+OwnerListener::OwnerListener(std::function<void(int, int)> func)
     : callbackFunc(func) {}

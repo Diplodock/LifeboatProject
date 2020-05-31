@@ -16,22 +16,22 @@
 class Vot {
 public:
     Vot(GameState &gs) : gs_(gs){}
-    static void add();
+    static void add(int a, int b);
 
     void setseagul();
     GameState &gs_;
 };
 
-void Vot::add() {
-    std::cout << "added";
+void Vot::add(int a, int b) {
+    std::cout << a << ' ' << b;
 }
 
 void Vot::setseagul() {
-    std::function<void()> func = []() {
-        add();
+    std::function<void(int, bool)> func = [](int a, bool b) {
+        add(a, b);
     };
-    SeagullsListener *seag = new SeagullsListener(func);
-    gs_.AddSListener(std::make_shared<SeagullsListener>(*seag));
+    ThirstListener *thirstListener = new ThirstListener(func);
+    gs_.AddTListener(std::make_shared<ThirstListener>(*thirstListener));
 }
 
 
@@ -50,6 +50,6 @@ int main() {
         return std::make_unique<Example>(action);
     };
     af.RegisterAction("Example", constructor2);
-    ActionPtr a = af.CreateAction("Example", -1, 0, 0);
-    a->exec(gs);
+    ActionPtr p = af.CreateAction("Example", -1, 0, 0);
+    p->exec(gs);
 }

@@ -1,6 +1,6 @@
 #include "universal.h"
 
-void Paddle::PaddleCardAction::exec(GameState& gs) {
+void PaddleCardAction::exec(GameState& gs) {
     CardPtr card = gs.GetNavigationCard();
     int id = gs.GetIdCard(card);
     gs.AddToChoice(id);
@@ -10,12 +10,14 @@ void Paddle::PaddleCardAction::exec(GameState& gs) {
 //     return std::make_unique<PaddleCardAction>(this, player);
 // }
 
-void FlareGun::FlareGunCardAction::exec(GameState& gs) {
+void FlareGunCardAction::exec(GameState& gs) {
     for (std::size_t i = 0; i < 3; i++) {
         CardPtr card = gs.GetNavigationCard();
         int id = gs.GetIdCard(card);
         gs.AddToChoice(id);
     }
+    gs.GetCard(id_)->RemoveAvailableAction("FlareGunCardAction");
+    //gs.AddUsedItem(std::GetCard(id_));
 }
 
 // std::unique_ptr<GenericAction> FlareGun::GetAction(int player)  {

@@ -1,4 +1,5 @@
 #include "character.h"
+#include "game_state.h"
 
 #include <algorithm>
 
@@ -53,7 +54,8 @@ ItemPtr Character::GetItem(int i) const {
     return backpack_[i];
 }
 
-void Character::SetHealth(int health) {
+void Character::SetHealth(int health, GameState &gs) {
+    gs.NotifyHealth(id_, health);
     characterOptions_.health = health;
 }
 
@@ -61,28 +63,47 @@ void Character::SetWounds(int number_of_wounds) {
     characterOptions_.wounds = number_of_wounds;
 }
 
-void Character::SetThirst(bool if_thirsty) {
+void Character::SetThirst(bool if_thirsty, GameState &gs) {
+    gs.NotifyThirst(id_, if_thirsty);
     characterOptions_.thirst = if_thirsty;
 }
 
-void Character::SetExhausted(bool if_exhausted) {
+void Character::SetExhausted(bool if_exhausted, GameState &gs) {
+    gs.NotifyExhausted(id_, if_exhausted);
     characterOptions_.exhausted = if_exhausted;
 }
 
-void Character::AddItem(ItemPtr item) {
+void Character::AddItem(ItemPtr item, GameState &gs) {
+    gs.NotifyOwner(id_, item->GetId());
     backpack_.push_back(item);
 }
 
-void Character::HoldUmbrella(bool holds) {
+void Character::RemoveItem(ItemPtr item, GameState &gs) {
+    std::size_t i = 0;
+    for (; i < backpack_.size(); i++) {
+        if (gs.GetIdCard(backpack_[i]) == gs.GetIdCard(item)) {
+            gs.NotifyUsed(gs.GetIdCard(item));
+            break;
+        }
+    }
+    for (; i < backpack_.size() - 1; i++) {
+        backpack_[i] = backpack_[i + 1];
+    }
+
+}
+
+void Character::HoldUmbrella(bool holds, GameState &gs) {
+    gs.NotifyOwner(id_, holds);
     characterOptions_.hold_umbrella = holds;
 };
 
-void Character::UpdateState() {
+void Character::UpdateState(GameState &gs) {
     if (characterOptions_.health <= 100 / characterOptions_.strength) {
         characterOptions_.critical_state = true;
     }
     if (characterOptions_.thirst) {
         characterOptions_.wounds++;
+        SetHealth(characterOptions_.health - 100 / characterOptions_.strength, gs);
         characterOptions_.health -= 100 / characterOptions_.strength;
     }
 }

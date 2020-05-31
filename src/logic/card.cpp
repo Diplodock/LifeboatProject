@@ -17,6 +17,10 @@ std::string Card::GetDescription() const {
     return cardOptions_.description;
 }
 
+int Card::GetId() const {
+    return id_;
+}
+
 int Card::GetOwner() const {
     return cardOptions_.owner;
 }
@@ -36,6 +40,10 @@ void Card::SetName(std::string new_name) {
 
 void Card::SetDescription(std::string new_description) {
     cardOptions_.description = new_description;
+}
+
+void Card::SetId(int id) {
+    id_ = id;
 }
 
 void Card::SetOwner(int new_owner) {

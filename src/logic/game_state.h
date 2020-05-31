@@ -75,11 +75,21 @@ class GameState {
     void AddAddListener(std::shared_ptr<AddCardsOnBoardListener> l);
     void AddRemUsedListener(std::shared_ptr<RemoveUsedCardListener> l);
     void AddRemNotUsedListener(std::shared_ptr<RemoveNotUsedCardsListener> l);
+    void AddHealthListener(std::shared_ptr<HealthListener> l);
+    void AddUmbrellaListener(std::shared_ptr<UmbrellaListener> l);
+    void AddOwnerListener(std::shared_ptr<OwnerListener> l);
     void AddEListener(std::shared_ptr<ExhaustedListener> l);
     void AddDListener(std::shared_ptr<DeathListener> l);
     void AddTListener(std::shared_ptr<ThirstListener> l);
     void AddOListener(std::shared_ptr<OutboardListener> l);
     void AddTuListener(std::shared_ptr<TurnListener> l);
+
+    void NotifyHealth(int id, int points);
+    void NotifyExhausted(int id, bool is);
+    void NotifyThirst(int id, bool is);
+    void NotifyUmbrella(int id, bool is);
+    void NotifyOwner(int id, int card);
+    void NotifyUsed(int id);
 
     void FinishRound();
     void UpdatePart();
@@ -111,6 +121,9 @@ class GameState {
     std::vector<std::shared_ptr<AddCardsOnBoardListener>> addListeners;
     std::vector<std::shared_ptr<RemoveUsedCardListener>> remUsedListeners;
     std::vector<std::shared_ptr<RemoveNotUsedCardsListener>> remNotUsedListeners;
+    std::vector<std::shared_ptr<HealthListener>> hListeners;
+    std::vector<std::shared_ptr<UmbrellaListener>> uListeners;
+    std::vector<std::shared_ptr<OwnerListener>> ownListeners;
     std::vector<std::shared_ptr<ExhaustedListener>> eListeners;
     std::vector<std::shared_ptr<DeathListener>> dListeners;
     std::vector<std::shared_ptr<ThirstListener>> tListeners;

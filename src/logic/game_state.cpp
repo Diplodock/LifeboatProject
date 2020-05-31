@@ -173,6 +173,7 @@ void GameState::AddCharacter(CharacterPtr character) {
 }
 
 void GameState::BoundCardWithId(int id, CardPtr card) {
+    card->SetId(id);
     get_id_using_card_[card] = id;
     get_card_using_id_[id] = card;
 }
@@ -198,6 +199,42 @@ void GameState::RemoveAvailableAction(std::string action, int round) {
     }
     for (; j < available_actions_[round].size() - 1; j++) {
         available_actions_[round][j] = available_actions_[round][j + 1]; 
+    }
+}
+
+void GameState::NotifyHealth(int id, int points) {
+    for (auto x : hListeners) {
+        x->notify(id, points);
+    }
+}
+
+void GameState::NotifyExhausted(int id, bool is) {
+    for (auto x : eListeners) {
+        x->notify(id,is);
+    }
+}
+
+void GameState::NotifyThirst(int id, bool is) {
+    for (auto x : tListeners) {
+        x->notify(id, is);
+    }
+}
+
+void GameState::NotifyUmbrella(int id, bool is) {
+    for (auto x : uListeners) {
+        x->notify(id, is);
+    }
+}
+
+void GameState::NotifyOwner(int id, int card) {
+    for (auto x : ownListeners) {
+        x->notify(id, card);
+    }
+}
+
+void GameState::NotifyUsed(int id) {
+    for (auto x : remUsedListeners) {
+        x->notify(id);
     }
 }
 
@@ -388,6 +425,12 @@ void GameState::AddRemUsedListener(std::shared_ptr<RemoveUsedCardListener> l) {
 void GameState::AddRemNotUsedListener(std::shared_ptr<RemoveNotUsedCardsListener> l) {
     remNotUsedListeners.push_back(l);
 }
+void GameState::AddHealthListener(std::shared_ptr<HealthListener> l) {
+    hListeners.push_back(l);
+}
+void GameState::AddUmbrellaListener(std::shared_ptr<UmbrellaListener> l) {
+    uListeners.push_back(l);
+}
 void GameState::AddEListener(std::shared_ptr<ExhaustedListener> l) {
     eListeners.push_back(l);
 }
@@ -402,4 +445,7 @@ void GameState::AddOListener(std::shared_ptr<OutboardListener> l) {
 }
 void GameState::AddTuListener(std::shared_ptr<TurnListener> l) {
     tuListeners.push_back(l);
+}
+void GameState::AddOwnerListener(std::shared_ptr<OwnerListener> l) {
+    ownListeners.push_back(l);
 }

@@ -8,6 +8,7 @@
 #include "weapon.h"
 
 class Item;
+class GameState;
 
 using ItemPtr = std::shared_ptr<Item>;
 
@@ -37,14 +38,15 @@ class Character : public Card {
     bool IfHoldsUmbrella() const;
 
     ItemPtr GetItem(int item) const;
-    void SetHealth(int health);
+    void SetHealth(int health, GameState &gs);
     void SetWounds(int number_of_wounds);
-    void SetThirst(bool is_thirsty);
-    void SetExhausted(bool is_exhausted);
-    void AddItem(ItemPtr item);
-    void HoldUmbrella(bool holds);
+    void SetThirst(bool is_thirsty, GameState &gs);
+    void SetExhausted(bool is_exhausted, GameState &gs);
+    void AddItem(ItemPtr item, GameState &gs);
+    void RemoveItem(ItemPtr item, GameState &gs);
+    void HoldUmbrella(bool holds, GameState &gs);
     
-    void UpdateState();
+    void UpdateState(GameState &gs);
 
   protected:
     CharacterOptions characterOptions_;
