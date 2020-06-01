@@ -208,7 +208,6 @@ void Board::addBoat() {
     addCard(map[108], ui->player3_layout,j["cards"][98]["path"]);
     addCard(map[109], ui->player4_layout, j["cards"][98]["path"]);
     addCard(map[110], ui->player5_layout, j["cards"][98]["path"]);
-    ui->cur_player_0->show();
 }
 
 void Board::markDead(int id, bool b) {
@@ -307,58 +306,58 @@ void Board::markCurPlayer(int prev_id, int cur_id) {
     int player_cur_pos = pos[cur_id];
     switch (player_cur_pos) {
         case 0:
-            ui->cur_player_0->show();
             if (player_prev_pos == 0) ui->cur_player_0->hide();
             if (player_prev_pos == 1) ui->cur_player_1->hide();
             if (player_prev_pos == 2) ui->cur_player_2->hide();
             if (player_prev_pos == 3) ui->cur_player_3->hide();
             if (player_prev_pos == 4) ui->cur_player_4->hide();
             if (player_prev_pos == 5) ui->cur_player_5->hide();
+            ui->cur_player_0->show();
             break;
         case 1:
-            ui->cur_player_1->show();
             if (player_prev_pos == 0) ui->cur_player_0->hide();
             if (player_prev_pos == 1) ui->cur_player_1->hide();
             if (player_prev_pos == 2) ui->cur_player_2->hide();
             if (player_prev_pos == 3) ui->cur_player_3->hide();
             if (player_prev_pos == 4) ui->cur_player_4->hide();
             if (player_prev_pos == 5) ui->cur_player_5->hide();
+            ui->cur_player_1->show();
             break;
         case 2:
-            ui->cur_player_2->show();
             if (player_prev_pos == 0) ui->cur_player_0->hide();
             if (player_prev_pos == 1) ui->cur_player_1->hide();
             if (player_prev_pos == 2) ui->cur_player_2->hide();
             if (player_prev_pos == 3) ui->cur_player_3->hide();
             if (player_prev_pos == 4) ui->cur_player_4->hide();
             if (player_prev_pos == 5) ui->cur_player_5->hide();
+            ui->cur_player_2->show();
             break;
         case 3:
-            ui->cur_player_3->show();
             if (player_prev_pos == 0) ui->cur_player_0->hide();
             if (player_prev_pos == 1) ui->cur_player_1->hide();
             if (player_prev_pos == 2) ui->cur_player_2->hide();
             if (player_prev_pos == 3) ui->cur_player_3->hide();
             if (player_prev_pos == 4) ui->cur_player_4->hide();
             if (player_prev_pos == 5) ui->cur_player_5->hide();
+            ui->cur_player_3->show();
             break;
         case 4:
-            ui->cur_player_4->show();
             if (player_prev_pos == 0) ui->cur_player_0->hide();
             if (player_prev_pos == 1) ui->cur_player_1->hide();
             if (player_prev_pos == 2) ui->cur_player_2->hide();
             if (player_prev_pos == 3) ui->cur_player_3->hide();
             if (player_prev_pos == 4) ui->cur_player_4->hide();
             if (player_prev_pos == 5) ui->cur_player_5->hide();
+            ui->cur_player_4->show();
             break;
         case 5:
-            ui->cur_player_5->show();
             if (player_prev_pos == 0) ui->cur_player_0->hide();
             if (player_prev_pos == 1) ui->cur_player_1->hide();
             if (player_prev_pos == 2) ui->cur_player_2->hide();
             if (player_prev_pos == 3) ui->cur_player_3->hide();
             if (player_prev_pos == 4) ui->cur_player_4->hide();
             if (player_prev_pos == 5) ui->cur_player_5->hide();
+            ui->cur_player_5->show();
             break;
         default:
             return;

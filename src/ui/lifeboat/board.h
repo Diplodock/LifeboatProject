@@ -9,6 +9,8 @@
 #include "../../logic/game_state.h"
 #include "../../multiplayer/lifeboat/action_factory.h"
 #include "../../logic/listener.h"
+#include "../../logic/universal.h"
+#include "../../logic/goods.h"
 #include "clickablelable.h"
 #include <json.hpp>
 
