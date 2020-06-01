@@ -758,7 +758,7 @@
    </property>
    <layout class="QHBoxLayout" name="player0_layout">
     <item>
-     <widget class="QLabel" name="plyaer0_icon">
+     <widget class="QLabel" name="player0_icon">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -789,7 +789,7 @@
    </property>
    <layout class="QHBoxLayout" name="player1_layout">
     <item>
-     <widget class="QLabel" name="plyaer1_icon_3">
+     <widget class="QLabel" name="player1_icon_3">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -820,7 +820,7 @@
    </property>
    <layout class="QHBoxLayout" name="player2_layout">
     <item>
-     <widget class="QLabel" name="plyaer2_icon_4">
+     <widget class="QLabel" name="player2_icon_4">
       <property name="maximumSize">
        <size>
         <width>95</width>
@@ -933,6 +933,28 @@
     </item>
    </layout>
   </widget>
+  <widget class="QLabel" name="round">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>220</y>
+     <width>751</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgba( 255, 255, 255, 0%);
+font-size: 50px;
+font-family: Arial Black;
+color: rgb(0, 0, 0);</string>
+   </property>
+   <property name="text">
+    <string>Distribution of supplies</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
   <zorder>bg</zorder>
   <zorder>cur_player_5</zorder>
   <zorder>cur_player_3</zorder>
@@ -981,6 +1003,7 @@
   <zorder>horizontalLayoutWidget_5</zorder>
   <zorder>horizontalLayoutWidget_6</zorder>
   <zorder>horizontalLayoutWidget_7</zorder>
+  <zorder>round</zorder>
  </widget>
  <resources>
   <include location="images.qrc"/>

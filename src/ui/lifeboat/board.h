@@ -34,7 +34,7 @@ private:
     void initializeMarks();
     void initializeCards();
     void initializePos();
-    void addCard(ClickableLabel*, QLayout*, const std::string&);
+    static void addCard(ClickableLabel*, QLayout*, const std::string&);
     void addBoat();
     void addSeagull();
     void moveCard(int card_id);
@@ -43,21 +43,13 @@ private:
     void markThirsty(int id, bool b);
     void markExhaust(int id, bool b);
     void markCurPlayer(int prev_id, int cur_id);
-    void sChange(int counter);
-    void addCard(int id);
-    void remUsed(int id);
-    void remNotUsed(std::vector<int> ids);
+    void changeRound(const std::string& name);
     void hpChange(int id, int hp);
-    void exChange(int id, bool is);
-    void dChange(int id, bool is);
-    void thirstChange(int id, bool is);
-    void addOutboard(int id);
-    void turnChange(int id);
 
     std::unordered_map<int, ClickableLabel*> map;
     std::unordered_map<int, int> pos;
 
-    int player_ = -1;
+    int player_ = 0;
 
 public slots:
     void handleActionClick();

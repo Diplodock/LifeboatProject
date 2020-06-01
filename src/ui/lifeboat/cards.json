@@ -170,159 +170,159 @@
     },
     {
       "id": "24",
-      "name": "Painting1",
+      "name": "Painting",
       "points": 3,
       "path": ":/resources/cards/goods/painting1.jpg"
     },
     {
       "id": "25",
-      "name": "Painting2",
+      "name": "Painting",
       "points": 2,
       "path": ":/resources/cards/goods/painting2.jpg"
     },
     {
       "id": "26",
-      "name": "Painting3",
+      "name": "Painting",
       "points": 3,
       "path": ":/resources/cards/goods/painting3.jpg"
     },
     {
       "id": "27",
-      "name": "Money1",
+      "name": "Money",
       "points": 1,
       "path": ":/resources/cards/goods/money.jpg"
     },
     {
       "id": "28",
-      "name": "Money2",
+      "name": "Money",
       "points": 1,
       "path": ":/resources/cards/goods/money.jpg"
     },
     {
       "id": "29",
-      "name": "Money3",
+      "name": "Money",
       "points": 1,
       "path": ":/resources/cards/goods/money.jpg"
     },
     {
       "id": "30",
-      "name": "Money4",
+      "name": "Money",
       "points": 1,
       "path": ":/resources/cards/goods/money.jpg"
     },
     {
       "id": "31",
-      "name": "Money5",
+      "name": "Money",
       "points": 1,
       "path": ":/resources/cards/goods/money.jpg"
     },
     {
       "id": "32",
-      "name": "Money6",
+      "name": "Money",
       "points": 1,
       "path": ":/resources/cards/goods/money.jpg"
     },
     {
       "id": "33",
-      "name": "Jewelry1",
+      "name": "Jewelry",
       "points": 1,
       "path": ":/resources/cards/goods/jewelry1.jpg"
     },
     {
       "id": "34",
-      "name": "Jewelry2",
+      "name": "Jewelry",
       "points": 1,
       "path": ":/resources/cards/goods/jewelry2.jpg"
     },
     {
       "id": "35",
-      "name": "Jewelry3",
+      "name": "Jewelry",
       "points": 1,
       "path": ":/resources/cards/goods/jewelry3.jpg"
     },
     {
       "id": "36",
-      "name": "Water1",
+      "name": "Water",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "37",
-      "name": "Water2",
+      "name": "Water",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "38",
-      "name": "Water3",
+      "name": "Water",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "39",
-      "name": "Water4",
+      "name": "Water",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "40",
-      "name": "Water5",
+      "name": "Water",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "41",
-      "name": "Water6",
+      "name": "Water",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "42",
-      "name": "Water7",
+      "name": "Water",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "43",
-      "name": "Water8",
+      "name": "Water",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "44",
-      "name": "Water9",
+      "name": "Water",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "45",
-      "name": "Water10",
+      "name": "Water",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "46",
-      "name": "Water11",
+      "name": "Water",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "47",
-      "name": "Water12",
+      "name": "Water",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "48",
-      "name": "Water13",
+      "name": "Water",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "49",
-      "name": "Water14",
+      "name": "Water",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "50",
-      "name": "Water15",
+      "name": "Water",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "51",
-      "name": "Water16",
+      "name": "Water",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "52",
-      "name": "Water17",
+      "name": "Water",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
@@ -332,27 +332,27 @@
     },
     {
       "id": "54",
-      "name": "Trap1",
+      "name": "Trap",
       "path": ":/resources/cards/tools/trap.jpg"
     },
     {
       "id": "55",
-      "name": "Trap2",
+      "name": "Trap",
       "path": ":/resources/cards/tools/trap.jpg"
     },
     {
       "id": "56",
-      "name": "Medkit1",
+      "name": "Medkit",
       "path": ":/resources/cards/tools/medkit.jpg"
     },
     {
       "id": "57",
-      "name": "Medkit2",
+      "name": "Medkit",
       "path": ":/resources/cards/tools/medkit.jpg"
     },
     {
       "id": "58",
-      "name": "Medkit3",
+      "name": "Medkit",
       "path": ":/resources/cards/tools/medkit.jpg"
     },
     {
@@ -377,12 +377,12 @@
     },
     {
       "id": "63",
-      "name": "Paddle1",
+      "name": "Paddle",
       "path": ":/resources/cards/weapons/paddle.jpg"
     },
     {
       "id": "64",
-      "name": "Paddle2",
+      "name": "Paddle",
       "path": ":/resources/cards/weapons/paddle.jpg"
     },
     {
@@ -724,11 +724,6 @@
       "id": "103",
       "name": "Boat",
       "path": ":/resources/cards/shirts/boat.jpg"
-    },
-    {
-      "id": "104",
-      "name": "Button",
-      "path": ":/resources/button.png"
     }
   ]
 }
