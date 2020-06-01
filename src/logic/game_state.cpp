@@ -303,8 +303,8 @@ void GameState::UpdatePart() {
                 x->notify(characters_[turn_]->GetId(), characters_[(turn_ + 1) % 6]->GetId());
             }
             round_++;
-            button.RemoveAvailableAction("Row");
-            button.RemoveAvailableAction("Skip");
+            GetCard(104)->RemoveAvailableAction("Row");
+            GetCard(104)->RemoveAvailableAction("Skip");
             for (auto x : current_choice_) {
                 GetCard(x)->AddAvailableAction("ChooseNavigationCard");
             }
