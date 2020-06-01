@@ -50,6 +50,46 @@ Board::Board(QWidget *parent) :
     std::function<void()> func = [&]() {
         addSeagull();
     };
+    std::function<ActionPtr(int, int, int)> constructor7 = [](int a, int b, int c) {
+        PaddleCardAction action(a, b, c);
+        return std::make_unique<PaddleCardAction>(action);
+    };
+    af.RegisterAction("PaddleCardAction", constructor7);
+    std::function<ActionPtr(int, int, int)> constructor8 = [](int a, int b, int c) {
+        FlareGunCardAction action(a, b, c);
+        return std::make_unique<FlareGunCardAction>(action);
+    };
+    af.RegisterAction("FlareGunCardAction", constructor8);
+    std::function<ActionPtr(int, int, int)> constructor9 = [](int a, int b, int c) {
+        WaterCardAction action(a, b, c);
+        return std::make_unique<WaterCardAction>(action);
+    };
+    af.RegisterAction("WaterCardAction", constructor9);
+    std::function<ActionPtr(int, int, int)> constructor10 = [](int a, int b, int c) {
+        UmbrellaCardAction action(a, b, c);
+        return std::make_unique<UmbrellaCardAction>(action);
+    };
+    af.RegisterAction("UmbrellaCardAction", constructor10);
+    std::function<ActionPtr(int, int, int)> constructor11 = [](int a, int b, int c) {
+        FirstAidCardAction action(a, b, c);
+        return std::make_unique<FirstAidCardAction>(action);
+    };
+    af.RegisterAction("FirstAidCardAction", constructor11);
+    std::function<ActionPtr(int, int, int)> constructor12 = [](int a, int b, int c) {
+        CompassCardAction action(a, b, c);
+        return std::make_unique<CompassCardAction>(action);
+    };
+    af.RegisterAction("CompassCardAction", constructor12);
+    std::function<ActionPtr(int, int, int)> constructor13 = [](int a, int b, int c) {
+        BaitCardAction action(a, b, c);
+        return std::make_unique<BaitCardAction>(action);
+    };
+    af.RegisterAction("BaitCardAction", constructor13);
+    std::function<ActionPtr(int, int, int)> constructor14 = [](int a, int b, int c) {
+        LifelineCardAction action(a, b, c);
+        return std::make_unique<LifelineCardAction>(action);
+    };
+    af.RegisterAction("LifelineCardAction", constructor14);
     std::function<void(int)> func2 = [&](int id) {
         moveCard(id);
     };
@@ -62,14 +102,23 @@ Board::Board(QWidget *parent) :
     std::function<void(int, int)> func5 = [&](int id, int hp) {
         hpChange(id, hp);
     };
-    std::function<void(int, int)> func6 = [&](int id, bool b) {
+    std::function<void(int, bool)> func6 = [&](int id, bool b) {
         markExhaust(id, b);
     };
-    std::function<void(int, int)> func7 = [&](int id, bool b) {
+    std::function<void(int, bool)> func7 = [&](int id, bool b) {
         markThirsty(id, b);
     };
-    std::function<void(int, int)> func8 = [&](int id, bool b) {
+    std::function<void(int, bool)> func8 = [&](int id, bool b) {
         markDead(id, b);
+    };
+    std::function<void(int, int)> func9 = [&](int prev_id, int cur_id) {
+        markCurPlayer(prev_id, cur_id);
+    };
+    std::function<void(std::string)> func10 = [&](const std::string& name) {
+        changeRound(name);
+    };
+    std::function<void(int, int)> func11 = [&](int owner, int id) {
+        removeCard(id);
     };
     auto *sListener = new SeagullsListener(func);
     auto *cardsOnBoardListener = new AddCardsOnBoardListener(func2);
@@ -79,6 +128,9 @@ Board::Board(QWidget *parent) :
     auto *exListener = new ExhaustedListener(func6);
     auto *thirstListener = new ThirstListener(func7);
     auto *deathListener = new DeathListener(func8);
+    auto *curListener = new TurnListener(func9);
+    auto *roundListener = new RoundListener(func10);
+    auto *ownerListener = new OwnerListener(func11);
     gs.AddSListener(std::make_shared<SeagullsListener>(*sListener));
     gs.AddAddListener(std::make_shared<AddCardsOnBoardListener>(*cardsOnBoardListener));
     gs.AddRemUsedListener(std::make_shared<RemoveUsedCardListener>(*remUsedCardListener));
@@ -87,6 +139,9 @@ Board::Board(QWidget *parent) :
     gs.AddEListener(std::make_shared<ExhaustedListener>(*exListener));
     gs.AddTListener(std::make_shared<ThirstListener>(*thirstListener));
     gs.AddDListener(std::make_shared<DeathListener>(*deathListener));
+    gs.AddTuListener(std::make_shared<TurnListener>(*curListener));
+    gs.AddRoundListener(std::make_shared<RoundListener>(*roundListener));
+    gs.AddOwnerListener(std::make_shared<OwnerListener>(*ownerListener));
 }
 
 Board::~Board() {
@@ -153,6 +208,7 @@ void Board::addBoat() {
     addCard(map[108], ui->player3_layout,j["cards"][98]["path"]);
     addCard(map[109], ui->player4_layout, j["cards"][98]["path"]);
     addCard(map[110], ui->player5_layout, j["cards"][98]["path"]);
+    ui->cur_player_0->show();
 }
 
 void Board::markDead(int id, bool b) {
@@ -161,16 +217,22 @@ void Board::markDead(int id, bool b) {
     switch (player_pos) {
         case 0:
             ui->dead_0->show();
+            break;
         case 1:
             ui->dead_1->show();
+            break;
         case 2:
             ui->dead_2->show();
+            break;
         case 3:
             ui->dead_3->show();
+            break;
         case 4:
             ui->dead_4->show();
+            break;
         case 5:
             ui->dead_5->show();
+            break;
         default:
             return;
     }
@@ -182,21 +244,27 @@ void Board::markThirsty(int id, bool b) {
         case 0:
             if (b) ui->thirsty_0->show();
             if (!b) ui->thirsty_0->hide();
+            break;
         case 1:
             if (b) ui->thirsty_1->show();
             if (!b) ui->thirsty_1->hide();
+            break;
         case 2:
             if (b) ui->thirsty_2->show();
             if (!b) ui->thirsty_2->hide();
+            break;
         case 3:
             if (b) ui->thirsty_3->show();
             if (!b) ui->thirsty_3->hide();
+            break;
         case 4:
             if (b) ui->thirsty_4->show();
             if (!b) ui->thirsty_4->hide();
+            break;
         case 5:
             if (b) ui->thirsty_5->show();
             if (!b) ui->thirsty_5->hide();
+            break;
         default:
             return;
     }
@@ -208,21 +276,27 @@ void Board::markExhaust(int id, bool b) {
         case 0:
             if (b) ui->exhaust_0->show();
             if (!b) ui->exhaust_0->hide();
+            break;
         case 1:
             if (b) ui->exhaust_1->show();
             if (!b) ui->exhaust_1->hide();
+            break;
         case 2:
             if (b) ui->exhaust_2->show();
             if (!b) ui->exhaust_2->hide();
+            break;
         case 3:
             if (b) ui->exhaust_3->show();
             if (!b) ui->exhaust_3->hide();
+            break;
         case 4:
             if (b) ui->exhaust_4->show();
             if (!b) ui->exhaust_4->hide();
+            break;
         case 5:
             if (b) ui->exhaust_5->show();
             if (!b) ui->exhaust_5->hide();
+            break;
         default:
             return;
     }
@@ -240,6 +314,7 @@ void Board::markCurPlayer(int prev_id, int cur_id) {
             if (player_prev_pos == 3) ui->cur_player_3->hide();
             if (player_prev_pos == 4) ui->cur_player_4->hide();
             if (player_prev_pos == 5) ui->cur_player_5->hide();
+            break;
         case 1:
             ui->cur_player_1->show();
             if (player_prev_pos == 0) ui->cur_player_0->hide();
@@ -248,6 +323,7 @@ void Board::markCurPlayer(int prev_id, int cur_id) {
             if (player_prev_pos == 3) ui->cur_player_3->hide();
             if (player_prev_pos == 4) ui->cur_player_4->hide();
             if (player_prev_pos == 5) ui->cur_player_5->hide();
+            break;
         case 2:
             ui->cur_player_2->show();
             if (player_prev_pos == 0) ui->cur_player_0->hide();
@@ -256,6 +332,7 @@ void Board::markCurPlayer(int prev_id, int cur_id) {
             if (player_prev_pos == 3) ui->cur_player_3->hide();
             if (player_prev_pos == 4) ui->cur_player_4->hide();
             if (player_prev_pos == 5) ui->cur_player_5->hide();
+            break;
         case 3:
             ui->cur_player_3->show();
             if (player_prev_pos == 0) ui->cur_player_0->hide();
@@ -264,6 +341,7 @@ void Board::markCurPlayer(int prev_id, int cur_id) {
             if (player_prev_pos == 3) ui->cur_player_3->hide();
             if (player_prev_pos == 4) ui->cur_player_4->hide();
             if (player_prev_pos == 5) ui->cur_player_5->hide();
+            break;
         case 4:
             ui->cur_player_4->show();
             if (player_prev_pos == 0) ui->cur_player_0->hide();
@@ -272,6 +350,7 @@ void Board::markCurPlayer(int prev_id, int cur_id) {
             if (player_prev_pos == 3) ui->cur_player_3->hide();
             if (player_prev_pos == 4) ui->cur_player_4->hide();
             if (player_prev_pos == 5) ui->cur_player_5->hide();
+            break;
         case 5:
             ui->cur_player_5->show();
             if (player_prev_pos == 0) ui->cur_player_0->hide();
@@ -280,9 +359,14 @@ void Board::markCurPlayer(int prev_id, int cur_id) {
             if (player_prev_pos == 3) ui->cur_player_3->hide();
             if (player_prev_pos == 4) ui->cur_player_4->hide();
             if (player_prev_pos == 5) ui->cur_player_5->hide();
+            break;
         default:
             return;
     }
+}
+
+void Board::changeRound(const std::string& name) {
+    ui->round->setText(QString::fromStdString(name));
 }
 
 void Board::initializeCards() {
@@ -605,35 +689,42 @@ void Board::handleActionClick() {
 }
 
 void Board::handleInvClick() {
-//    auto* menu = new QMenu( this);
-//    auto* card = reinterpret_cast<ClickableLabel*>(sender());
-//    int char_id = -1;
-//    switch (card->id_) {
-//        case 105:
-//            char_id = 5;
-//        case 106:
-//            char_id = 1;
-//        case 107:
-//            char_id = 2;
-//        case 108:
-//            char_id = 0;
-//        case 109:
-//            char_id = 6;
-//        case 110:
-//            char_id = 4;
-//    }
-//    std::vector<std::string> cur = gs.GetBackpack(char_id);
-//    for (const std::string& it : cur) {
-//        auto* act = new QAction(QString::fromStdString(it), this);
-//        connect(act, &QAction::triggered, this,
-//                [&] {getAction(it, card->id_);});
-//        menu->addAction(act);
-//    }
-//    menu->exec(QCursor::pos());
+    auto* menu = new QMenu( this);
+    auto* card = reinterpret_cast<ClickableLabel*>(sender());
+    int char_id = -1;
+    switch (card->id_) {
+        case 105:
+            char_id = 5;
+            break;
+        case 106:
+            char_id = 1;
+            break;
+        case 107:
+            char_id = 2;
+            break;
+        case 108:
+            char_id = 0;
+            break;
+        case 109:
+            char_id = 6;
+            break;
+        case 110:
+            char_id = 4;
+            break;
+    }
+    std::vector<int> cur = gs.GetBackpack(char_id);
+    for (int it : cur) {
+        auto* act = new QAction(QString::fromStdString(j["cards"][it]["name"]), this);
+        connect(act, &QAction::triggered, this,
+                [&] {getAction(gs.GetCard(it)->GetSpecificAction(), card->id_);});
+        menu->addAction(act);
+    }
+    menu->exec(QCursor::pos());
 }
 
 void Board::getAction(const std::string& str, int card_id_) {
     ActionPtr p1 = af.CreateAction(str, player_, card_id_, 0);
     p1->exec(gs);
+    player_ = (player_ + 1) % 6;
 }
 
