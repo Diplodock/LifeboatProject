@@ -243,126 +243,151 @@
     {
       "id": "36",
       "name": "Water",
+      "action": "WaterCardAction",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "37",
       "name": "Water",
+      "action": "WaterCardAction",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "38",
       "name": "Water",
+      "action": "WaterCardAction",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "39",
       "name": "Water",
+      "action": "WaterCardAction",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "40",
       "name": "Water",
+      "action": "WaterCardAction",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "41",
       "name": "Water",
+      "action": "WaterCardAction",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "42",
       "name": "Water",
+      "action": "WaterCardAction",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "43",
       "name": "Water",
+      "action": "WaterCardAction",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "44",
       "name": "Water",
+      "action": "WaterCardAction",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "45",
       "name": "Water",
+      "action": "WaterCardAction",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "46",
       "name": "Water",
+      "action": "WaterCardAction",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "47",
       "name": "Water",
+      "action": "WaterCardAction",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "48",
       "name": "Water",
+      "action": "WaterCardAction",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "49",
       "name": "Water",
+      "action": "WaterCardAction",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "50",
       "name": "Water",
+      "action": "WaterCardAction",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "51",
       "name": "Water",
+      "action": "WaterCardAction",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "52",
       "name": "Water",
+      "action": "WaterCardAction",
       "path": ":/resources/cards/tools/water.jpg"
     },
     {
       "id": "53",
       "name": "Umbrella",
+      "action": "UmbrellaCardAction",
       "path": ":/resources/cards/tools/umbrella.jpg"
     },
     {
       "id": "54",
       "name": "Trap",
+      "action": "BaitCardAction",
       "path": ":/resources/cards/tools/trap.jpg"
     },
     {
       "id": "55",
       "name": "Trap",
+      "action": "BaitCardAction",
       "path": ":/resources/cards/tools/trap.jpg"
     },
     {
       "id": "56",
       "name": "Medkit",
+      "action": "FirstAidCardAction",
       "path": ":/resources/cards/tools/medkit.jpg"
     },
     {
       "id": "57",
       "name": "Medkit",
+      "action": "FirstAidCardAction",
       "path": ":/resources/cards/tools/medkit.jpg"
     },
     {
       "id": "58",
       "name": "Medkit",
+      "action": "FirstAidCardAction",
       "path": ":/resources/cards/tools/medkit.jpg"
     },
     {
       "id": "59",
       "name": "Lifebouy",
+      "action": "LifelineCardAction",
       "path": ":/resources/cards/tools/lifebouy.jpg"
     },
     {
       "id": "60",
       "name": "Compass",
+      "action": "CompassCardAction",
       "path": ":/resources/cards/tools/compass.jpg"
     },
     {
@@ -378,16 +403,19 @@
     {
       "id": "63",
       "name": "Paddle",
+      "action": "PaddleCardAction",
       "path": ":/resources/cards/weapons/paddle.jpg"
     },
     {
       "id": "64",
       "name": "Paddle",
+      "action": "PaddleCardAction",
       "path": ":/resources/cards/weapons/paddle.jpg"
     },
     {
       "id": "65",
       "name": "FlareGun",
+      "action": "FlareGunCardAction",
       "path": ":/resources/cards/weapons/flare_gun.jpg"
     },
     {
