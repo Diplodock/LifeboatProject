@@ -13,15 +13,15 @@ class GameState;
 using ItemPtr = std::shared_ptr<Item>;
 
 struct CharacterOptions {
-    int health;
+    int health = 0;
     int strength;
     int survival_bonus;
     int wounds;
-    bool exhausted;
-    bool critical_state;
-    bool alive;
-    bool thirst;
-    bool hold_umbrella;
+    bool exhausted = false;
+    bool critical_state = false;
+    bool alive = true;
+    bool thirst = false;
+    bool hold_umbrella = false;
 };
 
 class Character : public Card {
