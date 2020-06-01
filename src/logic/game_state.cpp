@@ -98,8 +98,10 @@ std::vector<std::string> GameState::GetAvailableActions() {
 }
 
 void GameState::SetNumberOfSeagulls(int number_of_seagulls) {
-    for (auto x : sListeners) {
-        x->notify();
+    if (number_of_seagulls - number_of_seagulls_ == 1) {
+        for (auto x : sListeners) {
+            x->notify();
+        }
     }
     number_of_seagulls_ = number_of_seagulls;
 }
