@@ -236,6 +236,12 @@ void GameState::NotifyOwner(int id, int card) {
     }
 }
 
+void GameState::NotifyDeath(int id, bool is) {
+    for (auto x : dListeners) {
+        x->notify(id, is);
+    }
+}
+
 void GameState::NotifyUsed(int id) {
     for (auto x : remUsedListeners) {
         x->notify(id);

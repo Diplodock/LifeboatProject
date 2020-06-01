@@ -93,6 +93,7 @@ class GameState {
     void NotifyThirst(int id, bool is);
     void NotifyUmbrella(int id, bool is);
     void NotifyOwner(int id, int card);
+    void NotifyDeath(int id, bool is);
     void NotifyUsed(int id);
 
     std::vector<int> GetBackpack(int id);
