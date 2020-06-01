@@ -22,11 +22,6 @@ Board::Board(QWidget *parent) :
         return std::make_unique<TakeItemsAction>(action);
     };
     af.RegisterAction("TakeItemsAction", constructor1);
-    std::function<ActionPtr(int, int, int)> constructor2 = [](int a, int b, int c) {
-        Example action(a, b, c);
-        return std::make_unique<Example>(action);
-    };
-    af.RegisterAction("Example", constructor2);
     std::function<ActionPtr(int, int, int)> constructor3 = [](int a, int b, int c) {
         TakeNavigationCard action(a, b, c);
         return std::make_unique<TakeNavigationCard>(action);
@@ -47,9 +42,6 @@ Board::Board(QWidget *parent) :
         return std::make_unique<Row>(action);
     };
     af.RegisterAction("Row", constructor6);
-    std::function<void()> func = [&]() {
-        addSeagull();
-    };
     std::function<ActionPtr(int, int, int)> constructor7 = [](int a, int b, int c) {
         PaddleCardAction action(a, b, c);
         return std::make_unique<PaddleCardAction>(action);
@@ -95,6 +87,9 @@ Board::Board(QWidget *parent) :
         return std::make_unique<Skip>(action);
     };
     af.RegisterAction("Skip", constructor15);
+    std::function<void()> func = [&]() {
+        addSeagull();
+    };
     std::function<void(int)> func2 = [&](int id) {
         moveCard(id);
     };
@@ -179,16 +174,22 @@ void Board::hpChange(int id, int hp) {
     switch (player_pos) {
         case 0:
             ui->hp_0->display(hp);
+            break;
         case 1:
             ui->hp_1->display(hp);
+            break;
         case 2:
             ui->hp_2->display(hp);
+            break;
         case 3:
             ui->hp_3->display(hp);
+            break;
         case 4:
             ui->hp_4->display(hp);
+            break;
         case 5:
             ui->hp_5->display(hp);
+            break;
         default:
             return;
     }
@@ -720,7 +721,7 @@ void Board::handleInvClick() {
     for (int it : cur) {
         auto* act = new QAction(QString::fromStdString(j["cards"][it]["name"]), this);
         connect(act, &QAction::triggered, this,
-                [&] {getAction(gs.GetCard(it)->GetSpecificAction(), card->id_);});
+                [&] {getAction(gs.GetCard(it)->GetSpecificAction(), it);});
         menu->addAction(act);
     }
     menu->exec(QCursor::pos());
@@ -729,6 +730,7 @@ void Board::handleInvClick() {
 void Board::getAction(const std::string& str, int card_id_) {
     ActionPtr p1 = af.CreateAction(str, player_, card_id_, 0);
     p1->exec(gs);
-    player_ = (player_ + 1) % 6;
+    if (str != "TakeItemsAction"
+     && str != "ChooseNavigationCard") player_ = (player_ + 1) % 6;
 }
 
