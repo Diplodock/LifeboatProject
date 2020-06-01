@@ -286,8 +286,8 @@ void GameState::UpdatePart() {
                 x->notify(rounds_[2]);
             }
             round_++;
-            button.AddAvailableAction("Row");
-            button.AddAvailableAction("Skip");
+            GetCard(104)->AddAvailableAction("Row");
+            GetCard(104)->AddAvailableAction("Skip");
             turn_ = 0;
         }
     }
