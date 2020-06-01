@@ -262,16 +262,16 @@ int GameState::GetTurn() {
 }
 
 void GameState::UpdatePart() {
-    if (last_player_ == number_of_players_ - 1 || round_ == 2) {
-        round_ = (round_ + 1) % 3;
+    if (last_player_ == number_of_players_ || round_ == 3) {
+        round_ = (round_ + 1) % 4;
         if (round_ == 0) {
             supplies.AddAvailableAction("TakeItemsAction");
         }
-        else if (round_ == 1) {
+        else if (round_ == 2) {
             button.AddAvailableAction("Row");
             button.AddAvailableAction("Skip");
         }
-        else {
+        else if (round_ == 3) {
             button.RemoveAvailableAction("Row");
             button.RemoveAvailableAction("Skip");
             for (auto x : current_choice_) {
@@ -287,11 +287,18 @@ void GameState::UpdatePart() {
         }
         turn_ = 0;
     }
+    else if (round_ == 0 && last_player_ == 0){
+        std::cout << "here";
+        round_++;
+        for (auto x : tuListeners) {
+            x->notify(characters_[0]->GetId(), characters_[0]->GetId());
+        }
+    }
     else {
         last_player_++;
         turn_++;
         for (auto x : tuListeners) {
-            x->notify(characters_[turn_ - 1]->GetId(), characters_[turn_]->GetId());
+            x->notify(characters_[turn_ - 1]->GetId(), characters_[turn_ % 6]->GetId());
         }
     }
 }

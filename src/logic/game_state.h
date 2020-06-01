@@ -100,6 +100,8 @@ class GameState {
   private:
     std::vector<std::vector<std::string>> available_actions_;
 
+
+    std::vector<int> current_choice_;
     int number_of_seagulls_ = 0;
     int number_of_players_ = 6;
     int last_player_ = 0;
@@ -107,7 +109,7 @@ class GameState {
     int turn_ = 0;
     int round_ = 0;
     std::vector<std::string> rounds_ = {
-      "Distribution of supplies", "Action time", "Choose navigation card"
+      "Take items", "Distribution of supplies", "Action time", "Choose navigation card"
     };
     std::unordered_map<CardPtr, int> get_id_using_card_;
     std::unordered_map<CharacterPtr, int> get_player_using_character_id_;
@@ -122,7 +124,7 @@ class GameState {
     std::deque<ItemPtr> not_used_items_;
     std::vector<NavigationPtr> used_navigation_cards_;
     std::vector<ItemPtr> used_items_;
-    std::vector<int> current_choice_;
+
 
     std::vector<std::shared_ptr<SeagullsListener>> sListeners;
     std::vector<std::shared_ptr<AddCardsOnBoardListener>> addListeners;
