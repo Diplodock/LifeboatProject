@@ -316,7 +316,7 @@ void GameState::UpdatePart() {
     }
     else {
         round_ = 0;
-        supplies.AddAvailableAction("TakeItemsAction");
+        GetCard(98)->AddAvailableAction("TakeItemsAction");
         for (auto x : roundListeners) {
             x->notify(rounds_[0]);
         }
