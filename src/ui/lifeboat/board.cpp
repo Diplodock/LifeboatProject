@@ -90,6 +90,11 @@ Board::Board(QWidget *parent) :
         return std::make_unique<LifelineCardAction>(action);
     };
     af.RegisterAction("LifelineCardAction", constructor14);
+    std::function<ActionPtr(int, int, int)> constructor15 = [](int a, int b, int c) {
+        Skip action(a, b, c);
+        return std::make_unique<Skip>(action);
+    };
+    af.RegisterAction("Skip", constructor15);
     std::function<void(int)> func2 = [&](int id) {
         moveCard(id);
     };
