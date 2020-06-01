@@ -50,6 +50,46 @@ Board::Board(QWidget *parent) :
     std::function<void()> func = [&]() {
         addSeagull();
     };
+    std::function<ActionPtr(int, int, int)> constructor7 = [](int a, int b, int c) {
+        PaddleCardAction action(a, b, c);
+        return std::make_unique<PaddleCardAction>(action);
+    };
+    af.RegisterAction("PaddleCardAction", constructor7);
+    std::function<ActionPtr(int, int, int)> constructor8 = [](int a, int b, int c) {
+        FlareGunCardAction action(a, b, c);
+        return std::make_unique<FlareGunCardAction>(action);
+    };
+    af.RegisterAction("FlareGunCardAction", constructor8);
+    std::function<ActionPtr(int, int, int)> constructor9 = [](int a, int b, int c) {
+        WaterCardAction action(a, b, c);
+        return std::make_unique<WaterCardAction>(action);
+    };
+    af.RegisterAction("WaterCardAction", constructor9);
+    std::function<ActionPtr(int, int, int)> constructor10 = [](int a, int b, int c) {
+        UmbrellaCardAction action(a, b, c);
+        return std::make_unique<UmbrellaCardAction>(action);
+    };
+    af.RegisterAction("UmbrellaCardAction", constructor10);
+    std::function<ActionPtr(int, int, int)> constructor11 = [](int a, int b, int c) {
+        FirstAidCardAction action(a, b, c);
+        return std::make_unique<FirstAidCardAction>(action);
+    };
+    af.RegisterAction("FirstAidCardAction", constructor11);
+    std::function<ActionPtr(int, int, int)> constructor12 = [](int a, int b, int c) {
+        CompassCardAction action(a, b, c);
+        return std::make_unique<CompassCardAction>(action);
+    };
+    af.RegisterAction("CompassCardAction", constructor12);
+    std::function<ActionPtr(int, int, int)> constructor13 = [](int a, int b, int c) {
+        BaitCardAction action(a, b, c);
+        return std::make_unique<BaitCardAction>(action);
+    };
+    af.RegisterAction("BaitCardAction", constructor13);
+    std::function<ActionPtr(int, int, int)> constructor14 = [](int a, int b, int c) {
+        LifelineCardAction action(a, b, c);
+        return std::make_unique<LifelineCardAction>(action);
+    };
+    af.RegisterAction("LifelineCardAction", constructor14);
     std::function<void(int)> func2 = [&](int id) {
         moveCard(id);
     };
