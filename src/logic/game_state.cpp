@@ -167,6 +167,7 @@ void GameState::AddPlayerCharacter(int player, int id) {
     CharacterPtr current_character = std::dynamic_pointer_cast<Character>(get_card_using_id_[id]); 
     get_character_id_using_player_.push_back(current_character);
     get_player_using_character_id_[current_character] = player;
+    get_player_[player]->SetCharacter(current_character);
 }
 
 void GameState::AddCharacter(CharacterPtr character) {
@@ -256,6 +257,10 @@ void GameState::FinishRound() {
     current_choice_.clear();
 }
 
+int GameState::GetTurn() {
+    return turn_;
+}
+
 void GameState::UpdatePart() {
     if (last_player_ == number_of_players_ - 1 || round_ == 2) {
         round_ = (round_ + 1) % 3;
@@ -278,14 +283,15 @@ void GameState::UpdatePart() {
         }
         last_player_ = 0;
         for (auto x : tuListeners) {
-           x->notify(GetIdCard(GetPlayerUsingPlayerId(turn_)->GetCharacter()), GetIdCard(GetPlayerUsingPlayerId(0)->GetCharacter()));
+           x->notify(characters_[turn_]->GetId(), characters_[0]->GetId());
         }
         turn_ = 0;
     }
     else {
+        last_player_++;
         turn_++;
         for (auto x : tuListeners) {
-            x->notify(GetIdCard(GetPlayerUsingPlayerId(turn_ - 1)->GetCharacter()), GetIdCard(GetPlayerUsingPlayerId(turn_)->GetCharacter()));
+            x->notify(characters_[turn_ - 1]->GetId(), characters_[turn_]->GetId());
         }
     }
 }
@@ -312,25 +318,18 @@ GameState::GameState(std::size_t number_of_players)
      "Example"
     };
 
-    for (std::size_t i = 0; i < 8; i++) {
-        AddCharacter(list[0]);
-        BoundCardWithId(i, list[i]);
-        get_card_using_id_[i]->AddAvailableAction(listAction[0]);
+    std::vector<int> list2 = {5, 1, 2, 0, 6, 4};
+
+    for (std::size_t i = 0; i < 6; i++) {
+        AddCharacter(list[i]);
+        BoundCardWithId(list2[i], list[i]);
+        get_card_using_id_[list2[i]]->AddAvailableAction(listAction[0]);
     }
 
-    std::vector<CharacterPtr> randCharacters = characters_;
-    for (std::size_t i = 0; i < characters_.size(); i++) {
-        srand(time(0));
-        int j = mersenne() % (characters_.size());
-        CharacterPtr swaped = randCharacters[i];
-        randCharacters[i] = randCharacters[j];
-        randCharacters[j] = swaped;
-    }
-
-    for (std::size_t i = 0; i < 8; i++) {
+    for (std::size_t i = 0; i < 6; i++) {
         SetPlayer(listPlayer[i]);
-        listPlayer[i]->SetCharacter(randCharacters[i]);
-        AddPlayerCharacter(i, get_id_using_card_[listPlayer[i]->GetCharacter()]);
+        AddPlayerCharacter(i, GetIdCard(list[i]));
+        listPlayer[i]->SetCharacter(list[i]);
     }
 
     std::vector<std::pair<std::string, int>> listAdd =
@@ -375,30 +374,30 @@ GameState::GameState(std::size_t number_of_players)
     }
 
     std::vector<std::vector<CharacterPtr>> listThirsty =
-    {{list[1]}, {list[2], list[6]}, {list[4]}, {list[0], list[1], list[4]},
-    {list[5]}, {list[2]}, {list[1], list[2]}, {list[0], list[1], list[2], list[6]},
-    {list[0], list[1], list[2], list[3], list[5], list[6], list[7]},
-    {list[0], list[5]}, {list[0], list[1], list[2], list[5]}, {list[6]},
-    {list[0]}, {list[0], list[1], list[2], list[3], list[5], list[6], list[7]},
-    {list[0], list[1]}, {list[1], list[3]}, {list[1], list[2], list[3], list[4], list[7]},
-    {list[0], list[1], list[2], list[3], list[4], list[7]}, {list[0], list[1], list[6]},
-    {list[0], list[3]}, {list[0], list[1], list[2], list[3]}, {list[0], list[1]},
-    {list[6]}, {list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7]},
-    {list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7]}, 
-    {list[0], list[1], list[5]}, 
-    {list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7]}, {},
-    {list[0], list[1], list[2]}};
+    {{list[1]}, {list[2], list[4]}, {list[5]}, {list[3], list[1], list[5]},
+    {list[0]}, {list[2]}, {list[1], list[2]}, {list[3], list[1], list[2], list[4]},
+    {list[3], list[1], list[2], list[0], list[4], },
+    {list[3], list[0]}, {list[3], list[1], list[2], list[0]}, {list[4]},
+    {list[3]}, {list[3], list[1], list[2], list[0], list[4], },
+    {list[3], list[1]}, {list[1], }, {list[1], list[2], list[5], },
+    {list[3], list[1], list[2], list[5], }, {list[3], list[1], list[4]},
+    {list[3], }, {list[3], list[1], list[2], }, {list[3], list[1]},
+    {list[4]}, {list[3], list[1], list[2], list[5], list[0], list[4], },
+    {list[3], list[1], list[2], list[5], list[0], list[4], }, 
+    {list[3], list[1], list[0]}, 
+    {list[3], list[1], list[2], list[5], list[0], list[4], }, {},
+    {list[3], list[1], list[2]}};
 
     std::vector<std::vector<CharacterPtr>> listOutboard =
-    {{list[1]}, {list[3]}, {list[0]}, {list[2]}, {list[0]},
-    {list[1]}, {list[0]}, {list[2]}, {list[4]}, {list[6]},
-    {list[4]}, {list[1], list[6]}, {list[1]}, {list[4]},
-    {list[3]}, {list[3]}, 
-    {list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7]},
-    {list[4]}, {list[2]}, {list[3]}, {list[7]}, {list[1]}, {list[1]},
-    {list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7]},
-    {list[0], list[1], list[2], list[3], list[4], list[5], list[6], list[7]},
-    {list[2]}, {list[5]}, {}, {list[6]}};
+    {{list[1]}, {}, {list[3]}, {list[2]}, {list[3]},
+    {list[1]}, {list[3]}, {list[2]}, {list[5]}, {list[4]},
+    {list[5]}, {list[1], list[4]}, {list[1]}, {list[5]},
+    {}, {}, 
+    {list[3], list[1], list[2], list[5], list[0], list[4], },
+    {list[5]}, {list[2]}, {}, {}, {list[1]}, {list[1]},
+    {list[3], list[1], list[2], list[5], list[0], list[4], },
+    {list[3], list[1], list[2], list[5], list[0], list[4], },
+    {list[2]}, {list[0]}, {}, {list[4]}};
 
     std::vector<int> listSeagull = 
     {0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1,

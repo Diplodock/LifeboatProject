@@ -73,12 +73,10 @@ static SirStephen sirStephen;
 static Wong wong;
 
 std::vector<CharacterPtr> list =
-    {create(firstMate),
+    { create(ladyLauren),
     create(captain),
     create(frenchy),
-    create(drHarter),
-    create(kid),
-    create(ladyLauren),
+    create(firstMate),
     create(sirStephen),
-    create(wong)
+    create(kid)
 };

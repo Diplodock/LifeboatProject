@@ -45,6 +45,7 @@ class GameState {
     int GetSizeOfOutboard() const;
     CharacterPtr GetCharacterOutboard(std::size_t i) const;
     void GetChosen(int id);
+    int GetTurn();
     CharacterPtr GetFought(std::size_t index) const;
     CharacterPtr GetRowed(std::size_t index) const;
     std::size_t GetSizeOfFought() const;
