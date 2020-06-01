@@ -26,14 +26,6 @@ class TakeItemsAction : public GenericAction {
     void exec(GameState& gs) override;
 };
 
-class Example : public GenericAction {
-  using GenericAction::GenericAction;
-  public:
-    Example();
-    void exec(GameState& gs) override;
-
-};
-
 class TakeNavigationCard : public GenericAction {
   using GenericAction::GenericAction;
   public:

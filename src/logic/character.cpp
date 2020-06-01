@@ -57,6 +57,10 @@ ItemPtr Character::GetItem(int i) const {
 void Character::SetHealth(int health, GameState &gs) {
     gs.NotifyHealth(id_, health);
     characterOptions_.health = health;
+    if (health < 0) {
+        characterOptions_.alive = false;
+        gs.NotifyDeath(id_, true);
+    }
 }
 
 void Character::SetWounds(int number_of_wounds) {

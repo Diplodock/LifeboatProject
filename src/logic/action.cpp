@@ -29,14 +29,6 @@ void TakeItemsAction::exec(GameState& gs) {
     gs.UpdatePart();
 }
 
-void Example::exec(GameState& gs) {
-    CharacterPtr c = std::dynamic_pointer_cast<Character>(gs.GetCard(2));
-    c->SetHealth(10, gs);
-    c->SetExhausted(1, gs);
-    c->SetExhausted(0, gs);
-    c->SetThirst(1, gs);
-}
-
 void TakeNavigationCard::exec(GameState& gs) {
     CardPtr card = gs.GetNavigationCard();
     int id = gs.GetIdCard(card);
