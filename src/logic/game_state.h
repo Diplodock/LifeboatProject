@@ -86,6 +86,8 @@ class GameState {
     void AddTuListener(std::shared_ptr<TurnListener> l);
     void AddRoundListener(std::shared_ptr<RoundListener> l);
 
+    std::vector<int> current_choice_;
+
     void NotifyHealth(int id, int points);
     void NotifyExhausted(int id, bool is);
     void NotifyThirst(int id, bool is);
@@ -100,8 +102,6 @@ class GameState {
   private:
     std::vector<std::vector<std::string>> available_actions_;
 
-
-    std::vector<int> current_choice_;
     int number_of_seagulls_ = 0;
     int number_of_players_ = 6;
     int last_player_ = 0;
