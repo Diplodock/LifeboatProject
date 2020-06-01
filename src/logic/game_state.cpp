@@ -263,6 +263,7 @@ int GameState::GetTurn() {
 
 void GameState::UpdatePart() {
     if (last_player_ == number_of_players_ || round_ == 3) {
+        std::cout << "here";
         round_ = (round_ + 1) % 4;
         if (round_ == 0) {
             supplies.AddAvailableAction("TakeItemsAction");

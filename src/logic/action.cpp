@@ -30,7 +30,7 @@ void TakeItemsAction::exec(GameState& gs) {
 }
 
 void Example::exec(GameState& gs) {
-    CharacterPtr c = std::dynamic_pointer_cast<Character>(gs.GetCard(3));
+    CharacterPtr c = std::dynamic_pointer_cast<Character>(gs.GetCard(2));
     c->SetHealth(10, gs);
     c->SetExhausted(1, gs);
     c->SetExhausted(0, gs);
@@ -50,7 +50,6 @@ void ChooseCharacterCard::exec(GameState& gs) {
 }
 
 void ChooseItem::exec(GameState& gs) {
-    gs.SetLast(player_);
     ItemPtr item = std::dynamic_pointer_cast<Item>(gs.GetCard(id_));
     PlayerPtr current_player = gs.GetPlayerUsingPlayerId(player_);
     CharacterPtr character = current_player->GetCharacter();
