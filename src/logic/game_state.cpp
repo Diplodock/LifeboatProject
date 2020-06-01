@@ -463,7 +463,6 @@ GameState::GameState(std::size_t number_of_players)
     // navigation.AddAvailableAction("TakeNavigationCard");
     // button.AddAvailableAction("Row");
     // button.AddAvailableAction("Skip");
-    button.SetOwner(9);
     BoundCardWithId(98, std::make_shared<Card>(supplies));
     BoundCardWithId(99, std::make_shared<Card>(navigation));
     BoundCardWithId(104, std::make_shared<Card>(button));
